@@ -60,6 +60,7 @@
                             <p>- Brackets.</p>
                             <p>- Implantes.</p>
                             <p>- Extracción.</p>
+                            <p>- Etrapion.</p>
                         </div>
                     </div>
                     <div class="image-section">
