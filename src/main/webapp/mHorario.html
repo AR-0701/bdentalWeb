@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,6 +27,10 @@
                 background-color: #4CAF50;
                 color: white;
             }
+            td.bloqueado {
+                background-color: #d8bfd8;
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -45,35 +48,21 @@
                         <div class="Titulo modify-title"><h1>Modificar horario</h1></div>
                     </div>
                 </div>
-                <!-- Schedule container -->
                 <div class="schedule-container">
-                    <!-- Form container -->
                     <div class="form-container">
                         <div class="form-group">
                             <label for="hora-apertura">Hora de apertura:</label>
-                            <select id="hora-apertura">
-                                <option value="---">---</option>
-                                <option value="08:00">08:00</option>
-                                <option value="09:00">09:00</option>
-                                <option value="10:00">10:00</option>
-                            </select>
+                            <input type="text" id="hora-apertura" readonly>
                         </div>
                         <div class="form-group">
                             <label for="hora-cierre">Hora de cierre:</label>
-                            <select id="hora-cierre"> 
-                                <option value="---">---</option>
-                                <option value="17:00">17:00</option>
-                                <option value="18:00">18:00</option>
-                                <option value="19:00">19:00</option>
-                            </select>
+                            <input type="text" id="hora-cierre" readonly>
                         </div>
-                        <!-- Button group -->
                         <div class="button-group">
                             <button id="bloquear">Bloquear</button>
                             <button id="desbloquear">Desbloquear</button>
                         </div>
                     </div>
-                    <!-- Calendar container -->
                     <div class="calendar-container">
                         <h2 id="nombreMes"></h2>
                         <table id="calendar">
@@ -94,7 +83,7 @@
                         </table>
                     </div>
                 </div>
-                <!-- Button modify -->
+                <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" readonly></p>
                 <div class="button-modify">
                     <button id="modificar">Modificar</button>
                 </div>
@@ -107,8 +96,9 @@
             document.addEventListener('DOMContentLoaded', function () {
                 var calendarBody = document.querySelector('#calendar tbody');
                 var nombreMes = document.getElementById('nombreMes');
-                var horaAperturaLabel = document.getElementById('hora-apertura');
-                var horaCierreLabel = document.getElementById('hora-cierre');
+                var horaAperturaInput = document.getElementById('hora-apertura');
+                var horaCierreInput = document.getElementById('hora-cierre');
+                var fechaSeleccionadaInput = document.getElementById('fechaSeleccionada');
                 var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                 var fechaActual = new Date();
                 var mesActual = fechaActual.getMonth();
@@ -163,7 +153,10 @@
                                     fechaSeleccionada = this.getAttribute('data-date');
                                     console.log('Fecha seleccionada:', fechaSeleccionada);
 
-                                    // Mostrar fecha seleccionada en el span
+                                    // Mostrar fecha seleccionada en el input
+                                    fechaSeleccionadaInput.value = fechaSeleccionada;
+
+                                    // Obtener horarios para la fecha seleccionada
                                     obtenerHorarios(fechaSeleccionada);
                                 });
                                 row.appendChild(cell);
@@ -175,22 +168,77 @@
                 }
 
                 function obtenerHorarios(fecha) {
-                    fetch('ObtenerHorariosServlet?fecha=' + fecha)
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data) {
-                                horaAperturaLabel.value = data.horaApertura;
-                                horaCierreLabel.value = data.horaCierre;
-                            } else {
-                                horaAperturaLabel.value = '---';
-                                horaCierreLabel.value = '---';
-                            }
+                    fetch('SvMostrarHorarios?fecha=' + fecha)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data) {
+                                    horaAperturaInput.value = data.horaApertura;
+                                    horaCierreInput.value = data.horaCierre;
+                                } else {
+                                    horaAperturaInput.value = '---';
+                                    horaCierreInput.value = '---';
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                }
+                document.getElementById('bloquear').addEventListener('click', function () {
+                    actualizarEstadoDia(true);
+                });
+
+                document.getElementById('desbloquear').addEventListener('click', function () {
+                    actualizarEstadoDia(false);
+                });
+
+                function actualizarEstadoDia(bloquear) {
+                    if (fechaSeleccionada) {
+                        fetch('SvActualizarHorarios', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: `fecha=${fechaSeleccionada}&bloquear=${bloquear}`
                         })
-                        .catch(error => console.error('Error:', error));
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data) {
+                                        let cell = document.querySelector(`td[data-date="${data.fecha}"]`);
+                                        if (bloquear) {
+                                            cell.classList.add('bloqueado');
+                                        } else {
+                                            cell.classList.remove('bloqueado');
+                                        }
+                                    }
+                                })
+                                .catch(error => console.error('Error:', error));
+                    } else {
+                        alert('Por favor, seleccione una fecha primero.');
+                    }
                 }
 
-                // Crear calendario para el mes actual al cargar la página
+                function obtenerDiasBloqueados() {
+                    fetch('SvObtenerDiasBloqueados')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data) {
+                                    marcarDiasBloqueados(data);
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                }
+
+                function marcarDiasBloqueados(diasBloqueados) {
+                    diasBloqueados.forEach(dia => {
+                        let cell = document.querySelector(`td[data-date="${dia.fecha}"]`);
+                        if (cell) {
+                            cell.classList.add('bloqueado');
+                        }
+                    });
+                }
+
+
+
                 crearCalendario(mesActual, anoActual);
+                obtenerDiasBloqueados();  // Obtener y marcar los días bloqueados
             });
         </script>
     </body>

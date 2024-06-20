@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import logica.*;
 import org.mindrot.jbcrypt.BCrypt;
 import persistencia.exceptions.NonexistentEntityException;
@@ -69,9 +70,21 @@ public class controladoraPersistencia {
         }
     }
 
-     public horarios obtenerHorariosPorFecha(Date fecha) {
+    public horarios obtenerHorariosPorFecha(Date fecha) {
         return horarios.findHorariosByFecha(fecha);
     }
-   
 
+    public void actualizarHorarios(horarios horario) throws Exception {
+        horarios.edit(horario);
+    }
+
+    public List<horarios> obtenerHorariosBloqueados() {
+        EntityManager em = horarios.getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT h FROM horarios h WHERE h.vigente = false");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

@@ -4,18 +4,16 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import logica.Controladora;
 import logica.horarios;
 
-@WebServlet(name = "SvMostrarHorarios", urlPatterns = {"/SvMostrarHorarios"})
-public class SvMostrarHorarios extends HttpServlet {
+@WebServlet(name = "SvActualizarHorarios", urlPatterns = {"/SvActualizarHorarios"})
+public class SvActualizarHorarios extends HttpServlet {
 
     Controladora control = new Controladora();
 
@@ -27,26 +25,30 @@ public class SvMostrarHorarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fechaStr = request.getParameter("fecha");
-        Date fecha = Date.valueOf(fechaStr);
-
-        horarios horario = control.obtenerHorariosPorFecha(fecha);
-
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
-        if (horario != null) {
-            String json = new Gson().toJson(horario);
-            response.getWriter().write(json);
-        } else {
-            response.getWriter().write("{}");
-        }
+        processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String fechaStr = request.getParameter("fecha");
+        boolean bloquear = Boolean.parseBoolean(request.getParameter("bloquear"));
 
+        Date fecha = Date.valueOf(fechaStr);
+
+        horarios horario = control.obtenerHorariosPorFecha(fecha);
+        if (horario == null) {
+            horario = new horarios();
+            horario.setFecha(fecha);
+        }
+        horario.setVigente(!bloquear);
+
+        try {
+            control.actualizarHorarios(horario);
+            response.getWriter().write(new Gson().toJson(horario));
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar el horario");
+        }
     }
 
     @Override

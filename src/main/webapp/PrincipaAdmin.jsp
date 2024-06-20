@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href="#">Registrar citas a Clientes</a></li>
                         <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="mHorarios.jsp">Modificar Horarios</a></li>
+                        <li><a href="mHorario.html">Modificar Horarios</a></li>
                         <li><a href="RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
                         <li><a href="SvMostrarAsistentes">Ver Asistentes</a></li>
                         <li><a href="AdmiServicio.jsp">Servicios</a></li>

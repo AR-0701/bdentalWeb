@@ -79,4 +79,12 @@ public class Controladora {
     public horarios obtenerHorariosPorFecha(Date fecha) {
         return controlPersis.obtenerHorariosPorFecha(fecha);
     }
+    
+    public void actualizarHorarios(horarios horario) throws Exception {
+        controlPersis.actualizarHorarios(horario);
+    }
+
+    public List<horarios> obtenerHorariosBloqueados() {
+        return controlPersis.obtenerHorariosBloqueados();
+    }
 }
