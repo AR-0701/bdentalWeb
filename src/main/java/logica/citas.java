@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 @Entity
 public class citas implements Serializable {
- @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCita;
 
@@ -18,16 +19,12 @@ public class citas implements Serializable {
     private Date dia;
 
     @ManyToOne
-    @JoinColumn(name = "idAsistente")
-    private asistentes asistente;
-
-    @ManyToOne
-    @JoinColumn(name = "idAdministrador")
-    private administrador administrador;
-
-    @ManyToOne
-    @JoinColumn(name = "idCliente", nullable = false)
+    @JoinColumn(name = "idCliente")
     private clientes cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "registro")
+    private usuarios usuario;
 
     @ManyToOne
     @JoinColumn(name = "idHorarios", nullable = false)
@@ -36,13 +33,12 @@ public class citas implements Serializable {
     public citas() {
     }
 
-    public citas(int idCita, Time horario, Date dia, asistentes asistente, administrador administrador, clientes cliente, horarios horarioObj) {
+    public citas(int idCita, Time horario, Date dia, clientes cliente, usuarios usuario, horarios horarioObj) {
         this.idCita = idCita;
         this.horario = horario;
         this.dia = dia;
-        this.asistente = asistente;
-        this.administrador = administrador;
         this.cliente = cliente;
+        this.usuario = usuario;
         this.horarioObj = horarioObj;
     }
 
@@ -70,28 +66,20 @@ public class citas implements Serializable {
         this.dia = dia;
     }
 
-    public asistentes getAsistente() {
-        return asistente;
-    }
-
-    public void setAsistente(asistentes asistente) {
-        this.asistente = asistente;
-    }
-
-    public administrador getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(administrador administrador) {
-        this.administrador = administrador;
-    }
-
     public clientes getCliente() {
         return cliente;
     }
 
     public void setCliente(clientes cliente) {
         this.cliente = cliente;
+    }
+
+    public usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(usuarios usuario) {
+        this.usuario = usuario;
     }
 
     public horarios getHorarioObj() {
@@ -102,5 +90,5 @@ public class citas implements Serializable {
         this.horarioObj = horarioObj;
     }
     
-    
+
 }

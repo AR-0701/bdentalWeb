@@ -1,7 +1,9 @@
 package logica;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 import persistencia.controladoraPersistencia;
@@ -72,5 +74,9 @@ public class Controladora {
     public void eliminarAsistente(int id) throws NonexistentEntityException {
         controlPersis.eliminarAsistente(id);
     }
+   
 
+    public horarios obtenerHorariosPorFecha(Date fecha) {
+        return controlPersis.obtenerHorariosPorFecha(fecha);
+    }
 }

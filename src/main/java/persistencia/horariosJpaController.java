@@ -1,15 +1,18 @@
 package persistencia;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.horarios;
+import logica.usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
 public class horariosJpaController implements Serializable {
@@ -22,9 +25,11 @@ public class horariosJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-  public horariosJpaController(){
-        emf= Persistence.createEntityManagerFactory("BdentalPU");
+
+    public horariosJpaController() {
+        emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
+
     public void create(horarios horarios) {
         EntityManager em = null;
         try {
@@ -128,5 +133,18 @@ public class horariosJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public horarios findHorariosByFecha(Date fecha) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT h FROM horarios h WHERE h.fecha = :fecha");
+            query.setParameter("fecha", fecha);
+            return (horarios) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
 }

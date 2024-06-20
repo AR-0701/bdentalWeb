@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,7 +16,6 @@ public class controladoraPersistencia {
     clientesJpaController clientes = new clientesJpaController();
     horariosJpaController horarios = new horariosJpaController();
     usuariosJpaController usuarios = new usuariosJpaController();
-    vigenciasJpaController vigencias = new vigenciasJpaController();
 
     public void crearCliente(usuarios usu, clientes clie) {
         usuarios.create(usu);
@@ -47,27 +47,31 @@ public class controladoraPersistencia {
         return usuarios.findusuariosEntities();
     }
 
-   public void eliminarAsistente(int id) throws NonexistentEntityException {
-    asistentes asistente = asist.findasistentes(id);
-    if (asistente != null) {
-        try {
-            // Obtener el usuario asociado al asistente
-            usuarios usuarioAsistente = asist.findUsuarioByAsistentes(id);
-            
-            // Eliminar el asistente
-            asist.destroy(id);
-            
-            // Verificar y eliminar el usuario asociado si existe
-            if (usuarioAsistente != null) {
-                usuarios.destroy(usuarioAsistente.getIdUsuario());
-            }
-        } catch (NonexistentEntityException ex) {
-            throw new NonexistentEntityException("Error al eliminar el asistente con ID " + id, ex);
-        }
-    } else {
-        throw new NonexistentEntityException("El asistente con ID " + id + " no existe.");
-    }
-}
+    public void eliminarAsistente(int id) throws NonexistentEntityException {
+        asistentes asistente = asist.findasistentes(id);
+        if (asistente != null) {
+            try {
+                // Obtener el usuario asociado al asistente
+                usuarios usuarioAsistente = asist.findUsuarioByAsistentes(id);
 
+                // Eliminar el asistente
+                asist.destroy(id);
+
+                // Verificar y eliminar el usuario asociado si existe
+                if (usuarioAsistente != null) {
+                    usuarios.destroy(usuarioAsistente.getIdUsuario());
+                }
+            } catch (NonexistentEntityException ex) {
+                throw new NonexistentEntityException("Error al eliminar el asistente con ID " + id, ex);
+            }
+        } else {
+            throw new NonexistentEntityException("El asistente con ID " + id + " no existe.");
+        }
+    }
+
+     public horarios obtenerHorariosPorFecha(Date fecha) {
+        return horarios.findHorariosByFecha(fecha);
+    }
+   
 
 }

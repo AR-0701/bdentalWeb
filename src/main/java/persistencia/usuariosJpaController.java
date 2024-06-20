@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package persistencia;
 
 import java.io.Serializable;
@@ -17,7 +13,6 @@ import javax.persistence.criteria.Root;
 import logica.usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
-
 public class usuariosJpaController implements Serializable {
 
     public usuariosJpaController(EntityManagerFactory emf) {
@@ -29,9 +24,10 @@ public class usuariosJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-     public usuariosJpaController(){
-        emf= Persistence.createEntityManagerFactory("BdentalPU");
+    public usuariosJpaController() {
+        emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
+
     public void create(usuarios usuarios) {
         EntityManager em = null;
         try {
@@ -135,8 +131,8 @@ public class usuariosJpaController implements Serializable {
             em.close();
         }
     }
-    
-     public usuarios findUsuarioByEmail(String email) {
+
+    public usuarios findUsuarioByEmail(String email) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT u FROM usuarios u WHERE u.email = :email");
@@ -148,5 +144,4 @@ public class usuariosJpaController implements Serializable {
             em.close();
         }
     }
-     
 }

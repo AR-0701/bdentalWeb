@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class horarios implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHorarios;
 
     @Temporal(TemporalType.DATE)
@@ -17,19 +17,25 @@ public class horarios implements Serializable {
     @Basic
     private Time horaApertura;
     private Time horaCierre;
-    
-    @ManyToOne
-    @JoinColumn(name = "idVigencia", nullable = false)
-    private vigencias vigencia;
+    private boolean vigente;
 
     public horarios() {
     }
 
-    public horarios(int idHorarios, Date fecha, Time horaApertura, Time horaCierre) {
+    public horarios(int idHorarios, Date fecha, Time horaApertura, Time horaCierre, boolean vigente) {
         this.idHorarios = idHorarios;
         this.fecha = fecha;
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
+        this.vigente = vigente;
+    }
+
+    public boolean isVigente() {
+        return vigente;
+    }
+
+    public void setVigente(boolean vigente) {
+        this.vigente = vigente;
     }
 
     // Getters y Setters

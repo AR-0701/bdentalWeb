@@ -12,7 +12,7 @@
             <header>
                 <div class="logo2">
                     <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/logoo.png" alt="B - DENTAL">
+                        <img src="imagenes/loogo.png" alt="B - DENTAL">
                     </a>
                 </div>
             </header>
@@ -83,97 +83,81 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Obtener una referencia al cuerpo del calendario y al encabezado del mes
                 var cuerpoCalendario = document.getElementById('cuerpoCalendario');
                 var nombreMes = document.getElementById('nombreMes');
+                var horaAperturaLabel = document.getElementById('hora-apertura');
+                var horaCierreLabel = document.getElementById('hora-cierre');
 
-                // Obtener el nombre del mes actual y el año actual
                 var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                 var fechaActual = new Date();
                 var mesActual = fechaActual.getMonth();
                 var anoActual = fechaActual.getFullYear();
 
-                // Actualizar el nombre del mes en el encabezado
                 nombreMes.textContent = meses[mesActual] + ' ' + anoActual;
 
-                // Función para generar los días del mes y agregarlos al cuerpo del calendario
                 function generarCalendario(mes, ano) {
-                    // Eliminar cualquier día existente en el calendario
                     cuerpoCalendario.innerHTML = '';
 
-                    // Obtener el primer día del mes y el último día del mes
                     var primerDia = new Date(ano, mes, 1);
                     var ultimoDia = new Date(ano, mes + 1, 0);
 
-                    // Actualizar el nombre del mes en el encabezado
                     nombreMes.textContent = meses[mes] + ' ' + ano;
 
-                    var diaSemana = primerDia.getDay(); // Día de la semana (0: Domingo, 1: Lunes, ...)
+                    var diaSemana = primerDia.getDay();
                     var diaActual = 1;
 
-                    // Iterar sobre las semanas del mes
                     for (var semana = 0; semana < 6; semana++) {
-                        var fila = document.createElement('tr'); // Crear una fila para cada semana
+                        var fila = document.createElement('tr');
 
-                        // Iterar sobre los días de la semana
                         for (var dia = 0; dia < 7; dia++) {
-                            var celda = document.createElement('td'); // Crear una celda para cada día
+                            var celda = document.createElement('td');
                             if (semana === 0 && dia < diaSemana) {
-                                // Dejar las celdas vacías hasta que llegue el primer día del mes
                                 fila.appendChild(celda);
                             } else if (diaActual > ultimoDia.getDate()) {
-                                // Dejar las celdas vacías después del último día del mes
                                 fila.appendChild(celda);
                             } else {
-                                // Agregar el número
-                                // Agregar el número del día al contenido de la celda
                                 celda.textContent = diaActual;
-
-                                // Agregar la clase 'selectable' a la celda
                                 celda.classList.add('selectable');
+                                celda.dataset.fecha = `${ano}-${mes + 1}-${diaActual}`;
 
-                                // Agregar un evento de clic a la celda
-                                celda.addEventListener('click', function () {
-                                    // Remover la clase 'selected' de todas las celdas
-                                    document.querySelectorAll('.calendar .selected').forEach(selectedCell => {
-                                        selectedCell.classList.remove('selected');
+                                                        celda.addEventListener('click', function () {
+                                                            document.querySelectorAll('.calendar .selected').forEach(selectedCell => {
+                                                                selectedCell.classList.remove('selected');
+                                                            });
+                                                            this.classList.add('selected');
+                                                            obtenerHorarios(this.dataset.fecha);
+                                                        });
+
+                                                        fila.appendChild(celda);
+                                                        diaActual++;
+                                                    }
+                                                }
+
+                                                cuerpoCalendario.appendChild(fila);
+
+                                                if (diaActual > ultimoDia.getDate()) {
+                                                    break;
+                                                }
+                                            }
+                                        }
+
+                                        function obtenerHorarios(fecha) {
+                                            fetch('ObtenerHorariosServlet?fecha=' + fecha)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        if (data) {
+                                                            horaAperturaLabel.value = data.horaApertura;
+                                                            horaCierreLabel.value = data.horaCierre;
+                                                        } else {
+                                                            horaAperturaLabel.value = '---';
+                                                            horaCierreLabel.value = '---';
+                                                        }
+                                                    })
+                                                    .catch(error => console.error('Error:', error));
+                                        }
+
+                                        generarCalendario(mesActual, anoActual);
                                     });
-
-                                    // Agregar la clase 'selected' a la celda seleccionada
-                                    this.classList.add('selected');
-                                });
-
-                                // Agregar la celda a la fila
-                                fila.appendChild(celda);
-
-                                // Incrementar el día actual
-                                diaActual++;
-                            }
-                        }
-
-                        // Agregar la fila al cuerpo del calendario
-                        cuerpoCalendario.appendChild(fila);
-
-                        // Si ya se han añadido todos los días del mes, salir del bucle
-                        if (diaActual > ultimoDia.getDate()) {
-                            break;
-                        }
-                    }
-                }
-
-                // Llamar a la función para generar el calendario
-                generarCalendario(mesActual, anoActual);
-
-            });
-            // JavaScript for dynamic calendar functionality
-            document.querySelectorAll('.calendar .selectable').forEach(cell => {
-                cell.addEventListener('click', function () {
-                    document.querySelectorAll('.calendar .selected').forEach(selectedCell => {
-                        selectedCell.classList.remove('selected');
-                    });
-                    this.classList.add('selected');
-                });
-            });
         </script>
 
     </body>
