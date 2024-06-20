@@ -22,6 +22,11 @@
                         <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
+            <div class="user-menu">
+                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="index.jsp">Cerrar sesión</a>
+                    </div>
             <div class="menu">
                 <nav>
                     <ul>
@@ -62,6 +67,15 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+            <script>
+     document.addEventListener("DOMContentLoaded", function () {
+      var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
+
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
+                });
+            });
+            </script>
 </body>
 </html>
