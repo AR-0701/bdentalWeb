@@ -10,34 +10,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Controladora;
-import logica.horarios;
 
-@WebServlet(name = "SvObtenerDiasBloqueados", urlPatterns = {"/SvObtenerDiasBloqueados"})
-public class SvObtenerDiasBloqueados extends HttpServlet {
+@WebServlet(name = "SvDiasBloqueados", urlPatterns = {"/SvDiasBloqueados"})
+public class SvDiasBloqueados extends HttpServlet {
+        Controladora control = new Controladora();
 
-    Controladora control = new Controladora();
 
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
-        
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<horarios> horariosBloqueados = control.obtenerHorariosBloqueados();
+        List<String> diasBloqueados = control.obtenerDiasBloqueados();
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        if (horariosBloqueados != null) {
-            String json = new Gson().toJson(horariosBloqueados);
-            response.getWriter().write(json);
-        } else {
-            response.getWriter().write("[]");
-        }
+        String json = new Gson().toJson(diasBloqueados);
+        System.out.println(""+json);
+        response.getWriter().write(json);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -45,8 +42,9 @@ public class SvObtenerDiasBloqueados extends HttpServlet {
         processRequest(request, response);
     }
 
+
     @Override
-    public String getServletInfo() {    
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

@@ -27,9 +27,9 @@
                 background-color: #4CAF50;
                 color: white;
             }
-            td.bloqueado {
-                background-color: #d8bfd8;
-                color: white;
+            .bloqueado {
+                background-color: #f2f2f2; /* Cambia esto al color deseado */
+                /* Otros estilos opcionales */
             }
         </style>
     </head>
@@ -214,27 +214,57 @@
                         alert('Por favor, seleccione una fecha primero.');
                     }
                 }
-
                 function obtenerDiasBloqueados() {
-                    fetch('SvObtenerDiasBloqueados')
+                    fetch('SvDiasBloqueados')
                             .then(response => response.json())
                             .then(data => {
-                                if (data) {
+                                if (Array.isArray(data)) {
                                     marcarDiasBloqueados(data);
+                                } else {
+                                    console.error('La respuesta de días bloqueados no es un arreglo válido:', data);
                                 }
                             })
-                            .catch(error => console.error('Error:', error));
+                            .catch(error => console.error('Error al obtener días bloqueados:', error));
                 }
 
-                function marcarDiasBloqueados(diasBloqueados) {
-                    diasBloqueados.forEach(dia => {
-                        let cell = document.querySelector(`td[data-date="${dia.fecha}"]`);
-                        if (cell) {
-                            cell.classList.add('bloqueado');
-                        }
-                    });
-                }
 
+             function marcarDiasBloqueados(diasBloqueados) {
+    if (!Array.isArray(diasBloqueados)) {
+        console.error('Los días bloqueados no son un arreglo:', diasBloqueados);
+        return;
+    }
+
+    diasBloqueados.forEach(dia => {
+        if (typeof dia === 'object' && dia.fecha) {
+            console.log('Procesando día bloqueado:', dia.fecha);
+
+            // Convertir la fecha del objeto a un objeto Date
+            let fechaBloqueada = new Date(dia.fecha);
+
+            // Verificar si la conversión fue exitosa
+            if (!isNaN(fechaBloqueada.getTime())) {
+                // Formatear la fecha en AAAA-MM-DD
+                let year = fechaBloqueada.getFullYear();
+                let month = ('0' + (fechaBloqueada.getMonth() + 1)).slice(-2);
+                let day = ('0' + fechaBloqueada.getDate()).slice(-2);
+                let fechaFormateada = `${year}-${month}-${day}`;
+
+                // Buscar la celda correspondiente en el calendario
+                let cell = document.querySelector(`td[data-date="${fechaFormateada}"]`);
+                if (cell) {
+                    console.log(`Encontró la celda para ${fechaFormateada}`);
+                    cell.classList.add('bloqueado');
+                } else {
+                    console.log(`No se encontró la celda para ${fechaFormateada}`);
+                }
+            } else {
+                console.error('Fecha inválida:', dia.fecha);
+            }
+        } else {
+            console.error('Objeto de día bloqueado inválido:', dia);
+        }
+    });
+}
 
 
                 crearCalendario(mesActual, anoActual);

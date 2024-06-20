@@ -87,4 +87,8 @@ public class controladoraPersistencia {
             em.close();
         }
     }
+
+    public List<String> obtenerDiasBloqueados() {
+        return horarios.findDiasBloqueados();
+    }
 }

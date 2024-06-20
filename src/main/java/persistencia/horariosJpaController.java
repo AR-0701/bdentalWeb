@@ -146,5 +146,14 @@ public class horariosJpaController implements Serializable {
             em.close();
         }
     }
+    public List<String> findDiasBloqueados() {
+    EntityManager em = getEntityManager();
+    try {
+        Query query = em.createQuery("SELECT h.fecha FROM horarios h WHERE h.vigente = 0");
+        return query.getResultList();
+    } finally {
+        em.close();
+    }
+}
 
 }

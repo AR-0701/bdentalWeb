@@ -87,4 +87,7 @@ public class Controladora {
     public List<horarios> obtenerHorariosBloqueados() {
         return controlPersis.obtenerHorariosBloqueados();
     }
+    public List<String> obtenerDiasBloqueados() {
+    return controlPersis.obtenerDiasBloqueados();
+}
 }
