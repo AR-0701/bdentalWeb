@@ -134,19 +134,19 @@ header {
 
 .main .delete-form-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Cambiado a 'row' para alinear horizontalmente */
+    align-items: center; /* Alinea verticalmente en el centro */
     margin-bottom: 10px;
 }
 
 .main .delete-form-group label {
-    margin-bottom: 5px;
-    align-content: center;
+    margin-bottom: 0; /* Remueve el margen inferior para alinear con el input */
     font-size: 20px;
+    margin-right: 10px; /* Añade un margen derecho para separar el label del input */
 }
 
 .main .delete-form-group input {
     padding: 8px;
-   align-content: center;
     width: 100px;
     max-width: 100%;
 }
@@ -158,10 +158,11 @@ header {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+   margin-left: 70px; 
 }
 
 .main button:hover {
-    background-color: #0056b3;
+    background-color: #008f8f;
 }
 
 /* Estilo de la tabla */
@@ -182,12 +183,10 @@ table th, table td {
   text-align: center;
 }
 
-
-
 table th {
     background-color: #00b3b3;
 }
 
 tr.selected {
-    background-color: #e0f7fa;
+    background-color: #008f8f;
 }
