@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ClienteCasos
-    Created on : 13/06/2024, 09:49:28 PM
+    Document   : ClienteServicios
+    Created on : 14/06/2024, 11:03:52 AM
     Author     : wendy
 --%>
 
@@ -27,34 +27,35 @@
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
+                     </div>
                     <div class="menu">
                         <nav>
                             <ul>
                                 <li><a href="index.jsp">| Agendar Citas |</a></li>
                                 <li><a href="PromocionCliente.jsp">| Promociones |</a></li>
-                                <li><a href="ClienteServicios.jsp">| Servicios |</a></li>
+                                <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
                             </ul>
                         </nav>
                     </div>
             </header>
             <main>
                 <section class="about">
-                    <div class="text-content2">
-                        <div class="Titulo1">
-                            <h2>Casos Clínicos</h2>
+                    <div class="text-content3">
+                        <div class="Titulo2">
+                            <h2>Servicios</h2>
                         </div>
-                        <div class="parra1">
-                            <p>- En la serie periapical completa realizada, se observa un patrón de pérdida ósea horizontal generalizado 
-                                y presencia de imágenes compatibles con defectos intraóseos tipo cráter que se pueden observar sobre todo a nivel de los dientes.</p>
-                        </div>
-                        <div class="parra2">
-                            <p>- Finalmente, el diagnostico Nos encontramos ante una periodontitis crónica avanzada generalizada. 
-                                Crónica porque la progresión de la enfermedad es lenta y no existe agregación familiar. Avanzada por la presencia de 
-                                pérdida del nivel de inserción mayores o iguales a 5mm. Generalizada, ya que afecta a más del 30% de las localizaciones.</p>
+                        <div class="parra3">
+                            <p>- Cirugía.</p>
+                            <p>- Blanqueamiento.</p>
+                            <p>- Blanqueamiento.</p>
+                            <p>- Odontología general.</p>
+                            <p>-  Brackets.</p>
+                            <p>-  Implantes.</p>
+                            <p>-  Extracciòn..</p>
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="imagenes/caso.jpg" alt="Error al cargar la imagen">
+                        <img src="imagenes/servicio.png" alt="Error al cargar la imagen">
                     </div>
                 </section>
             </main>
@@ -85,4 +86,3 @@
         </script>
     </body>
 </html>
-

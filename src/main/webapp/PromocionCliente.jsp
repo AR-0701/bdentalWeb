@@ -27,6 +27,7 @@
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
+                     </div>
             <div class="menu">
                 <nav>
                     <ul>

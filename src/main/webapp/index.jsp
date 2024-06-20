@@ -39,7 +39,7 @@
                                         <p>El consultorio B-DENTAL ofrece sus servicios de calidad con el objetivo de satisfacer y mantener una buena comunicación con nuestros clientes.</p>
                                     </div>
                                     <div class="button-container">
-                                        <a href="login.jsp" class="login-button">Iniciar Sesión</a>
+                                        <a href="citas_1.jsp" class="login-button">Iniciar Sesión</a>
                                     </div>
                                     </div>
                                     <div class="image-section">
