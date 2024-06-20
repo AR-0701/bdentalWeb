@@ -15,14 +15,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="newcss.css">
     </head>
-    <body>
+        <body>
         <div class="container">
             <header>
                 <div class="logo2">
                     <img src="imagenes/logo.png" class="logo" alt="No carga la imagen">
-
-                    <h1 class="logo-text">B - DENTAL</h1>
-
                 </div>
                 <div class="menu">
                     <nav>
@@ -39,37 +36,29 @@
                     <div class="row">
                         <div class="col s12" >
                             <div class="carousel center-align" >
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/1.png" alt="">
                                 </div>
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/2.png" alt="">
                                 </div>
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/3.png" alt="">
                                 </div>
                                 <div class="carusel-item" >
                                     <image src ="imagenes/4.png" alt="">
                                 </div>
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/5.png" alt="">
                                 </div>
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/6.png" alt="">
                                 </div>
-
                                 <div class="carousel-item" >
                                     <image src ="imagenes/7.png" alt="">
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </section>
             <footer>
