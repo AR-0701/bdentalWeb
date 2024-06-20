@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded",  () => {
     const elementosCarousel = document.querySelectorAll(".carousel");
     M.Carousel.init(elementosCarousel, {
         duration: 150,
-        dist:-80,
-        shift: 5,
-        padding:5,
+        dist:-50,
+        shift: 10,
+        padding:8,
         numVisible: 3,
         indicators: true,
-        noWrap:true
+        noWrap:false
     });
 });
 

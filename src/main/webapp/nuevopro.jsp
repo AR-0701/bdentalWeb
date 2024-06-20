@@ -32,7 +32,7 @@
                     </nav>
                 </div>
             </header>
-                <section class="container">
+                <section class="container1">
                     <div class="row">
                         <div class="col s12" >
                             <div class="carousel center-align" >
@@ -45,7 +45,7 @@
                                 <div class="carousel-item" >
                                     <image src ="imagenes/3.png" alt="">
                                 </div>
-                                <div class="carusel-item" >
+                                <div class="carousel-item" >
                                     <image src ="imagenes/4.png" alt="">
                                 </div>
                                 <div class="carousel-item" >
@@ -56,6 +56,9 @@
                                 </div>
                                 <div class="carousel-item" >
                                     <image src ="imagenes/7.png" alt="">
+                                </div>
+                                <div class="carousel-item" >
+                                    <image src ="imagenes/8.png" alt="">
                                 </div>
                             </div>
                         </div>
