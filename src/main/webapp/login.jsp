@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -6,9 +5,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>B - DENTAL - Principal</title>
-        <link rel="stylesheet" href="inicio.css">
+        <link rel="stylesheet" href="login.css">
     </head>
-    <body class="login-page">
+    <body class="login-page"> 
         <div class="containe3r">
             <!-- Flecha de regreso -->
             <div class="back-arrow">
@@ -29,14 +28,14 @@
                             </a>
                         </div>
                     </header>
-                       <!-- Mostrar mensaje de error si existe -->
+                    <!-- Mostrar mensaje de error si existe -->
                     <%
                         String errorMessage = (String) request.getAttribute("errorMessage");
                         if (errorMessage != null) {
                     %>
-                        <div style="color: red; text-align: center; margin-bottom: 10px;">
-                            <%= errorMessage %>
-                        </div>
+                    <div style="color: red; text-align: center; margin-bottom: 10px;">
+                        <%= errorMessage%>
+                    </div>
                     <%
                         }
                     %>
@@ -45,11 +44,11 @@
                         <input type="password" placeholder="Contraseña" name="password" required>
                         <button type="submit">Iniciar Sesión</button>
                     </form> 
-                   
-                     <a href = "RegistroClientes.jsp">
+
+                    <a href = "RegistroClientes.jsp">
                         <button id="registro-button" name="registro-button"  >Registrarse</button>
                     </a>
-             
+
                 </div>
             </div>
         </div>

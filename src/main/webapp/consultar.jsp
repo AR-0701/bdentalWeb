@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/consultarcitas.css" type="text/css">
+        <link rel="stylesheet" href="consultarcitas.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -21,7 +21,7 @@
                     <p>B - Dental</p>
                 </div>
                 <div class="p2">
-                    <img src="imagenes\perfil.jpg">
+                    <img src="imagenes\cerrarsesion.png">
                 </div>
             </div>
             <div class="menu">

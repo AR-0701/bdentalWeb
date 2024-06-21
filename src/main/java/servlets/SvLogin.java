@@ -50,7 +50,7 @@ public class SvLogin extends HttpServlet {
                     response.sendRedirect("PrincipalAsistente.jsp");
                     break;
                 case "Cliente":
-                    response.sendRedirect("inicioClientes.jsp");
+                    response.sendRedirect("inicioclientes.jsp");
                     break;
                 default:
                     response.sendRedirect("LoginError.jsp");
