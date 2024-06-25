@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.io.Serializable;

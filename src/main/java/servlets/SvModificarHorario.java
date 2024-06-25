@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Controladora;
+import logica.horarios;
 
 @WebServlet(name = "SvModificarHorario", urlPatterns = {"/SvModificarHorario"})
 public class SvModificarHorario extends HttpServlet {
@@ -34,35 +35,24 @@ public class SvModificarHorario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String fechaString = request.getParameter("fechaSeleccionada");
-        String horaAperturaString = request.getParameter("horariosIN");
-        String horaCierreString = request.getParameter("horariosCI");
-
-        SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
-
-        Date fecha = null;
-        Time horaApertura = null;
-        Time horaCierre = null;
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            fecha = sdfFecha.parse(fechaString);
-            horaApertura = new Time(sdfHora.parse(horaAperturaString).getTime());
-            horaCierre = new Time(sdfHora.parse(horaCierreString).getTime());
+            Date fecha = sdf.parse(fechaString);
+            horarios horario = control.obtenerHorariosPorFecha(fecha);
 
-            control.editarHorarios(fecha, horaApertura, horaCierre);
-
-            // Redirigir o enviar respuesta de éxito
-            response.sendRedirect("mHorario.html"); // Ajustar según tu estructura de proyecto
-
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if (horario != null) {
+                //out.print("{\"id\":" + horario.getId() + "}");
+            } else {
+                out.print("{\"id\":null}");
+            }
+            out.flush();
         } catch (ParseException ex) {
-            // Manejo de error al parsear fechas o horas
-            ex.printStackTrace();
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Error al parsear la fecha o hora.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Fecha inválida.");
         } catch (Exception ex) {
-            Logger.getLogger(SvModificarHorario.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error interno del servidor.");
         }
-
     }
 
     @Override

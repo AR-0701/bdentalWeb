@@ -78,7 +78,7 @@ public class controladoraPersistencia {
 
     public void actualizarHorarios(horarios horario) throws Exception {
         horarios.edit(horario);
-    }   
+    }
 
     public List<horarios> obtenerHorariosBloqueados() {
         EntityManager em = horarios.getEntityManager();
@@ -90,13 +90,13 @@ public class controladoraPersistencia {
         }
     }
 
-   public List<String> obtenerDiasBloqueados() {
+    public List<String> obtenerDiasBloqueados() {
         return horarios.findDiasBloqueados();
     }
-   
-      public void editarAlumno(Date fecha, Time hAper,Time hCierre) {
-            horarios.editHorarios(fecha,hAper,hCierre);
+
+    public void editarAlumno(Date fecha, Time hAper, Time hCierre) {
+        horarios.editHorarios(fecha, hAper, hCierre);
     }
 
-   
+  
 }

@@ -92,4 +92,8 @@ public class Controladora {
     public void editarHorarios(Date fecha, Time hAper, Time hCierre) throws Exception {
         controlPersis.editarAlumno(fecha, hAper, hCierre);
     }
+    
+//      public horarios obtenerHorariosPorFecha(Date fecha) {
+//        return controlPersis.obtenerHorariosPorFecha(fecha);
+//    }
 }
