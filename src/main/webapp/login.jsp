@@ -24,6 +24,7 @@
                     <header>
                         <div class="logo2">
                             <a href="index.jsp">
+                                <p>Hola</p>
                                 <img src="imagenes/logo.png" class="logo" alt="B - DENTAL">
                             </a>
                         </div>
