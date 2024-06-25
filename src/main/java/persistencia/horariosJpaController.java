@@ -168,10 +168,10 @@ public class horariosJpaController implements Serializable {
         }
     }
 
-    public horarios findIdByFecha(String fecha) {
+    public horarios findIDByFecha(Date fecha) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT h FROM Horarios h WHERE h.fecha = :fecha");
+            Query query = em.createQuery("SELECT h FROM horarios h WHERE h.fecha = :fecha");
             query.setParameter("fecha", fecha);
             return (horarios) query.getSingleResult();
         } catch (NoResultException e) {
@@ -180,33 +180,4 @@ public class horariosJpaController implements Serializable {
             em.close();
         }
     }
-
-    public void editHorarios(Date fecha, Time horarioApertura, Time horarioCierre) {
-        EntityManager em = getEntityManager();
-        try {
-            String jpql = "UPDATE Horarios h "
-                    + "SET h.horaApertura = :horarioApertura, "
-                    + "    h.horaCierre = :horarioCierre "
-                    + "WHERE h.fecha = :fecha";
-            Query query = em.createQuery(jpql);
-
-            query.setParameter("horarioApertura", horarioApertura);
-            query.setParameter("horarioCierre", horarioCierre);
-            query.setParameter("fecha", fecha);
-            int rowsUpdated = query.executeUpdate();
-
-            System.out.println("Número de registros actualizados: " + rowsUpdated);
-
-            // Añadir lógica adicional si es necesario
-        } catch (NoResultException e) {
-            // Manejo de excepciones
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
 }

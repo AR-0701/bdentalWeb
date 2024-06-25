@@ -94,9 +94,12 @@ public class controladoraPersistencia {
         return horarios.findDiasBloqueados();
     }
 
-    public void editarAlumno(Date fecha, Time hAper, Time hCierre) {
-        horarios.editHorarios(fecha, hAper, hCierre);
+    public boolean existeFecha(Date fecha) {
+        return horarios.findIDByFecha(fecha) != null;
     }
-
+    
+      public horarios obtenerIDPorFecha(Date fecha) {
+        return horarios.findIDByFecha(fecha);
+    }
   
 }

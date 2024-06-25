@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Controladora;
 import logica.horarios;
+import logica.usuarios;
 
 @WebServlet(name = "SvModificarHorario", urlPatterns = {"/SvModificarHorario"})
 public class SvModificarHorario extends HttpServlet {
@@ -34,24 +35,25 @@ public class SvModificarHorario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fechaString = request.getParameter("fechaSeleccionada");
+        String fecha = request.getParameter("fechaSeleccionada");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
         try {
-            Date fecha = sdf.parse(fechaString);
-            horarios horario = control.obtenerHorariosPorFecha(fecha);
-
-            response.setContentType("application/json");
-            PrintWriter out = response.getWriter();
-            if (horario != null) {
-                //out.print("{\"id\":" + horario.getId() + "}");
-            } else {
-                out.print("{\"id\":null}");
-            }
-            out.flush();
+            date = sdf.parse(fecha);
         } catch (ParseException ex) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Fecha inválida.");
-        } catch (Exception ex) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error interno del servidor.");
+            Logger.getLogger(SvModificarHorario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (date != null) {
+            horarios hor = control.obtenerHorariosPorFecha(date);
+            int id =hor.getIdHorarios();
+            if (hor != null) {
+                System.out.println("ID de horario: " + id);
+            } else {
+                System.out.println("No se encontró horario para la fecha: " + fecha);
+            }
+        } else {
+            System.out.println("Fecha inválida: " + fecha);
         }
     }
 

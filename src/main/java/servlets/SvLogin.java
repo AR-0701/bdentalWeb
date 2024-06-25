@@ -59,7 +59,7 @@ public class SvLogin extends HttpServlet {
         } else {
             
             request.setAttribute("errorMessage", "Credenciales inválidas. Por favor, intente nuevamente.");
-            request.getRequestDispatcher("Inicio.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
