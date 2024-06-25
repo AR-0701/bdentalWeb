@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package persistencia;
 
 import java.io.Serializable;
@@ -16,10 +13,7 @@ import javax.persistence.criteria.Root;
 import logica.administrador;
 import persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author alex_
- */
+
 public class administradorJpaController implements Serializable {
 
     public administradorJpaController(EntityManagerFactory emf) {
@@ -31,8 +25,8 @@ public class administradorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-      public administradorJpaController(){
-        emf= Persistence.createEntityManagerFactory("BdentalPU");
+      public administradorJpaController() {
+        emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
       
     public void create(administrador administrador) {

@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL - Principal</title>
-        <link rel="stylesheet" href="Admi2.css">
+        <title>Clientes</title>
+        <link rel="stylesheet" href="iniciocliente1.css">
     </head>
     <body>
         <div class="container">
@@ -28,13 +28,12 @@
                     <ul>
                         <li><a href="#">Registrar citas a Clientes</a></li>
                         <li><a href="#">Consulta del registro de citas</a></li>
-                        <
-                        <li><a href="AdmiServicio.jsp">Servicios</a></li>
-                        <li><a href="AdmiPromociones.jsp">Promociones</a></li>
+                        <li><a href="ClienteCasos.jsp">Casos Clinicos</a></li>
+                        <li><a href="ClienteServicios.jsp">Servicios</a></li>
+                        <li><a href="PromocionCliente.jsp">Promociones</a></li>
                     </ul>
                 </div>
             </header>
-
             <main>
                 <section class="content">
                     <img src="imagenes/brayan.png" alt="Recepción">
@@ -44,10 +43,14 @@
                     <p>de tu salud mental". Agenda tu cita</p>
                     <p>en nuestro consultorio dental.</p>
                 </section>
+                <a href = "RegistroClientes.jsp">
+                    <button id="registro-button" name="registro-button"  >Agendar</button>
+                </a>
+                <a href = "RegistroClientes.jsp">
+                    <button id="registro-button" name="registro-button"  >Consultar</button>
+                </a>
             </main>
-          
         </div>
-
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var menuToggle = document.getElementById("menuToggle");

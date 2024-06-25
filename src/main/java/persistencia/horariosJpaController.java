@@ -1,7 +1,10 @@
 package persistencia;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -146,14 +149,64 @@ public class horariosJpaController implements Serializable {
             em.close();
         }
     }
+
     public List<String> findDiasBloqueados() {
-    EntityManager em = getEntityManager();
-    try {
-        Query query = em.createQuery("SELECT h.fecha FROM horarios h WHERE h.vigente = 0");
-        return query.getResultList();
-    } finally {
-        em.close();
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT h.fecha FROM horarios h WHERE h.vigente = 0");
+            List<Date> fechas = query.getResultList();
+            List<String> formattedDates = new ArrayList<>();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (Date fecha : fechas) {
+                formattedDates.add(sdf.format(fecha));
+            }
+
+            return formattedDates;
+        } finally {
+            em.close();
+        }
     }
-}
+
+    public horarios findIdByFecha(String fecha) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT h FROM Horarios h WHERE h.fecha = :fecha");
+            query.setParameter("fecha", fecha);
+            return (horarios) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    public void editHorarios(Date fecha, Time horarioApertura, Time horarioCierre) {
+        EntityManager em = getEntityManager();
+        try {
+            String jpql = "UPDATE Horarios h "
+                    + "SET h.horaApertura = :horarioApertura, "
+                    + "    h.horaCierre = :horarioCierre "
+                    + "WHERE h.fecha = :fecha";
+            Query query = em.createQuery(jpql);
+
+            query.setParameter("horarioApertura", horarioApertura);
+            query.setParameter("horarioCierre", horarioCierre);
+            query.setParameter("fecha", fecha);
+            int rowsUpdated = query.executeUpdate();
+
+            System.out.println("Número de registros actualizados: " + rowsUpdated);
+
+            // Añadir lógica adicional si es necesario
+        } catch (NoResultException e) {
+            // Manejo de excepciones
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
 
 }

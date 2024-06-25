@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.io.Serializable;
@@ -24,9 +23,10 @@ public class citasJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    public citasJpaController() {
+        public citasJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
+
     public void create(citas citas) {
         EntityManager em = null;
         try {

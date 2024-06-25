@@ -28,18 +28,28 @@ public class SvMostrarHorarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String fechaStr = request.getParameter("fecha");
-        Date fecha = Date.valueOf(fechaStr);
-
-        horarios horario = control.obtenerHorariosPorFecha(fecha);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        if (horario != null) {
-            String json = new Gson().toJson(horario);
-            response.getWriter().write(json);
-        } else {
-            response.getWriter().write("{}");
+        try {
+            if (fechaStr != null && !fechaStr.trim().isEmpty() && fechaStr.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                Date fecha = Date.valueOf(fechaStr);
+
+                horarios horario = control.obtenerHorariosPorFecha(fecha);
+
+                if (horario != null) {
+                    String json = new Gson().toJson(horario);
+                    response.getWriter().write(json);
+                } else {
+                    response.getWriter().write("{}");
+                }
+            } else {
+                throw new IllegalArgumentException("Fecha inválida: " + fechaStr);
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Formato de fecha inválido. Debe ser 'yyyy-mm-dd'.");
         }
     }
 

@@ -14,6 +14,7 @@ import logica.asistentes;
 import logica.usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
+
 public class asistentesJpaController implements Serializable {
 
     public asistentesJpaController(EntityManagerFactory emf) {
@@ -25,10 +26,9 @@ public class asistentesJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public asistentesJpaController() {
+        public asistentesJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
-
     public void create(asistentes asistentes) {
         EntityManager em = null;
         try {
@@ -132,7 +132,7 @@ public class asistentesJpaController implements Serializable {
             em.close();
         }
     }
-
+    
     public usuarios findUsuarioByAsistentes(int idAsistentes) {
         EntityManager em = getEntityManager();
         try {
@@ -145,5 +145,5 @@ public class asistentesJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

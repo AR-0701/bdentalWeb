@@ -13,7 +13,6 @@ import javax.persistence.criteria.Root;
 import logica.clientes;
 import persistencia.exceptions.NonexistentEntityException;
 
-
 public class clientesJpaController implements Serializable {
 
     public clientesJpaController(EntityManagerFactory emf) {
@@ -24,10 +23,10 @@ public class clientesJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
         public clientesJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
-
     public void create(clientes clientes) {
         EntityManager em = null;
         try {

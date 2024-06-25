@@ -1,9 +1,3 @@
-<%-- 
-    Document   : citas
-    Created on : 13 jun. 2024, 09:30:53
-    Author     : edriv
---%>
-
 <%@page import="codigo.citas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,14 +27,11 @@
                     <li><a href="inicioClientes.jsp">Agendar citas</a></li>
                 </ul>
             </div>
-
             <%
                 citas a = new citas();
                 int dia = 13, mes = 12, anio = 2024;
-
             %>
             <div class="contenido_principal">
-
                 <div class="pedir_datos">
                     <div class="p3">
                         <label for="nombre">Nombre completo:</label>
@@ -57,29 +48,24 @@
                         <input type="text" id="nombre" name="nombre" required><br><br>
                     </div>
                 </div>
-
-                
                 <div class="calendario">
                     <div class="caler">
                         <div class="calendario_pos">
                             <table>
-                                    <tr>
-                                        <th colspan="7">Mes de Ejemplo</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Lun.</th>
-                                        <th>Mar.</th>
-                                        <th>Mie.</th>
-                                        <th>Jue.</th>
-                                        <th>Vie.</th>
-                                        <th>Sab.</th>
-                                        <th>Dom.</th>
-                                    </tr>
-                                
-                               
-                                    <tr>
-                                    <%
-                                        int diat = 1;
+                                <tr>
+                                    <th colspan="7">Mes de Ejemplo</th>
+                                </tr>
+                                <tr>
+                                    <th>Lun.</th>
+                                    <th>Mar.</th>
+                                    <th>Mie.</th>
+                                    <th>Jue.</th>
+                                    <th>Vie.</th>
+                                    <th>Sab.</th>
+                                    <th>Dom.</th>
+                                </tr>
+                                <tr>
+                                    <%                                        int diat = 1;
                                         int y = 1;
                                         if (a.getStartDayOfWeek(mes, anio) != 1) {
                                             diat = a.obtenerDiaFinalMes(anio, mes - 1);
@@ -88,14 +74,14 @@
                                         }
                                         diat = 1;
                                         for (int x = a.getStartDayOfWeek(mes, anio); x <= 7; x++) {
-                                %><td><%out.println(diat);%></td><%
-                                            diat++;
+                                    %><td><%out.println(diat);%></td><%
+                                                diat++;
+                                            }
+                                            y++;
                                         }
-                                        y++;
-                                    }
-                                    diat--;
-                                    for (y = 0; y <= 4; y++) {
-                                %>
+                                        diat--;
+                                        for (y = 0; y <= 4; y++) {
+                                    %>
                                 <tr>
                                     <%
                                         for (int x = 0; x <= 6; x++) {
@@ -117,10 +103,8 @@
                                 <%
                                     }
                                 %>
-                                
-                              
+
                             </table>
-                            
                         </div>
                     </div>
                     <div class="horas">
@@ -134,7 +118,6 @@
                         </select>
                     </div>
                 </div>
-                      
                 <div class="boton">
                     <input type="submit" value="Agendar">
                 </div>
@@ -142,5 +125,3 @@
         </div>
     </body>
 </html>
-
-   

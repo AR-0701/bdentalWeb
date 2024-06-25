@@ -4,33 +4,157 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Modificar horario</title>
-        <link rel="stylesheet" href="Admi1.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <style>
             body {
                 font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
             }
-            table {
+
+            .container {
                 width: 100%;
-                border-collapse: collapse;
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .logo2 img {
+                max-width: 150px;
+            }
+
+            .main {
+                padding: 20px 0;
+            }
+
+            .modify-title {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .schedule-container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .form-container {
+                flex: 1;
+                padding: 20px;
+                background-color: #f2f2f2;
+                margin-right: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            .button-group {
                 margin-top: 20px;
             }
-            th, td {
-                border: 1px solid #dddddd;
-                text-align: center;
-                padding: 8px;
+
+            .button-group button {
+                padding: 10px 20px;
+                margin-right: 10px;
                 cursor: pointer;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-            td.selected {
                 background-color: #4CAF50;
-                color: white;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                font-size: 14px;
             }
-            .bloqueado {
-                background-color: #f2f2f2; /* Cambia esto al color deseado */
-                /* Otros estilos opcionales */
+
+            .button-group button:hover {
+                background-color: #45a049;
             }
+
+            .calendar-container {
+                flex: 1;
+                padding: 20px;
+                background-color: #f2f2f2;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #datepicker {
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                box-sizing: border-box;
+                font-size: 14px;
+                width: 100%;
+                max-width: 300px; /* Ajustar el ancho máximo según sea necesario */
+            }
+
+            #fechaSeleccionada {
+                margin-top: 10px;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                font-size: 14px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .button-modify {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .button-modify button {
+                padding: 10px 20px;
+                cursor: pointer;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                font-size: 14px;
+            }
+
+            .button-modify button:hover {
+                background-color: #0056b3;
+            }
+
+            footer {
+                margin-top: 20px;
+                padding: 10px 0;
+                text-align: center;
+                border-top: 1px solid #ddd;
+            }
+            .blocked-date a {
+                background-color: #D8BFD8 !important; /* Color lila */
+                color: white !important;
+            }
+
         </style>
     </head>
     <body>
@@ -45,7 +169,7 @@
             <main class="main">
                 <div class="about">
                     <div class="text-content">
-                        <div class="Titulo modify-title"><h1>Modificar horario</h1></div>
+                        <div class="modify-title"><h1>Modificar horario</h1></div>
                     </div>
                 </div>
                 <div class="schedule-container">
@@ -64,132 +188,100 @@
                         </div>
                     </div>
                     <div class="calendar-container">
-                        <h2 id="nombreMes"></h2>
-                        <table id="calendar">
-                            <thead>
-                                <tr>
-                                    <th>Dom.</th>
-                                    <th>Lun.</th>
-                                    <th>Mar.</th>
-                                    <th>Mié.</th>
-                                    <th>Jue.</th>
-                                    <th>Vie.</th>
-                                    <th>Sáb.</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Los días del mes se generarán aquí dinámicamente -->
-                            </tbody>
-                        </table>
+                        <div id="datepicker"></div>
                     </div>
                 </div>
-                <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" readonly></p>
-                <div class="button-modify">
-                    <button id="modificar">Modificar</button>
-                </div>
+
+                <form id="formulario-horarios" action="SvModificarHorario" method="POST">
+                    <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
+                    <div class="listbox-container">
+                        <label for="lista-horarios-apertura">Seleccionar horarios apertura:</label>
+                        <select id="lista-horarios-apertura" name="horariosIN">
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                            <option value="18:00">06:00 PM</option>
+                            <option value="19:00">07:00 PM</option>
+                            <option value="20:00">08:00 PM</option>
+                            <option value="21:00">09:00 PM</option>
+                            <option value="22:00">10:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="listbox-container">
+                        <label for="lista-horarios-cierre">Seleccionar horarios cierre:</label>
+                        <select id="lista-horarios-cierre" name="horariosCI">
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                            <option value="18:00">06:00 PM</option>
+                            <option value="19:00">07:00 PM</option>
+                            <option value="20:00">08:00 PM</option>
+                            <option value="21:00">09:00 PM</option>
+                            <option value="22:00">10:00 PM</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="modificar">Modificar</button> 
+                </form>
+
+
+
+
             </main>
             <footer>
                 <!-- Footer content -->
             </footer>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var calendarBody = document.querySelector('#calendar tbody');
-                var nombreMes = document.getElementById('nombreMes');
-                var horaAperturaInput = document.getElementById('hora-apertura');
-                var horaCierreInput = document.getElementById('hora-cierre');
-                var fechaSeleccionadaInput = document.getElementById('fechaSeleccionada');
-                var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-                var fechaActual = new Date();
-                var mesActual = fechaActual.getMonth();
-                var anoActual = fechaActual.getFullYear();
-                nombreMes.textContent = meses[mesActual] + ' ' + anoActual;
+            $(document).ready(function () {
+                var fechaSeleccionadaInput = $('#datepicker');
 
-                // Variable para almacenar la fecha seleccionada
-                let fechaSeleccionada = '';
-
-                // Función para obtener la fecha en formato AAAA-MM-DD
-                function obtenerFechaAAAAMMDD(d) {
-                    let year = d.getFullYear();
-                    let month = ('0' + (d.getMonth() + 1)).slice(-2);
-                    let day = ('0' + d.getDate()).slice(-2);
-                    return `${year}-${month}-${day}`;
-                }
-
-                // Crear calendario para el mes actual
-                function crearCalendario(mes, año) {
-                    calendarBody.innerHTML = '';
-
-                    let primerDiaMes = new Date(año, mes, 1);
-                    let ultimoDiaMes = new Date(año, mes + 1, 0);
-
-                    let diaSemanaInicio = primerDiaMes.getDay();
-                    let diasEnMes = ultimoDiaMes.getDate();
-
-                    let date = 1;
-                    for (let i = 0; i < 6; i++) {
-                        let row = document.createElement('tr');
-                        for (let j = 0; j < 7; j++) {
-                            if (i === 0 && j < diaSemanaInicio) {
-                                let cell = document.createElement('td');
-                                row.appendChild(cell);
-                            } else if (date > diasEnMes) {
-                                break;
-                            } else {
-                                let cell = document.createElement('td');
-                                cell.textContent = date;
-                                cell.setAttribute('data-date', obtenerFechaAAAAMMDD(new Date(año, mes, date)));
-                                cell.addEventListener('click', function () {
-                                    // Remover clase de selección de la celda anteriormente seleccionada
-                                    let selectedCell = document.querySelector('.selected');
-                                    if (selectedCell) {
-                                        selectedCell.classList.remove('selected');
-                                    }
-
-                                    // Agregar clase de selección a la celda clickeada
-                                    this.classList.add('selected');
-
-                                    // Guardar fecha seleccionada en la variable y mostrar en consola
-                                    fechaSeleccionada = this.getAttribute('data-date');
-                                    console.log('Fecha seleccionada:', fechaSeleccionada);
-
-                                    // Mostrar fecha seleccionada en el input
-                                    fechaSeleccionadaInput.value = fechaSeleccionada;
-
-                                    // Obtener horarios para la fecha seleccionada
-                                    obtenerHorarios(fechaSeleccionada);
-                                });
-                                row.appendChild(cell);
-                                date++;
-                            }
-                        }
-                        calendarBody.appendChild(row);
-                    }
-                }
-
+                // Función para obtener horarios
                 function obtenerHorarios(fecha) {
+                    if (!fecha) {
+                        console.error('Fecha inválida:', fecha);
+                        alert('Seleccione una fecha válida.');
+                        return;
+                    }
+
+                    console.log('Obteniendo horarios para:', fecha);
+
                     fetch('SvMostrarHorarios?fecha=' + fecha)
-                            .then(response => response.json())
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la respuesta del servidor: ' + response.statusText);
+                                }
+                                return response.json();
+                            })
                             .then(data => {
+                                console.log('Datos recibidos:', data);
                                 if (data) {
-                                    horaAperturaInput.value = data.horaApertura;
-                                    horaCierreInput.value = data.horaCierre;
+                                    $('#hora-apertura').val(data.horaApertura || '---');
+                                    $('#hora-cierre').val(data.horaCierre || '---');
                                 } else {
-                                    horaAperturaInput.value = '---';
-                                    horaCierreInput.value = '---';
+                                    $('#hora-apertura').val('---');
+                                    $('#hora-cierre').val('---');
                                 }
                             })
                             .catch(error => console.error('Error:', error));
                 }
-                document.getElementById('bloquear').addEventListener('click', function () {
-                    actualizarEstadoDia(true);
-                });
 
-                document.getElementById('desbloquear').addEventListener('click', function () {
-                    actualizarEstadoDia(false);
-                });
-
+                // Función para actualizar estado de día (bloquear o desbloquear)
                 function actualizarEstadoDia(bloquear) {
+                    var fechaSeleccionada = fechaSeleccionadaInput.val();
                     if (fechaSeleccionada) {
                         fetch('SvActualizarHorarios', {
                             method: 'POST',
@@ -201,12 +293,7 @@
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data) {
-                                        let cell = document.querySelector(`td[data-date="${data.fecha}"]`);
-                                        if (bloquear) {
-                                            cell.classList.add('bloqueado');
-                                        } else {
-                                            cell.classList.remove('bloqueado');
-                                        }
+                                        location.reload();
                                     }
                                 })
                                 .catch(error => console.error('Error:', error));
@@ -214,62 +301,58 @@
                         alert('Por favor, seleccione una fecha primero.');
                     }
                 }
-                function obtenerDiasBloqueados() {
-                    fetch('SvDiasBloqueados')
-                            .then(response => response.json())
-                            .then(data => {
-                                if (Array.isArray(data)) {
-                                    marcarDiasBloqueados(data);
+                // Obtener fechas bloqueadas y configurar el datepicker
+                $.ajax({
+                    url: 'pruebasCalendarios',
+                    method: 'GET',
+                    success: function (response) {
+                        console.log("Raw response from server:", response);
+
+                        var blockedDates;
+
+                        // Manejamos la respuesta según el tipo
+                        if (Array.isArray(response)) {
+                            blockedDates = response;
+                        } else {
+                            // Si no es un array, asumimos que es un objeto con las fechas bloqueadas
+                            blockedDates = response.dates;  // Ajusta esto según la estructura de tu JSON
+                        }
+
+                        // Inicializar el datepicker con fechas bloqueadas
+                        $("#datepicker").datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            beforeShowDay: function (date) {
+                                var string = $.datepicker.formatDate('yy-mm-dd', date);
+                                if (blockedDates.indexOf(string) !== -1) {
+                                    return [true, 'blocked-date', 'Fecha Bloqueada'];
                                 } else {
-                                    console.error('La respuesta de días bloqueados no es un arreglo válido:', data);
+                                    return [true, '', ''];
                                 }
-                            })
-                            .catch(error => console.error('Error al obtener días bloqueados:', error));
-                }
+                            },
+                            onSelect: function (dateText) {
+                                $('#fechaSeleccionada').val(dateText);
+                                obtenerHorarios(dateText);
+                            }
+                        });
 
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error al hacer la petición AJAX:", status, error);
+                        alert("Error al cargar las fechas bloqueadas.");
+                    }
+                });
 
-             function marcarDiasBloqueados(diasBloqueados) {
-    if (!Array.isArray(diasBloqueados)) {
-        console.error('Los días bloqueados no son un arreglo:', diasBloqueados);
-        return;
-    }
+                // Evento click para bloquear
+                $('#bloquear').click(function () {
+                    actualizarEstadoDia(true);
+                });
 
-    diasBloqueados.forEach(dia => {
-        if (typeof dia === 'object' && dia.fecha) {
-            console.log('Procesando día bloqueado:', dia.fecha);
-
-            // Convertir la fecha del objeto a un objeto Date
-            let fechaBloqueada = new Date(dia.fecha);
-
-            // Verificar si la conversión fue exitosa
-            if (!isNaN(fechaBloqueada.getTime())) {
-                // Formatear la fecha en AAAA-MM-DD
-                let year = fechaBloqueada.getFullYear();
-                let month = ('0' + (fechaBloqueada.getMonth() + 1)).slice(-2);
-                let day = ('0' + fechaBloqueada.getDate()).slice(-2);
-                let fechaFormateada = `${year}-${month}-${day}`;
-
-                // Buscar la celda correspondiente en el calendario
-                let cell = document.querySelector(`td[data-date="${fechaFormateada}"]`);
-                if (cell) {
-                    console.log(`Encontró la celda para ${fechaFormateada}`);
-                    cell.classList.add('bloqueado');
-                } else {
-                    console.log(`No se encontró la celda para ${fechaFormateada}`);
-                }
-            } else {
-                console.error('Fecha inválida:', dia.fecha);
-            }
-        } else {
-            console.error('Objeto de día bloqueado inválido:', dia);
-        }
-    });
-}
-
-
-                crearCalendario(mesActual, anoActual);
-                obtenerDiasBloqueados();  // Obtener y marcar los días bloqueados
+                // Evento click para desbloquear
+                $('#desbloquear').click(function () {
+                    actualizarEstadoDia(false);
+                });
             });
+
         </script>
     </body>
 </html>

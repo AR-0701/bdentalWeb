@@ -1,3 +1,4 @@
+
 package persistencia;
 
 import java.io.Serializable;
@@ -23,11 +24,9 @@ public class usuariosJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
     public usuariosJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
-
     public void create(usuarios usuarios) {
         EntityManager em = null;
         try {
@@ -131,7 +130,6 @@ public class usuariosJpaController implements Serializable {
             em.close();
         }
     }
-
     public usuarios findUsuarioByEmail(String email) {
         EntityManager em = getEntityManager();
         try {

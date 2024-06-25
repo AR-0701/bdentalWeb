@@ -1,8 +1,10 @@
 package persistencia;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import logica.*;
@@ -76,7 +78,7 @@ public class controladoraPersistencia {
 
     public void actualizarHorarios(horarios horario) throws Exception {
         horarios.edit(horario);
-    }
+    }   
 
     public List<horarios> obtenerHorariosBloqueados() {
         EntityManager em = horarios.getEntityManager();
@@ -88,7 +90,13 @@ public class controladoraPersistencia {
         }
     }
 
-    public List<String> obtenerDiasBloqueados() {
+   public List<String> obtenerDiasBloqueados() {
         return horarios.findDiasBloqueados();
     }
+   
+      public void editarAlumno(Date fecha, Time hAper,Time hCierre) {
+            horarios.editHorarios(fecha,hAper,hCierre);
+    }
+
+   
 }

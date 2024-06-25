@@ -13,7 +13,7 @@
             <header>
                 <div class="logo2">
                     <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/logoo.png" alt="B - DENTAL">
+                        <img src="imagenes/loogo.png" alt="B - DENTAL">
                     </a>
                 </div>
             </header>
