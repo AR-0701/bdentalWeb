@@ -28,7 +28,6 @@
                 </ul>
             </div>
                 <div class="contenido_principal">
-
                     <div class="izquierda">
                         <div class="texto">
                             <h1>¡ Bienvenido !</h1>
@@ -45,11 +44,10 @@
                                     </a>
                                 </div>
                                 <div class="boton">
-                                    <a href="citas_1.jsp">
+                                    <a href="consultar_cita_clientes.jsp">
                                         <input type="submit" value="Consultar">
                                     </a>
                                 </div>
-                            
                         </div>
                     </div>
 

@@ -24,7 +24,7 @@
                     <li><a href="Casos_clinicos.jsp">Casos clinicos</a></li>
                     <li><a href="Promociones.jsp">Promociones</a></li>
                     <li><a href="Servicios.jsp">Servicios</a></li>
-                    <li><a href="inicioClientes.jsp">Agendar citas</a></li>
+                    <li><a href="citas_clientes.jsp">Agendar citas</a></li>
                 </ul>
             </div>
             <%
