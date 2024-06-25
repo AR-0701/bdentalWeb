@@ -1,0 +1,171 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14 jun 2024, 11:28:19 a.m.
+    Author     : edriv with ChatGpt
+*/
+html, body{
+    background-color: #00b3b3;
+    height: 100%;
+    margin: 0;
+    
+/*    padding-left: 45px;
+    padding-top: 5px;*/
+}
+
+.principal{
+    margin-top: 5%;
+    margin-left: 8%;
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    
+}
+    .cabesera {
+        flex: 1;
+        display: flex; /* Usa flexbox para el layout */
+        align-items: center; /* Centra verticalmente los elementos */ 
+        /*background-color: red;*/
+    }
+        .p1 {
+            flex: 9; /* Ocupa todo el espacio disponible */
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+            .p1 p{
+                font-size: 3vh;
+                margin: 0;
+                padding-left: 1%;
+                /*padding-left: 50%;*/
+            }
+
+            .p1 img {
+                height: 10vh;
+                padding-left: 3%;
+            }
+
+        .p2 {
+            flex: 1; /* Ocupa todo el espacio disponible */
+            /*display: flex;*/
+            justify-content: flex-end; /* Alinea los elementos a la izquierda */
+            align-items: center; /* Centra verticalmente los elementos */
+            /*            position: relative;*/
+            display: flex;
+
+            /*padding: 10px;  Añade espacio interior para separación */
+        }
+            .p2 img {
+                height: 8vh;
+                padding-right: 10%;
+            }
+
+    .menu {
+        align-items: center; /* Centrar verticalmente */
+        border-top: .4vh solid gray;
+        border-bottom: .4vh solid gray;
+        flex: -6vh;
+    }
+    
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Mostrar los elementos en línea */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            
+        }
+
+        .menu li {
+            flex: 1; /* Ocupa el espacio disponible de manera equitativa */
+            margin-left:  1%; /* Espacio entre cada opción del menú */
+            margin-right:  1%;
+            margin-top: 0%;
+            margin-bottom: 0%;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: black;
+/*            padding: 10px;*/
+            font-size: 3vh;
+            border-right: .1vh solid black; /* Línea superior */
+            border-left: .1vh solid black; /* Línea inferior */
+            display: block; /* Convertir en bloque para ocupar todo el espacio disponible */
+            text-align: center; /* Centrar el texto horizontalmente */
+        }
+
+    .contenido_principal{
+        /*border: .3vh solid #00b3b3;*/
+        margin: 2%; 
+        flex: 8;
+        height: 100vh;
+        display: flex;
+        /*flex-direction: column;*/
+    }
+        .izquierda{
+            flex: 6;
+            /*background-color: grey;*/
+            align-content: center;
+/*            width: 100%;*/
+            display: flex;
+            justify-content: center;
+            /*height: 50%;*/
+            text-align: center;
+            flex-direction: column;
+            
+        }
+            .texto{
+                flex: 7;
+                margin-top: 10%;
+/*                display: flex;
+                justify-content: start;  Alinea horizontalmente a la izquierda 
+                align-items: start;*/
+            }
+            
+            .botones{
+                flex: 3;
+                display: flex;
+                justify-content: start; /* Alinea horizontalmente a la izquierda */
+                align-items: start;
+                /*flex-direction: column;*/
+            }
+            
+                .boton{
+                    flex: 1;
+                    /*background-color: #4CAF50;*/
+                    align-content: center;
+                    
+                    /*font-size: 3vh;no se agranda*/
+                    /*justify-content: center;*/
+                }
+                
+                    .boton:hover {
+                        cursor: pointer;
+                    }
+                    
+                .boton input{
+                    align-items: center;
+                    background-color: #00b3b3;  
+                    color: white;  
+                    padding: 1vh;
+                    border: 3px;  
+                    border-radius: 1vh;   
+                    text-align: center;   
+                    font-size: 3vh;
+                    border: .4vh solid #00b3b3;
+                    /*margin-left: 50%;*/
+                }
+        
+            .derecha{
+                flex: 4;
+                /*background-color: yellow;*/
+            }
+            
+                    
+

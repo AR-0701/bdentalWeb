@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="citas.css" type="text/css">
+        <link rel="stylesheet" href="citas1.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -20,7 +20,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="index.jsp">Principal</a></li>
+                    <li><a href="inicioclientes.jsp">Principal</a></li>
                     <li><a href="Casos_clinicos.jsp">Casos clinicos</a></li>
                     <li><a href="Promociones.jsp">Promociones</a></li>
                     <li><a href="Servicios.jsp">Servicios</a></li>

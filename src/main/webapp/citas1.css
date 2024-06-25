@@ -15,11 +15,11 @@ html, body{
 }
 
 .principal{
-    margin-top: 2.5%;
-    margin-left: 2.5%;
+    margin-top: 5%;
+    margin-left: 8%;
     background-color: white;
-    width: 95%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -98,9 +98,9 @@ html, body{
             text-align: center; /* Centrar el texto horizontalmente */
         }
 
-        .menu a:hover {
-            background-color: red; /* Color de fondo al pasar el mouse */
-        }
+/*        .menu a:hover {
+            background-color: red;  
+        }*/
 
     .contenido_principal{
         border: .3vh solid #00b3b3;
@@ -169,7 +169,7 @@ html, body{
         
         .calendario{
             flex: 7;
-            background-color: grey;
+            /*background-color: grey;*/
             align-content: center;
             width: 100%;
             display: flex;
@@ -180,7 +180,7 @@ html, body{
         
         .boton{
             flex: 1;
-            background-color: #4CAF50;  
+            /*background-color: #4CAF50;*/  
             font-size: 3vh;/*no se agranda*/
             justify-content: center;
             
@@ -200,7 +200,7 @@ html, body{
 
             .caler{
                 flex: 58;
-                background-color: bisque;
+                /*background-color: bisque;*/
                 
             }
 
@@ -209,7 +209,7 @@ html, body{
     .calendario_pos{
         height: 65%;
         width: 50%;
-        background-color: #ccffcc;
+        /*background-color: #ccffcc;*/
         margin-left: 15%;
         margin-top: 5%;
         font-size: 2.5vh;
@@ -226,7 +226,7 @@ html, body{
                     .calendario_pos{
                         height: 100%;
                         width: 100%;
-                        background-color: #ccffcc;
+                        /*background-color: #ccffcc;*/
                         /*                    margin-left: 15%;
                                             margin-top: 5%;*/
 
@@ -242,7 +242,7 @@ html, body{
           
             .horas{
                 flex: 42;
-                background-color: #cc66ff;;
+                /*background-color: #cc66ff;;*/
                 display: flex;
 /*                justify-content: center;*/
                 align-items: center;

@@ -24,7 +24,6 @@
                     <header>
                         <div class="logo2">
                             <a href="index.jsp">
-                                <p>Hola</p>
                                 <img src="imagenes/logo.png" class="logo" alt="B - DENTAL">
                             </a>
                         </div>
@@ -49,7 +48,6 @@
                     <a href = "RegistroClientes.jsp">
                         <button id="registro-button" name="registro-button"  >Registrarse</button>
                     </a>
-
                 </div>
             </div>
         </div>

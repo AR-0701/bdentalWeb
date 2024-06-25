@@ -31,7 +31,7 @@
                     <div class="menu">
                         <nav>
                             <ul>
-                                <li><a href="index.jsp">| Agendar Citas |</a></li>
+                                <li><a href="citas_clientes.jsp">| Agendar Citas |</a></li>
                                 <li><a href="PromocionCliente.jsp">| Promociones |</a></li>
                                 <li><a href="ClienteServicios.jsp">| Servicios |</a></li>
                             </ul>
