@@ -92,4 +92,8 @@ public class Controladora {
     public horarios obtenerIDPorFecha(Date fecha) {
         return controlPersis.obtenerHorariosPorFecha(fecha);
     }
+    
+    public void modificarHorarios(horarios hora) {
+         controlPersis.modificarHorarios(hora);
+    }
 }

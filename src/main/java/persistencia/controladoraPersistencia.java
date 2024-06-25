@@ -97,9 +97,17 @@ public class controladoraPersistencia {
     public boolean existeFecha(Date fecha) {
         return horarios.findIDByFecha(fecha) != null;
     }
-    
-      public horarios obtenerIDPorFecha(Date fecha) {
+
+    public horarios obtenerIDPorFecha(Date fecha) {
         return horarios.findIDByFecha(fecha);
     }
-  
+
+    public void modificarHorarios(horarios hora) {
+        try {
+            horarios.edit(hora);
+        } catch (Exception ex) {
+            Logger.getLogger(controladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
