@@ -140,21 +140,25 @@
                 <div class="form-container">
                     <h2>Agendar Citas</h2>
 
+                    <div class="form-group">
+                        <label for="nombreCompleto">Nombre completo:</label>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
+                    </div>
+                    <!-- Agrega más campos del formulario de acuerdo a tus necesidades -->
+
                     <form id="agendarCitaForm">
                         <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
                         <!-- Otros campos de formulario -->
                         <button type="button" onclick="buscarCliente()">Buscar Cliente</button>
                     </form>
 
-                    <form action="action">
+                    <form id="guardarCitaForm" action="SvAgendarCita"  method="POST">
                         <div class="form-group">
                             <label for="hora">Hora:</label>
                             <select id="hora" name="hora" required>
                             </select>
                             <label for="idCliente">Cliente:</label>
-                            <p>ID Cliente:  <input type="text" id="idCliente" name="idCliente" readonly></p>
-
-
+                            <input type="text" id="idCliente" name="idCliente" readonly>
                             <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                         </div>
                         <div class="button">
@@ -173,7 +177,7 @@
         <script>
                             function buscarCliente() {
                                 var nombreCompleto = document.getElementById("nombreCompleto").value;
-                                console.log(`Buscando cliente con nombre: ${nombreCompleto}`); // Añadir mensaje de depuración
+                                console.log(`Buscando cliente con nombre: ${nombreCompleto}`);
                                 fetch(`SvBuscarCliente?nombreCompleto=${nombreCompleto}`)
                                         .then(response => {
                                             if (!response.ok) {
@@ -182,11 +186,10 @@
                                             return response.json();
                                         })
                                         .then(data => {
-                                            console.log('Datos recibidos:', data); // Añadir mensaje de depuración
+                                            console.log('Datos recibidos:', data);
                                             if (data.idCliente) {
-                                                var selectCliente = document.getElementById("idCliente");
-                                                selectCliente.innerHTML = ''; // Limpiar opciones anteriores
-                                                selectCliente.innerHTML = `<option value="${data.idCliente}">${data.nombre} ${data.apellidoPa} ${data.apellidoMa}</option>`;
+                                                var inputIdCliente = document.getElementById("idCliente");
+                                                inputIdCliente.value = data.idCliente;
                                             } else {
                                                 alert("Cliente no encontrado");
                                             }
@@ -222,7 +225,6 @@
                                         success: function (response) {
                                             console.log('Datos recibidos:', response);
 
-                                            // Verificar si la respuesta es un array
                                             var horarios = Array.isArray(response) ? response : [];
 
                                             var html = '<h2>Horarios Disponibles</h2>';
@@ -238,9 +240,8 @@
                                             }
                                             $('#horarios-disponibles').html(html);
 
-                                            // Cargar las opciones en el select de horarios
                                             var selectHora = $('#hora');
-                                            selectHora.empty(); // Limpiar opciones anteriores
+                                            selectHora.empty();
                                             horarios.forEach(function (horario) {
                                                 var horaFormateada = horario.hour + ':' + (horario.minute < 10 ? '0' : '') + horario.minute;
                                                 selectHora.append('<option value="' + horaFormateada + '">' + horaFormateada + '</option>');
@@ -261,23 +262,20 @@
 
                                         var blockedDates;
 
-                                        // Manejamos la respuesta según el tipo
                                         if (Array.isArray(response)) {
                                             blockedDates = response;
                                         } else {
-                                            // Si no es un array, asumimos que es un objeto con las fechas bloqueadas
-                                            blockedDates = response.dates;  // Ajusta esto según la estructura de tu JSON
+                                            blockedDates = response.dates;
                                         }
 
-                                        // Inicializar el datepicker con fechas bloqueadas
                                         $("#datepicker").datepicker({
                                             dateFormat: 'yy-mm-dd',
                                             beforeShowDay: function (date) {
                                                 var string = $.datepicker.formatDate('yy-mm-dd', date);
                                                 if (blockedDates.indexOf(string) !== -1) {
-                                                    return [false, 'blocked-date', 'Fecha Bloqueada']; // Hace la fecha no seleccionable
+                                                    return [false, 'blocked-date', 'Fecha Bloqueada'];
                                                 } else if (date < hoy || date > maxDate) {
-                                                    return [false, 'unselectable-date', 'Fecha no disponible']; // Fechas fuera del rango seleccionable
+                                                    return [false, 'unselectable-date', 'Fecha no disponible'];
                                                 } else {
                                                     return [true, '', ''];
                                                 }

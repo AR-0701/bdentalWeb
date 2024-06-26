@@ -9,5 +9,6 @@ document.addEventListener("DOMContentLoaded",  () => {
         indicators: true,
         noWrap:false
     });
+    
 });
 

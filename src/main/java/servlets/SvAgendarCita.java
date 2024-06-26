@@ -25,11 +25,20 @@ public class SvAgendarCita extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        response.setContentType("text/html;charset=UTF-8");
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // Obtener parámetros del formulario
         String fechaStr = request.getParameter("fechaSeleccionada");
-        String horarioStr = request.getParameter("horarioSeleccionado");
+        String horarioStr = request.getParameter("hora");
         String idClienteStr = request.getParameter("idCliente"); // Nuevo campo para ID del cliente
 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -68,16 +77,6 @@ public class SvAgendarCita extends HttpServlet {
 
         // Redirigir a la página de confirmación o a la misma página con un mensaje de éxito
         response.sendRedirect("confirmacionCita.jsp");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
     }
 
     @Override
