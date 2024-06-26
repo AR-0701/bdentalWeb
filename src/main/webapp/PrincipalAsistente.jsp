@@ -27,13 +27,18 @@
                     </div>
                     <ul>
                         <li><a href="PrincipalAsistente.jsp">Principal</a></li>
-                        <li><a href="login.jsp">Registrar citas a clientes</a></li>
-                        <li><a href="">Consulta de registro de citas</a></li>
+                        <li><a href="registrar_citas.jsp">Registrar citas a clientes</a></li>
+                        <li><a href="consultarregistrocitastablas.jsp">Consulta de registro de citas</a></li>
                         <li><a href="AsistentesServicios.jsp">Servicios</a></li>
                         <li><a href="AsistentesPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
             </header>
+            
+            
+            
+            
+            
 
             <main>
                 <section class="content">

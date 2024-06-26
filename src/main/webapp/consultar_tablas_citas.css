@@ -1,0 +1,121 @@
+html, body{
+    background-color: #00b3b3;
+    height: 100%;
+    margin: 0;
+/*    padding-left: 45px;
+    padding-top: 5px;*/
+}
+
+.principal{
+    
+    margin-top: 5%;
+    margin-left: 8%;
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+    .cabesera {
+        background-color: #cc66ff;
+        flex: 1;
+        display: flex; /* Usa flexbox para el layout */
+        align-items: center; /* Centra verticalmente los elementos */ 
+        /*background-color: red;*/
+    }
+        .p1 {
+            flex: 9; /* Ocupa todo el espacio disponible */
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+            .p1 p{
+                font-size: 3vh;
+                margin: 0;
+                padding-left: 1%;
+                /*padding-left: 50%;*/
+            }
+
+            .p1 img {
+                height: 10vh;
+                padding-left: 3%;
+            }
+
+        .p2 {
+            flex: 1; /* Ocupa todo el espacio disponible */
+            /*display: flex;*/
+            justify-content: flex-end; /* Alinea los elementos a la izquierda */
+            align-items: center; /* Centra verticalmente los elementos */
+            padding-right: 1%;
+
+            /*padding: 10px;  Añade espacio interior para separación */
+        }
+            .p2 img {
+                height: 8vh;
+                padding-right: 10%;
+                /*arreglar porque se va fuera al simularlo en celular*/
+            }
+            .consultaregistro{
+                font-size: 4vh;
+                margin: 0;
+                padding-right: 30%;
+            }
+            .contenedortabla{
+             background-color: brown;        
+            flex: 7;
+            display: flex; /* Usa flexbox para el layout */
+            align-items: center; /* Centra verticalmente los elementos */ 
+            /*background-color: red;*/
+                
+            }
+            .tabla th, td{
+                border: .2vh solid black;
+            border-collapse: collapse;
+            padding: 5vh;
+             font-size: 2vh;
+             padding-left: 10%;
+             padding-top: 1vh;
+             
+            }
+            .tabla img{
+                
+                 height: 8vh;
+                padding-left: 400%;/*arreglar porque se va fuera al simularlo en celular*/
+            }
+            .sidebar {
+            position: absolute;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #13CDBD;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            color: #000;
+            overflow-y: auto;
+        }
+
+        .sidebar ul {
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            list-style-type: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .sidebar ul li a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 30px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }

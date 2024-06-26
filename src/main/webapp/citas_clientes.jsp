@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="citas_clientes.css" type="text/css">
+        <link rel="stylesheet" href="citas_clientes1.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>

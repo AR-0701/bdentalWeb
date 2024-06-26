@@ -1,4 +1,4 @@
-* {
+html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,12 +15,10 @@ body {
     max-width: 1200px;
     margin: 5px auto;
     background-color: white;
-  padding: -4px; /*  ajustar el contenido de abajo*/
+    padding: -4px; /*  ajustar el contenido de abajo*/
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     position: relative;
 }
-
-
 
 header {
     display: flex;
@@ -29,114 +27,28 @@ header {
     flex-wrap: wrap;
     padding-bottom: 10px;
 }
-.logo2 {
-    flex: 1;
-}
 
 .logo2 img {
-    height: 70px;
+    height: 80px;
 }
 
-.menu {
-    flex: 2;
+
+
+.menu nav ul {
+    list-style: none;
+    padding: 15px;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.menu1 {
-    
-  display: flex;
-    align-items: center;
-    justify-content: center; /* Centrar elementos verticalmente */
-    flex-direction: row; /* Cambiar a disposición horizontal */
-    box-shadow: none;
-  background-color: white;/* Ajustar color de fondo */
-  
-}
-
-.menu1 ul {
-  list-style-type: none; /* Quitar los puntos de la lista */
-    display: flex; /* Alinear elementos horizontalmente */
-     /* Fondo completamente transparente */
-}
-
-.menu1 ul li {
-    margin: -8px;
-    font-size: 0.2px;
-    width: auto;
-    padding: 0px 0px;
-
-}
-
-.menu1 ul li a {
+.menu nav ul li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    transition: color 0.3s; /* Transición suave para el cambio de color */
 }
 
-.menu1 ul li a:hover {
-    color: #00a2b2; /* Cambia el color del texto al pasar el puntero */
-}
-
-@media (max-width: 768px) {
-     .menu {
-        justify-content: flex-end; /* Alinear a la derecha para pantallas pequeñas */
-    }
-    .menu1 {
-        display: none;
-        flex-direction: column;
-        width: 150px;
-        height: auto;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #80cbc4;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .menu1.show {
-        display: flex;
-    }
-
-    .menu1 ul {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    
-    }
-
-    .menu1 ul li {
-        width: 100%;
-        text-align: left;
-        margin: 0;
-        border-bottom: 1px solid #0a0a0a;
-    }
-
-    .menu1 ul li a {
-        display: block;
-        width: 100%;
-        font-size: 0.8rem;
-     transition: color 0.3s; /* Transición suave para el cambio de color */
-}
-
-.menu1 ul li a:hover {
-    color: #00a2b2; /* Cambia el color del texto al pasar el puntero */
-}
-}
 .about {
     display: flex;
     flex-wrap: wrap;
@@ -150,16 +62,12 @@ header {
     flex: 1;
     min-width: 300px;
     padding:30px 70px;
-    margin-right: -13px;
+    margin-right: -12px;
 }
 
 .text-content.Titulo h2 {
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 0;
-}
-h2 {
-    font-size: 2.56rem;
-    
 }
 .eslogan h3 {
     font-size: 18px;
@@ -187,8 +95,20 @@ h2 {
     font-size: 16px;
 }
 
+.image-section {
+    flex: 1 1 40%;
+    text-align: right;
 
 
+
+}
+
+.image-section img {
+    width: 70%;
+    height: auto;
+    margin: -12px;
+    padding: 0px 20px;
+}
 footer {
     display: flex;
     flex-wrap: wrap;
@@ -202,9 +122,7 @@ footer {
     box-sizing: border-box;
     text-align: center;
 }
-.footer-section h3 {
-    font-size: 15px;
-}
+
 .footer-section.location {
     background-color: #00a2b2;
 }
@@ -217,6 +135,14 @@ footer {
     background-color: #b2dfdb;
     text-align: left;
     font-size: 12px;
+}
+
+.footer-section .icon {
+    width: 40px;
+    height: 40px;
+    background-image: url('images/tooth-icon.png');
+    background-size: cover;
+    margin: 0 auto 10px;
 }
 
 .footer-section.location .icon {
@@ -235,124 +161,182 @@ footer {
     padding: 10px;
 }
 
-/*SERVICIOS*/
+@media (min-width: 768px) {
+    .logo-text {
+        flex: none;
+        text-align: left;
+        margin-top: 0;
+    }
 
-.image-section {
-    flex: 1 1 40%;
-    text-align: right;
-
-
-
-}
-
-.image-section img {
-    width: 60%;
-    height: auto;
-    margin: -10px;
-    padding: 0px 20px;
-}
-
-.text-content3 {
-    flex: 1;
-    min-width: 300px;
-    padding: 30px 70px;
-    margin-right: -20px;
-}
-
-.Titulo2 h2 {
-    font-size: 20px;
-    margin-top: 5px;
-    color: black;
-    text-align: center;
-}
-
-.parra3 p {
-    font-size: 18px;
-    color: black;
-    margin: 15px -12px;
-    width: 250%;
-}
-
-/* Estilos responsivos */
-
-@media (max-width: 1200px) {
-    .image-section {
+    .footer-section {
+        flex: 1;
         text-align: center;
     }
 
-    .image-section img {
-        width: 70%;
-        margin: 0;
-    }
-
-    .text-content3 {
-        padding: 20px 50px;
-        margin-right: 0;
-    }
-
-    .parra3 p {
-        width: 200%;
+    .footer-section.legal {
+        text-align: left;
     }
 }
 
 @media (max-width: 768px) {
+    .logo-text, .menu nav ul {
+        text-align: center;
+    }
+
+    .main .about .Titulo h1, .main .about .eslogan p, .main .about .parra h2 {
+        text-align: center;
+    }
+
+    .login-button {
+        display: block;
+        margin: 20px auto;
+    }
+
     .image-section {
-        flex: 1 1 100%;
         text-align: center;
     }
 
     .image-section img {
-        width: 80%;
-        margin: 0;
-        padding: 0px 10px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
     }
 
-    .text-content3 {
-        padding: 20px 30px;
-        margin-right: 0;
-    }
-
-    .Titulo2 h2 {
-        font-size: 18px;
-    }
-
-    .parra3 p {
-        font-size: 16px;
-        width: 150%;
-        margin: 10px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .image-section {
-        flex: 1 1 100%;
+    .footer-section {
         text-align: center;
     }
 
-    .image-section img {
-        width: 90%;
+    .footer-section.legal {
+        text-align: center;
+    }
+    /* Existing styles */
+    body {
+        font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #00b3b3;
     }
 
-    .text-content3 {
-        padding: 15px 20px;
-        margin-right: 0;
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .Titulo2 h2 {
-        font-size: 16px;
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
     }
 
-    .parra3 p {
+    .logo2 img {
+        height: 80px;
+    }
+
+    .logo-text {
+        color: #00b3b3;
+        text-align: center;
+        flex: 1 1 100%;
+        margin-top: 10px;
+    }
+
+    .menu {
+        display: none; /* Ocultar menú por defecto */
+    }
+
+    .menu nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu nav ul li a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    .menu-toggle {
+        cursor: pointer;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .about {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .text-content {
+        flex: 1 1 50%;
+        text-align: left;
+    }
+
+    .Titulo h2 {
+        font-size: 30px;
+        color: #00b3b3;
+    }
+
+    .eslogan h3 {
+        font-size: 20px;
+        color: black;
+    }
+
+    .parra p {
         font-size: 14px;
-        width: 100%;
-        margin: 10px 0;
+        color: black;
+        margin: 5px 0;
     }
+
+    .button-container {
+        margin-top: 20px;
+    }
+
+    .login-button {
+        background-color: #00b3b3;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .image-section {
+        flex: 1 1 40%;
+        text-align: right;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        color: white;
+    }
+
+
 }
 
-/*CASOS CLINICOS */
-
+/*casos clinicos interfaz */
 .text-content2 {
     flex: 1;
     min-width: 300px;
@@ -380,88 +364,169 @@ footer {
     width: 142%;
 }
 
-/* Estilos responsivos */
+/*Carosel estilo materalize*/
 
-@media (max-width: 1200px) {
-    .text-content2 {
-        padding: 6px 40px;
-        margin-right: -8px;
-    }
+.container {
 
-    .Titulo1 h2 {
-        font-size: 26px;
-    }
-
-    .parra1 p, .parra2 p {
-        width: 120%;
-    }
+    box-shadow: none;
 }
-
-@media (max-width: 768px) {
-    .text-content2 {
-        padding: 6px 30px;
-        margin-right: -5px;
-    }
-
-    .Titulo1 h2 {
-        font-size: 24px;
-    }
-
-    .parra1 p, .parra2 p {
-        width: 80%;
-        margin: 5px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-content2 {
-        padding: 6px 20px;
-        margin-right: 0;
-    }
-
-    .Titulo1 h2 {
-        font-size: 20px;
-    }
-
-    .parra1 p, .parra2 p {
-        font-size: 12px;
-        width: 80%;
-        margin: 0px 0;
-    }
-}
-
-/*PROMOCIONES*/
-
 .carousel {
-    min-height: 200px;
-    margin-top: -65px; /* Ajustar esta propiedad para mover el carrusel hacia arriba */
-}
-.carousel.carouse-item{
-    width: 200px;
-    height: 200px;
-   }
- .carousel.carouse-item img{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    top:0;
-    left: 0;
-    border-radius: 0px;
-   }
-
-.carousel .indicators {
-    height: 40px;
-}
-.carousel .indicators .indicator-item {
-    display: inline-block;
     position: relative;
-    cursor: pointer;
-    height: 8px;
-    width: 8px;
-    margin: 24px 4px;
-    background-color: #00b3b3;
-    -webkit-transition: background-color .3s;
-    transition: background-color .3s;
-    border-radius: 50%;
 }
 
+.carousel .carousel-item1 img,
+.carousel .carousel-item2 img,
+.carousel .carousel-item3 img {
+    width: 70%;
+    box-shadow: none;
+}
+
+/*Servicos*/
+.image-section {
+    flex: 1 1 40%;
+    text-align: right;
+
+
+
+}
+
+.image-section img {
+    width: 60%;
+    height: auto;
+    margin: -10px;
+    padding: 0px 20px;
+}
+
+.text-content3 {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px 70px;
+    margin-right: -20px;
+}
+
+.Titulo2 h2 {
+    font-size: 30px;
+    margin-top: 5px;
+    color: black;
+    text-align: center;
+}
+
+.parra3 p {
+    font-size: 18px;
+    color: black;
+    margin: 15px -12px;
+    width: 250%;
+}
+
+
+/*----------------------
+------------------------
+---------login---------
+-------------------------*/
+
+
+body.login-page .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px; /* Ajusta esto según sea necesario */
+
+
+}
+
+
+body.login .image-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    padding: 60px;
+    margin: 30px;
+
+}
+
+
+body.login-page .image-container img {
+    border-radius: 10%;
+    width: 550px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: 550px; /* Ajusta la altura de la imagen según sea necesario */
+    padding-right: 90px;
+    padding-left: 180px;
+    object-fit: cover;
+}
+
+body.login-page .form-container {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content:flex-start; /* Centra el contenido verticalmente */
+    height: 400px;
+    width: 200px;
+    margin-right: 110px;
+
+}
+
+body.login-page .form-container img {
+    margin-bottom: 20px; /* Ajusta el margen inferior para separar la imagen del resto del contenido */
+    margin-top: -20px; /* Ajusta el margen superior para mover la imagen hacia arriba */
+    width: 45%; /* Ajusta el ancho de la imagen */
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+    max-width: 300px; /* Ajusta el máximo ancho de la imagen */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.login-page .form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro del formulario */
+    width: 100%;
+}
+body.login-page .form-container form input[type="email"],
+body.login-page .form-container form input[type="password"] {
+
+    padding:17px; /* Ajusta el relleno según sea necesario */
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(90% - 40px); /* Ajusta el ancho según sea necesario */
+    height: auto; /* Ajusta la altura según sea necesario */
+}
+
+body.login-page .form-container form button {
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #009999;
+    color: #fff;
+    cursor: pointer;
+    width: calc(100% - 250px);  /*Ajusta el ancho según sea necesario */
+    height: auto; /* Ajusta la altura según sea necesario*/
+}
+
+body.login-page .form-container a button {
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #009999;
+    color: #fff;
+    cursor: pointer;
+    width:  270px; /* Ajusta el ancho según sea necesario */
+    height: auto; /* Ajusta la altura según sea necesario */
+}
+body.login-page .form-container form button:hover {
+    background-color: #007777;
+}
