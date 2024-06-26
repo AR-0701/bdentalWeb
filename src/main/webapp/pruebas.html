@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modificar horario</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- Agrega tus estilos CSS personalizados aquí -->
+        <style>
+            /* Estilos adicionales */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+            .container {
+                width: 80%;
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+            }
+            .header .logo {
+                display: flex;
+                align-items: center;
+            }
+            .header .logo img {
+                max-width: 50px;
+                margin-right: 10px;
+            }
+            .header .logo h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+            .header .logout {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+            .header .logout:hover {
+                color: #f8f9fa;
+            }
+            .content {
+                display: flex;
+                padding: 20px;
+            }
+            .form-container {
+                flex: 1;
+                margin-right: 20px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .form-group input[type="text"], .form-group input[type="email"], .form-group select {
+                width: 100%;
+                padding: 8px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+            .button {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .button input[type="submit"] {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+            }
+            .button input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+            .calendar-container {
+                width: 300px;
+            }
+            .blocked-date {
+                background-color: #D8BFD8 !important; /* Color lila */
+                color: white !important;
+                pointer-events: none; /* No seleccionable */
+            }
+            .ui-datepicker-today a {
+                background-color: #FFD700 !important; /* Color amarillo más fuerte */
+            }
+            .ui-datepicker-calendar td a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 2em;
+                text-decoration: none;
+                color: inherit;
+            }
+            .ui-datepicker .ui-datepicker-current-day a {
+                background-color: #00b3b3 !important; /* Color para la fecha seleccionada */
+                color: white !important;
+            }
+            .unselectable-date {
+                background-color: #b2dfdb !important; /* Color para fechas no seleccionables */
+                color: white !important;
+                pointer-events: none; /* No seleccionable */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <img src="imagenes/logo.png" alt="Logo">
+                    <h1>B - Dental</h1>
+                </div>
+                <a class="logout" href="logout.jsp">Cerrar Sesión</a>
+            </div>
+            <div class="content">
+                <div class="form-container">
+                    <h2>Agendar Citas</h2>
+                    <div class="form-group">
+                        <label for="nombreCompleto">Nombre completo:</label>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
+                    </div>
+                    <!-- Agrega más campos del formulario de acuerdo a tus necesidades -->
+                    <div class="form-group">
+                        <label for="hora">Hora:</label>
+                        <select id="hora" name="hora" required>
+                            <option value="9:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <!-- Agrega más opciones de horario según sea necesario -->
+                        </select>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Agendar Cita">
+                    </div>
+                </div>
+                <div class="calendar-container">
+                    <div id="datepicker"></div>
+                    <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var fechaSeleccionadaInput = $('#datepicker');
+                var hoy = new Date();
+                var maxDate = new Date();
+                maxDate.setDate(hoy.getDate() + 7);
+
+                // Función para obtener horarios
+                function obtenerHorarios(fecha) {
+                    if (!fecha) {
+                        console.error('Fecha inválida:', fecha);
+                        alert('Seleccione una fecha válida.');
+                        return;
+                    }
+
+                    console.log('Obteniendo horarios para:', fecha);
+
+                    fetch('SvMostrarHorarios?fecha=' + fecha)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la respuesta del servidor: ' + response.statusText);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Datos recibidos:', data);
+                                if (data) {
+                                    $('#hora-apertura').val(data.horaApertura || '---');
+                                    $('#hora-cierre').val(data.horaCierre || '---');
+                                } else {
+                                    $('#hora-apertura').val('---');
+                                    $('#hora-cierre').val('---');
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                }
+
+                // Obtener fechas bloqueadas y configurar el datepicker
+                $.ajax({
+                    url: 'pruebasCalendarios',
+                    method: 'GET',
+                    success: function (response) {
+                        console.log("Raw response from server:", response);
+
+                        var blockedDates;
+
+                        // Manejamos la respuesta según el tipo
+                        if (Array.isArray(response)) {
+                            blockedDates = response;
+                        } else {
+                            // Si no es un array, asumimos que es un objeto con las fechas bloqueadas
+                            blockedDates = response.dates;  // Ajusta esto según la estructura de tu JSON
+                        }
+
+                        // Inicializar el datepicker con fechas bloqueadas
+                        $("#datepicker").datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            beforeShowDay: function (date) {
+                                var string = $.datepicker.formatDate('yy-mm-dd', date);
+                                if (blockedDates.indexOf(string) !== -1) {
+                                    return [false, 'blocked-date', 'Fecha Bloqueada']; // Hace la fecha no seleccionable
+                                } else if (date < hoy || date > maxDate) {
+                                    return [false, 'unselectable-date', 'Fecha no disponible']; // Fechas fuera del rango seleccionable
+                                } else {
+                                    return [true, '', ''];
+                                }
+                            },
+                            onSelect: function (dateText) {
+                                $('#fechaSeleccionada').val(dateText);
+                                obtenerHorarios(dateText);
+                            },
+                            prevText: '<',
+                            nextText: '>'
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error al hacer la petición AJAX:", status, error);
+                        alert("Error al cargar las fechas bloqueadas.");
+                    }
+                });
+
+            });
+        </script>
+    </body>
+</html>

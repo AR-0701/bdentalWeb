@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.io.Serializable;
@@ -7,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -24,9 +24,10 @@ public class clientesJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-        public clientesJpaController() {
+    public clientesJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
+
     public void create(clientes clientes) {
         EntityManager em = null;
         try {
@@ -130,5 +131,17 @@ public class clientesJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public clientes findClienteByUsuario(int idUsuario) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM clientes c WHERE c.usuario.idUsuario = :idUsuario");
+            query.setParameter("idUsuario", idUsuario);
+            return (clientes) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 }

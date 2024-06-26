@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -108,6 +109,42 @@ public class controladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(controladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public boolean verificarDisponibilidad(Date dia, LocalTime horario) {
+        List<citas> citasList = citas.findCitasByDia(dia);
+        for (citas cita : citasList) {
+            if (cita.getHorario().toLocalTime().equals(horario)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void crearCita(citas cita) {
+        citas.create(cita);
+    }
+
+    public clientes obtenerClientePorId(int idCliente) {
+        EntityManager em = citas.getEntityManager();
+        try {
+            return em.find(clientes.class, idCliente);
+        } finally {
+            em.close();
+        }
+    }
+
+    public usuarios buscarUsuarioPorNombre(String nombre, String apellidoPa, String apellidoMa) {
+        try {
+            return usuarios.findUsuarioByNombreCompleto(nombre, apellidoPa, apellidoMa);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public clientes buscarClientePorUsuario(int idUsuario) {
+        return clientes.findClienteByUsuario(idUsuario);
     }
 
 }

@@ -92,8 +92,17 @@ public class Controladora {
     public horarios obtenerIDPorFecha(Date fecha) {
         return controlPersis.obtenerHorariosPorFecha(fecha);
     }
-    
+
     public void modificarHorarios(horarios hora) {
-         controlPersis.modificarHorarios(hora);
+        controlPersis.modificarHorarios(hora);
     }
+
+     public void crearCita(citas cita) {
+        controlPersis.crearCita(cita);
+    }
+
+    public clientes obtenerClientePorId(int idCliente) {
+        return controlPersis.obtenerClientePorId(idCliente);
+    }
+
 }

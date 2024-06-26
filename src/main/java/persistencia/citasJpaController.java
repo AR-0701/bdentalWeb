@@ -2,6 +2,7 @@ package persistencia;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -11,7 +12,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.citas;
 import persistencia.exceptions.NonexistentEntityException;
-
 
 public class citasJpaController implements Serializable {
 
@@ -23,7 +23,8 @@ public class citasJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-        public citasJpaController() {
+
+    public citasJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
 
@@ -130,5 +131,18 @@ public class citasJpaController implements Serializable {
             em.close();
         }
     }
+
+    public List<citas> findCitasByDia(Date dia) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM citas c WHERE c.dia = :dia");
+            query.setParameter("dia", dia);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
     
+    
+
 }

@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.io.Serializable;
@@ -11,6 +10,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import logica.clientes;
 import logica.usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -24,9 +24,11 @@ public class usuariosJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
     public usuariosJpaController() {
         emf = Persistence.createEntityManagerFactory("BdentalPU");
     }
+
     public void create(usuarios usuarios) {
         EntityManager em = null;
         try {
@@ -130,11 +132,27 @@ public class usuariosJpaController implements Serializable {
             em.close();
         }
     }
+
     public usuarios findUsuarioByEmail(String email) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT u FROM usuarios u WHERE u.email = :email");
             query.setParameter("email", email);
+            return (usuarios) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    public usuarios findUsuarioByNombreCompleto(String nombre, String apellidoPa, String apellidoMa) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT u FROM usuarios u WHERE u.nombre = :nombre AND u.apellidoPa = :apellidoPa AND u.apellidoMa = :apellidoMa");
+            query.setParameter("nombre", nombre);
+            query.setParameter("apellidoPa", apellidoPa);
+            query.setParameter("apellidoMa", apellidoMa);
             return (usuarios) query.getSingleResult();
         } catch (NoResultException e) {
             return null;

@@ -40,7 +40,9 @@ public class SvLogin extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", user);
-            
+            String nombreCompleto = user.getNombre() + " " + user.getApellidoPa() + " " + user.getApellidoMa();
+            session.setAttribute("nombreCompleto", nombreCompleto);
+
             //------------------Verificar Rol
             switch (user.getRol()) {
                 case "Administrador":
@@ -50,14 +52,14 @@ public class SvLogin extends HttpServlet {
                     response.sendRedirect("PrincipalAsistente.jsp");
                     break;
                 case "Cliente":
-                    response.sendRedirect("inicioclientes.jsp");
+                    response.sendRedirect("pruebasAgendar.jsp");
                     break;
                 default:
                     response.sendRedirect("LoginError.jsp");
                     break;
             }
         } else {
-            
+
             request.setAttribute("errorMessage", "Credenciales inválidas. Por favor, intente nuevamente.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
