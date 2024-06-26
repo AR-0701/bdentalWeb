@@ -14,15 +14,7 @@
         <link rel="stylesheet" href="Asistentes.css">
     </head>
     <body>
-        <div class="container">
-            <header>
-                <div class="logo2">
-                    <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/loogo.jpg" class="logo" alt="B - DENTAL">
-                    </a>
-                </div>
-                
-                <div class="menu-toggle" id="menuToggle">
+        <div class="menu-toggle" id="menuToggle">
                     <span>&#9776;</span>
                 </div>
                 
@@ -34,6 +26,15 @@
                         <li><a href="AsistentesPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
+        <div class="container">
+            <header>
+                <div class="logo2">
+                    <a href="index.jsp">
+                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    </a>
+                </div>
+                
+                
             </header>
             <main>
                 <section class="about">

@@ -13,32 +13,81 @@ body {
 .container {
     width: 80%;
     max-width: 1200px;
-    margin: 5px auto;
+    margin: 2px auto;
     background-color: white;
-    padding: -4px; /*  ajustar el contenido de abajo*/
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    position: relative;
+    padding: -4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header {
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
     padding-bottom: 10px;
 }
 
+
+.logo2 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
 .logo2 img {
-    height: 80px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+/*//Crerar sesiòn//*/
+.user-menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.user-icon {
+    height: 60px;
+    cursor: pointer;
 }
 
 
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Ajusta el ancho según sea necesario */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/*//Menu de clientes//*/
+.menu {
+    width: 100%;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    padding: 1px 0;
+}
 
 .menu nav ul {
     list-style: none;
-    padding: 15px;
+    padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 90px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -52,63 +101,45 @@ header {
 .about {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
-    padding: 5px 10px; /* Reduce el padding superior */
+    justify-content: space-around; /* Ajuste para pantallas más pequeñas */
+    padding: 10px; 
 }
 
-.text-content {
+.text-content2 {
     flex: 1;
-    min-width: 300px;
-    padding:30px 70px;
-    margin-right: -12px;
+    min-width: 250px; /* Ajuste para pantallas más pequeñas */
+    padding: 20px; /* Ajuste para pantallas más pequeñas */
 }
 
-.text-content.Titulo h2 {
-    font-size: 30px;
-    margin-top: 0;
-}
-.eslogan h3 {
-    font-size: 18px;
+.Titulo1 h2 {
+    font-size: 24px; 
+    margin-top: 5px;
     color: black;
-    margin-top: 0;
+    text-align: center;
 }
 
-.parra p  {
+.parra1 p, .parra2 p {
     font-size: 14px;
     color: black;
-    margin: 0px 0;
-}
-
-.button-container {
-    margin-top: 20px;
-}
-
-.login-button {
-    background-color: #00b3b3;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    margin: 5px 0;
+    text-align: justify;
 }
 
 .image-section {
-    flex: 1 1 40%;
-    text-align: right;
-
-
-
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
 }
 
 .image-section img {
-    width: 70%;
+    max-width: 100%;
     height: auto;
-    margin: -12px;
-    padding: 0px 20px;
+    border-radius: 10px;
 }
+
 footer {
     display: flex;
     flex-wrap: wrap;
@@ -118,7 +149,7 @@ footer {
 
 .footer-section {
     flex: 1;
-    padding: 30px;
+    padding: 20px;
     box-sizing: border-box;
     text-align: center;
 }
@@ -178,84 +209,9 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .logo-text, .menu nav ul {
-        text-align: center;
-    }
-
-    .main .about .Titulo h1, .main .about .eslogan p, .main .about .parra h2 {
-        text-align: center;
-    }
-
-    .login-button {
-        display: block;
-        margin: 20px auto;
-    }
-
-    .image-section {
-        text-align: center;
-    }
-
-    .image-section img {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .footer-section {
-        text-align: center;
-    }
-
-    .footer-section.legal {
-        text-align: center;
-    }
-    /* Existing styles */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #00b3b3;
-    }
-
-    .container {
-        width: 80%;
-        max-width: 1200px;
-        margin: 0 auto;
-        background-color: white;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding-bottom: 10px;
-    }
-
-    .logo2 img {
-        height: 80px;
-    }
-
-    .logo-text {
-        color: #00b3b3;
-        text-align: center;
-        flex: 1 1 100%;
-        margin-top: 10px;
-    }
-
-    .menu {
-        display: none; /* Ocultar menú por defecto */
-    }
-
+@media (min-width: 768px) {
     .menu nav ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 90px; /* Volver al espacio original en pantallas más grandes */
     }
 
     .menu nav ul li a {
@@ -271,11 +227,7 @@ footer {
     }
 
     .about {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 20px;
+        padding: 20px; /* Ajuste para pantallas más grandes */
     }
 
     .text-content {
@@ -337,19 +289,14 @@ footer {
 }
 
 /*casos clinicos interfaz */
-.text-content2 {
-    flex: 1;
-    min-width: 300px;
-    padding: 6px 50px;
-    margin-right: -12px;
-}
+    .text-content2 {
+        min-width: 300px; /* Ajuste para pantallas más grandes */
+        padding: 30px 70px; /* Ajuste para pantallas más grandes */
+    }
 
-.Titulo1 h2 {
-    font-size: 30px;
-    margin-top: 5px;
-    color: black;
-    text-align: center;
-}
+    .Titulo1 h2 {
+        font-size: 30px; /* Volver al tamaño original en pantallas más grandes */
+    }
 
 .parra1 p {
     font-size: 14px;
@@ -364,62 +311,54 @@ footer {
     width: 142%;
 }
 
-/*Carosel estilo materalize*/
-
-.container {
-
+/* Promociones */
+.carousel-container {
     box-shadow: none;
+    padding: 20px 0;
 }
+
 .carousel {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    position: relative;
+    gap: 20px;
 }
 
-.carousel .carousel-item1 img,
-.carousel .carousel-item2 img,
-.carousel .carousel-item3 img {
-    width: 70%;
+.carousel-item {
+    flex: 1;
+    text-align: center;
+}
+
+.carousel-item img {
+    max-width: 300px;
+    width: 80%;
+    height: auto;
     box-shadow: none;
+    border-radius: 10px;
 }
 
 /*Servicos*/
-.image-section {
-    flex: 1 1 40%;
-    text-align: right;
-
-
-
-}
-
-.image-section img {
-    width: 60%;
-    height: auto;
-    margin: -10px;
-    padding: 0px 20px;
-}
 
 .text-content3 {
     flex: 1;
     min-width: 300px;
-    padding: 30px 70px;
-    margin-right: -20px;
+    padding: 6px 50px;
+    margin-right: -12px;
 }
 
 .Titulo2 h2 {
-    font-size: 30px;
+    font-size: 35px;
     margin-top: 5px;
     color: black;
     text-align: center;
 }
 
 .parra3 p {
-    font-size: 18px;
+    font-size: 20px;
     color: black;
-    margin: 15px -12px;
-    width: 250%;
+    margin: 5px -10px;
+    width: 142%;
 }
 
 
