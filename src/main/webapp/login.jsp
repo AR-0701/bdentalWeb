@@ -48,7 +48,6 @@
                     <a href = "RegistroClientes.jsp">
                         <button id="registro-button" name="registro-button"  >Registrarse</button>
                     </a>
-
                 </div>
             </div>
         </div>

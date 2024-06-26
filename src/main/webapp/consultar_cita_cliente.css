@@ -15,11 +15,11 @@ html, body{
 }
 
 .principal{
-    margin-top: 2.5%;
-    margin-left: 2.5%;
+    margin-top: 5%;
+    margin-left: 8%;
     background-color: white;
-    width: 95%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -98,19 +98,62 @@ html, body{
             text-align: center; /* Centrar el texto horizontalmente */
         }
 
-        .menu a:hover {
-            background-color: red; /* Color de fondo al pasar el mouse */
-        }
+/*        .menu a:hover {
+            background-color: red;  
+        }*/
 
     .contenido_principal{
         border: .3vh solid #00b3b3;
+        
         margin: 2%; 
         flex: 8;
         height: 100vh;
-        
+        /*background-color: red;*/
         display: flex;
-        flex-direction: column;
+/*        flex-direction: column;*/
     }
+    
+        .izquierda{
+            flex: 7;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .derecha{
+            flex: 1.75;
+/*            justify-content: flex-end;  Alinea los elementos a la izquierda 
+            align-items: center;  Centra verticalmente los elementos */
+            display: flex;
+            flex-direction: column;
+        }
+        
+            .boton{
+                display: flex;
+                flex: 5;
+                /*background-color: #D8BFD8;*/
+                display: flex;
+                /*align-content: flex-start;*/
+                
+                font-size: 3vh;/*no se agranda*/
+                /*justify-content: center;*/
+                align-items: start;
+                padding-right: 40%;
+                padding-top: 30%;
+
+            }
+            .boton input{
+                align-items: center;
+                background-color: #00b3b3;   
+                color: white; /* Color del texto */
+                padding: 1vh;
+                border: none;  /*Sin borde*/
+                border-radius: 1vh; /* Borde redondeado */
+                text-align: center;  /*Alineación del texto */
+                font-size: 3vh;
+                border: .4vh solid #00b3b3;
+                margin-left: 50%;
+            }
+    
     
         .pedir_datos{
             flex: 1;
@@ -169,7 +212,7 @@ html, body{
         
         .calendario{
             flex: 7;
-            background-color: grey;
+            /*background-color: grey;*/
             align-content: center;
             width: 100%;
             display: flex;
@@ -177,30 +220,10 @@ html, body{
             height: 50%;
             text-align: center;
         }
-        
-        .boton{
-            flex: 1;
-            background-color: #4CAF50;  
-            font-size: 3vh;/*no se agranda*/
-            justify-content: center;
-            
-        }
-        .boton input{
-            align-items: center;
-            background-color: #00b3b3; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 1vh;
-    border: none;  /*Sin borde*/
-    border-radius: 1vh; /* Borde redondeado */
-    text-align: center;  /*Alineación del texto */
-    font-size: 3vh; 
-                    border: .4vh solid #00b3b3;
-                    margin-left: 50%;
-        }
 
             .caler{
                 flex: 58;
-                background-color: bisque;
+                /*background-color: bisque;*/
                 
             }
 
@@ -209,7 +232,7 @@ html, body{
     .calendario_pos{
         height: 65%;
         width: 50%;
-        background-color: #ccffcc;
+        /*background-color: #ccffcc;*/
         margin-left: 15%;
         margin-top: 5%;
         font-size: 2.5vh;
@@ -226,7 +249,7 @@ html, body{
                     .calendario_pos{
                         height: 100%;
                         width: 100%;
-                        background-color: #ccffcc;
+                        /*background-color: #ccffcc;*/
                         /*                    margin-left: 15%;
                                             margin-top: 5%;*/
 
@@ -242,7 +265,7 @@ html, body{
           
             .horas{
                 flex: 42;
-                background-color: #cc66ff;;
+                /*background-color: #cc66ff;;*/
                 display: flex;
 /*                justify-content: center;*/
                 align-items: center;
