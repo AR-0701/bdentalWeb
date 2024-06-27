@@ -12,11 +12,12 @@ body {
 
 .Principal {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 5px auto;
     background-color: white;
-    padding: 20px;
+    padding: -4px; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 
 header {
     display: flex;
@@ -233,6 +234,25 @@ footer {
     box-sizing: border-box;
     text-align: center;
 }
+.footer-section h3 {
+    font-size: 22px;
+}
+
+ a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+ a:hover{
+    text-decoration: underline;
+}
+
+
+.footer-section p {
+    font-size: 16px;
+}
+
 
 .footer-section.location {
     background-color: #00a2b2;
@@ -244,8 +264,7 @@ footer {
 
 .footer-section.legal {
     background-color: #b2dfdb;
-    text-align: left;
-    font-size: 12px;
+text-align: center;
 }
 
 .footer-section .icon {
@@ -285,7 +304,7 @@ footer {
     }
 
     .footer-section.legal {
-        text-align: left;
+        text-align: center;
     }
 }
 

@@ -68,7 +68,10 @@
                     <p>Correo: bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
-                    <p>Los contenidos publicados por InboundCycle - Agencia de Inbound Marketing están elaborados y supervisados por un equipo de expertos en marketing y ventas con el objetivo de proporcionar a los usuarios información del sector veraz y actualizada. El uso de esta página web está sujeto a nuestro aviso legal, nuestra política de privacidad y nuestra política de cookies. InboundCycle © 2024.</p>
+                    <h3>Manual de usuario:</h3>
+                    <p>
+                        <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                    </p>
                 </div>
             </footer>
         </div>
