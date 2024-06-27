@@ -98,7 +98,7 @@ public class controladoraPersistencia {
     public boolean existeFecha(Date fecha) {
         return horarios.findIDByFecha(fecha) != null;
     }
-    
+
     public horarios obtenerIDPorFecha(Date fecha) {
         return horarios.findIDByFecha(fecha);
     }
@@ -147,4 +147,7 @@ public class controladoraPersistencia {
         return clientes.findClienteByUsuario(idUsuario);
     }
 
+    public Date getUltimaFechaCita(int idCliente) {
+        return citas.getUltimaFechaCita(idCliente);
+    }
 }
