@@ -1,16 +1,11 @@
-<%-- 
-    Document   : AdmiServicio
-    Created on : 15/06/2024, 08:56:31 PM
-    Author     : wendy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL - Principal</title>
+        <title>Promociones</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="Admi2.css">
     </head>
     <body>
@@ -18,15 +13,16 @@
             <header>
                 <div class="logo2">
                     <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 <div class="user-menu">
-                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
                 </div>
+
                 <!-- Agrega el contenedor del menú desplegable -->
                 <div class="sidebar" id="sidebar">
                     <!-- Movemos las rayitas aquí -->
@@ -40,30 +36,24 @@
                         <li><a href="#">Consulta del registro de citas</a></li>
                         <li><a href="mHorarios.jsp">Modificar Horarios</a></li>
                         <li><a href="RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
-                        <li><a href="SvMostrarAsistentes">Ver Asistentes</a></li>
-                        <li><a href="AdmiPromociones.jsp">Promociones</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
+                        <li><a href="AdmiServicio.jsp">Servicios</a></li>
                     </ul>
                 </div>
             </header>
 
             <main>
-                <section class="about">
-                    <div class="text-content3">
-                        <div class="Titulo2">
-                            <h2>Servicios</h2>
+                <section class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-item">
+                            <img src="${pageContext.request.contextPath}/imagenes/1.png" alt="Imagen 1">
                         </div>
-                        <div class="parra3">
-                            <p>- Cirugía.</p>
-                            <p>- Blanqueamiento.</p>
-                            <p>- Blanqueamiento.</p>
-                            <p>- Odontología general.</p>
-                            <p>- Brackets.</p>
-                            <p>- Implantes.</p>
-                            <p>- Extracción.</p>
+                        <div class="carousel-item">
+                            <img src="${pageContext.request.contextPath}/imagenes/2.png" alt="Imagen 2">
                         </div>
-                    </div>
-                    <div class="image-section">
-                        <img src="imagenes/servicio.png" alt="Error al cargar la imagen">
+                        <div class="carousel-item">
+                            <img src="${pageContext.request.contextPath}/imagenes/3.png" alt="Imagen 3">
+                        </div>
                     </div>
                 </section>
             </main>
@@ -83,7 +73,8 @@
                 </div>
             </footer>
         </div>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="script.js"></script>
         <!-- Agregamos el script JavaScript -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {

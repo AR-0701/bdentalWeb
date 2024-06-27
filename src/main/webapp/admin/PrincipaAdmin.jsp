@@ -1,17 +1,10 @@
-<%-- 
-    Document   : AdmiPromociones
-    Created on : 15/06/2024, 08:57:45 PM
-    Author     : wendy
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Promociones</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title>B - DENTAL - Principal</title>
         <link rel="stylesheet" href="Admi2.css">
     </head>
     <body>
@@ -19,48 +12,37 @@
             <header>
                 <div class="logo2">
                     <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 <div class="user-menu">
-                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
                 </div>
-
-                <!-- Agrega el contenedor del menú desplegable -->
                 <div class="sidebar" id="sidebar">
-                    <!-- Movemos las rayitas aquí -->
                     <div class="menu-toggle" id="menuToggle">
                         <span>&#9776;</span>
                     </div>
-                    <!-- Agrega el menú que se desplegará -->
                     <ul>
-                        <li><a href="PrincipaAdmin.jsp">Principal</a></li>
                         <li><a href="#">Registrar citas a Clientes</a></li>
                         <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="mHorarios.jsp">Modificar Horarios</a></li>
+                        <li><a href="mHorario.html">Modificar Horarios</a></li>
                         <li><a href="RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
-                        <li><a href="SvMostrarAsistentes">Ver Asistentes</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
                         <li><a href="AdmiServicio.jsp">Servicios</a></li>
+                        <li><a href="AdmiPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
             </header>
 
             <main>
-                <section class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-item">
-                            <img src="imagenes/1.png" alt="Imagen 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="imagenes/2.png" alt="Imagen 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="imagenes/3.png" alt="Imagen 3">
-                        </div>
-                    </div>
+                <section class="content">
+                    <img src="${pageContext.request.contextPath}/imagenes/n-removebg-preview.png" alt="Recepción">
+                    <h1 id="textBPrincipa">¡Bienvenido!</h1>
+                    <p>Juan Hernández Garcia</p>
+                    <p>"Transformando Sonrisas"</p>
                 </section>
             </main>
             <footer>
@@ -79,9 +61,7 @@
                 </div>
             </footer>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="script.js"></script>
-        <!-- Agregamos el script JavaScript -->
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var menuToggle = document.getElementById("menuToggle");
@@ -110,3 +90,4 @@
         </script>
     </body>
 </html>
+

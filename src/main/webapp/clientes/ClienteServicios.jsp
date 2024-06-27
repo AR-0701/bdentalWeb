@@ -1,40 +1,36 @@
-<%-- 
-    Document   : AsistentesServicios
-    Created on : 15/06/2024, 06:59:19 PM
-    Author     : wendy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL - Principal</title>
-        <link rel="stylesheet" href="Asistentes.css">
+        <title>B - DENTAL</title>
+        <link rel="stylesheet" href="cliente.css">
     </head>
     <body>
-        <div class="menu-toggle" id="menuToggle">
-                    <span>&#9776;</span>
-                </div>
-                
-                <div class="sidebar" id="sidebar">
-                    <ul>
-                        <li><a href="#">Principal</a></li>
-                        <li><a href="#">Registrar citas a Clientes</a></li>
-                        <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="AsistentesPromociones.jsp">Promociones</a></li>
-                    </ul>
-                </div>
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="index.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <a href="inicioCliente.jsp">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
-                
-                
+                <div class="user-menu">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="${pageContext.request.contextPath}/index.jsp">Cerrar sesión</a>
+                    </div>
+                     </div>
+                    <div class="menu">
+                        <nav>
+                            <ul>
+                                <li><a href="InicioClientes.jsp">| Agendar Citas |</a></li>
+                                <li><a href="PromocionCliente.jsp">| Promociones |</a></li>
+                                <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
+                            </ul>
+                        </nav>
+                    </div>
             </header>
             <main>
                 <section class="about">
@@ -47,13 +43,13 @@
                             <p>- Blanqueamiento.</p>
                             <p>- Blanqueamiento.</p>
                             <p>- Odontología general.</p>
-                            <p>- Brackets.</p>
-                            <p>- Implantes.</p>
-                            <p>- Extracción.</p>
+                            <p>-  Brackets.</p>
+                            <p>-  Implantes.</p>
+                            <p>-  Extracciòn..</p>
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="imagenes/servicio.png" alt="Error al cargar la imagen">
+                        <img src="${pageContext.request.contextPath}/imagenes/servicio.png" alt="Error al cargar la imagen">
                     </div>
                 </section>
             </main>
@@ -72,26 +68,15 @@
                 </div>
             </footer>
         </div>
-
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                var menuToggle = document.getElementById("menuToggle");
-                var sidebar = document.getElementById("sidebar");
-                var menuVisible = false;
+                var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
 
-                menuToggle.addEventListener("click", function () {
-                    if (!menuVisible) {
-                        sidebar.style.left = "0";
-                        menuToggle.style.left = "250px";
-                        menuVisible = true;
-                    } else {
-                        sidebar.style.left = "-500px";
-                        menuToggle.style.left = "20px";
-                        menuVisible = false;
-                    }
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
                 });
             });
         </script>
     </body>
 </html>
-

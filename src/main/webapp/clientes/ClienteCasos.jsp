@@ -18,12 +18,12 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="inicio_principal.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <a href="${pageContext.request.contextPath}/inicio_principal.jsp">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 <div class="user-menu">
-                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="menu">
                         <nav>
                             <ul>
-                                <li><a href="citas_clientes.jsp">| Agendar Citas |</a></li>
+                                <li><a href="InicioClientes.jsp">| Agendar Citas |</a></li>
                                 <li><a href="PromocionCliente.jsp">| Promociones |</a></li>
                                 <li><a href="ClienteServicios.jsp">| Servicios |</a></li>
                             </ul>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="imagenes/caso.jpg" alt="Error al cargar la imagen">
+                        <img src="${pageContext.request.contextPath}/imagenes/caso.jpg" alt="Error al cargar la imagen">
                     </div>
                 </section>
             </main>

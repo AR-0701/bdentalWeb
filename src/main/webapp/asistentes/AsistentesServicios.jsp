@@ -1,9 +1,3 @@
-<%-- 
-    Document   : AsistentesPromociones
-    Created on : 14/06/2024, 01:05:20 PM
-    Author     : wendy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,34 +17,40 @@
                         <li><a href="#">Principal</a></li>
                         <li><a href="#">Registrar citas a Clientes</a></li>
                         <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="AsistentesServicios.jsp">Servicios</a></li>
+                        <li><a href="AsistentesPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="inicio_principal.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <a href="index.jsp">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 
                 
             </header>
-              <main>
-            <section class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="imagenes/1.png" alt="Imagen 1">
+            <main>
+                <section class="about">
+                    <div class="text-content3">
+                        <div class="Titulo2">
+                            <h2>Servicios</h2>
+                        </div>
+                        <div class="parra3">
+                            <p>- Cirugía.</p>
+                            <p>- Blanqueamiento.</p>
+                            <p>- Blanqueamiento.</p>
+                            <p>- Odontología general.</p>
+                            <p>- Brackets.</p>
+                            <p>- Implantes.</p>
+                            <p>- Extracción.</p>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="imagenes/2.png" alt="Imagen 2">
+                    <div class="image-section">
+                        <img src="${pageContext.request.contextPath}/imagenes/servicio.png" alt="Error al cargar la imagen">
                     </div>
-                    <div class="carousel-item">
-                        <img src="imagenes/3.png" alt="Imagen 3">
-                    </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
             <footer>
                 <div class="footer-section location">
                     <h3>Ubicación:</h3>
@@ -88,3 +88,4 @@
         </script>
     </body>
 </html>
+

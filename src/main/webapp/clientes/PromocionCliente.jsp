@@ -18,20 +18,20 @@
     <div class="container">
         <header>
             <div class="logo2">
-                    <a href="inicio_principal.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <a href="inicioClientes.jsp">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
             <div class="user-menu">
-                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/index.jsp">Cerrar sesión</a>
                     </div>
                      </div>
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="citas_clientes.jsp">| Agendar Citas |</a></li>
+                        <li><a href="InicioClientes.jsp">| Agendar Citas |</a></li>
                         <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
                         <li><a href="ClienteServicios.jsp">| Servicios |</a></li>
                     </ul>
@@ -42,13 +42,13 @@
             <section class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-item">
-                        <img src="imagenes/1.png" alt="Imagen 1">
+                        <img src="${pageContext.request.contextPath}/imagenes/1.png" alt="Imagen 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="imagenes/2.png" alt="Imagen 2">
+                        <img src="${pageContext.request.contextPath}/imagenes/2.png" alt="Imagen 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="imagenes/3.png" alt="Imagen 3">
+                        <img src="${pageContext.request.contextPath}/imagenes/3.png" alt="Imagen 3">
                     </div>
                 </div>
             </section>

@@ -11,20 +11,20 @@
         <div class="principal">
             <div class="cabesera">
                 <div class="p1"><%--imagen con la letra--%>
-                    <img src="imagenes\logo.png">
+                    <img src="${pageContext.request.contextPath}/imagenes/logo.png">
                     <p>B - Dental</p>
                 </div><%--imagen con la letra--%>
                 <div class="p2">
-                    <img src="imagenes\cerrarsesion.png">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png">
                 </div>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="inicioclientes.jsp">Principal</a></li>
+                    <li><a href="InicioClientes.jsp">Principal</a></li>
                     <li><a href="ClienteCasos.jsp">Casos clinicos</a></li>
                     <li><a href="PromocionCliente.jsp">Promociones</a></li>
                     <li><a href="ClienteServicios.jsp">Servicios</a></li>
-                    <li><a href="citas_clientes.jsp">Agendar citas</a></li>
+                    <li><a href="InicioClientes.jsp">Agendar citas</a></li>
                 </ul>
             </div>
                 <div class="contenido_principal">
@@ -39,12 +39,12 @@
                         <div class="botones">
                             
                                 <div class="boton">
-                                    <a href="citas_1.jsp">
+                                    <a href="${pageContext.request.contextPath}/Agendar.jsp">
                                         <input type="submit" value="Agendar">
                                     </a>
                                 </div>
                                 <div class="boton">
-                                    <a href="consultar_cita_clientes.jsp">
+                                    <a href="#">
                                         <input type="submit" value="Consultar">
                                     </a>
                                 </div>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="derecha">
-                        <img src="imagenes/brayan.png" class="logo" alt="B - DENTAL">
+                        <img src="${pageContext.request.contextPath}/imagenes/brayan.png" class="logo" alt="B - DENTAL">
                     </div>
                 </div>
         </div>

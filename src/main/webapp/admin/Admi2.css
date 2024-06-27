@@ -227,6 +227,40 @@ footer {
     }
 }
 
+/* Promociones */
+
+.carousel {
+    min-height: 200px;
+    margin-top: -65px; /* Ajustar esta propiedad para mover el carrusel hacia arriba */
+}
+.carousel.carouse-item{
+    width: 200px;
+    height: 200px;
+   }
+ .carousel.carouse-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top:0;
+    left: 0;
+    border-radius: 0px;
+   }
+
+.carousel .indicators {
+    height: 40px;
+}
+.carousel .indicators .indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 24px 4px;
+    background-color: #00b3b3;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 50%;
+}
 
 
 /* Principal */

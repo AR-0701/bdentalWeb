@@ -46,13 +46,13 @@ public class SvLogin extends HttpServlet {
             //------------------Verificar Rol
             switch (user.getRol()) {
                 case "Administrador":
-                    response.sendRedirect("PrincipaAdmin.jsp");
+                    response.sendRedirect("admin/PrincipaAdmin.jsp");
                     break;
                 case "Asistente":
                     response.sendRedirect("PrincipalAsistente.jsp");
                     break;
                 case "Cliente":
-                    response.sendRedirect("pruebasAgendar.jsp");
+                    response.sendRedirect("clientes/InicioClientes.jsp");
                     break;
                 default:
                     response.sendRedirect("LoginError.jsp");

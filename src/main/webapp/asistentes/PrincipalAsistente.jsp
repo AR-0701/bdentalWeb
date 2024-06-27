@@ -12,11 +12,11 @@
             <header>
                 <div class="logo2">
                     <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 <div class="user-menu">
-                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
@@ -34,15 +34,9 @@
                     </ul>
                 </div>
             </header>
-            
-            
-            
-            
-            
-
             <main>
                 <section class="content">
-                    <img src="imagenes/n-removebg-preview.png" alt="Recepción">
+                    <img src="${pageContext.request.contextPath}/imagenes/n-removebg-preview.png" alt="Recepción">
                     <h1 id="textBPrincipa">¡Bienvenido!</h1>
                     <p>Juan Hernández Garcia</p>
                     <p>"Transformando Sonrisas"</p>
