@@ -11,48 +11,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B - DENTAL</title>
-    <link rel="stylesheet" href="cliente.css">
+    <title>Promociones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="citas_clientes1.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo2">
-                    <a href="inicioClientes.jsp">
+    <div class="Principal">
+            <header>
+                <div class="logo2">
+                    <a href="${pageContext.request.contextPath}/inicio_principal.jsp">
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
-            <div class="user-menu">
+                <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="${pageContext.request.contextPath}/index.jsp">Cerrar sesión</a>
+                        <a href="index.jsp">Cerrar sesión</a>
                     </div>
-                     </div>
-            <div class="menu">
-                <nav>
-                    <ul>
-                        <li><a href="InicioClientes.jsp">| Agendar Citas |</a></li>
-                        <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
-                        <li><a href="ClienteServicios.jsp">| Servicios |</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <section class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="${pageContext.request.contextPath}/imagenes/1.png" alt="Imagen 1">
+                </div>
+                <div class="menu">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span>&#9776;</span>
                     </div>
-                    <div class="carousel-item">
-                        <img src="${pageContext.request.contextPath}/imagenes/2.png" alt="Imagen 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="${pageContext.request.contextPath}/imagenes/3.png" alt="Imagen 3">
+                    <nav class="menu1" id="menu1">
+                        <ul>
+                            <li><a href="ClienteCasos.jsp">Casos clinicos</a></li>
+                            <li><a href="ClienteServicios.jsp">Servicios</a></li>
+                            <li><a href="InicioClientes.jsp">Agendar citas</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+       <section class="container1">
+                <div class="row">
+                    <div class="col s12" >
+                        <div class="carousel center-align" >
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/1.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/2.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/3.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/4.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/5.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/6.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/7.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}imagenes/8.png" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-        </main>
         <footer>
             <div class="footer-section location">
                 <h3>Ubicación:</h3>
@@ -76,7 +97,15 @@
                 userIcon.addEventListener("click", function () {
                     dropdownMenu.classList.toggle("show");
                 });
+                  var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
+
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
+                });
             });
             </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="script.js"></script>
 </body>
 </html>

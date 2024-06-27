@@ -5,32 +5,36 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL</title>
-        <link rel="stylesheet" href="cliente.css">
+        <title>Servicios</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="citas_clientes1.css">
     </head>
     <body>
-        <div class="container">
+        <div class="Principal">
             <header>
                 <div class="logo2">
-                    <a href="inicioCliente.jsp">
+                    <a href="${pageContext.request.contextPath}/inicio_principal.jsp">
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="${pageContext.request.contextPath}/index.jsp">Cerrar sesión</a>
+                        <a href="index.jsp">Cerrar sesión</a>
                     </div>
-                     </div>
-                    <div class="menu">
-                        <nav>
-                            <ul>
-                                <li><a href="InicioClientes.jsp">| Agendar Citas |</a></li>
-                                <li><a href="PromocionCliente.jsp">| Promociones |</a></li>
-                                <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
-                            </ul>
-                        </nav>
+                </div>
+                <div class="menu">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span>&#9776;</span>
                     </div>
+                    <nav class="menu1" id="menu1">
+                        <ul>
+                            <li><a href="ClienteCasos.jsp">Casos clinicos</a></li>
+                            <li><a href="PromocionCliente.jsp">Promociones</a></li>
+                            <li><a href="InicioClientes.jsp">Agendar citas</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
             <main>
                 <section class="about">

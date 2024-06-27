@@ -1,60 +1,81 @@
 <%@page import="codigo.citas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <link rel="stylesheet" href="citas_clientes1.css" type="text/css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clientes</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="citas_clientes1.css">
     </head>
     <body>
-        <div class="principal">
-            <div class="cabesera">
-                <div class="p1"><%--imagen con la letra--%>
-                    <img src="${pageContext.request.contextPath}/imagenes/logo.png">
-                    <p>B - Dental</p>
-                </div><%--imagen con la letra--%>
-                <div class="p2">
-                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png">
+        <div class="Principal">
+            <header>
+                <div class="logo2">
+                    <a href="${pageContext.request.contextPath}/inicio_principal.jsp">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    </a>
                 </div>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="InicioClientes.jsp">Principal</a></li>
-                    <li><a href="ClienteCasos.jsp">Casos clinicos</a></li>
-                    <li><a href="PromocionCliente.jsp">Promociones</a></li>
-                    <li><a href="ClienteServicios.jsp">Servicios</a></li>
-                    <li><a href="InicioClientes.jsp">Agendar citas</a></li>
-                </ul>
-            </div>
-                <div class="contenido_principal">
-                    <div class="izquierda">
-                        <div class="texto">
-                            <h1>¡ Bienvenido !</h1>
-                            <h3>A B - DENTAL</h3>
-                            <p>“Sonríe con confianza, cuidamos</p>
-                            <p>de tu salud dental.” Agenda tu cita</p>
-                            <p>en nuestro consultorio dental.</p>
-                        </div>
-                        <div class="botones">
-                            
-                                <div class="boton">
-                                    <a href="${pageContext.request.contextPath}/Agendar.jsp">
-                                        <input type="submit" value="Agendar">
-                                    </a>
-                                </div>
-                                <div class="boton">
-                                    <a href="#">
-                                        <input type="submit" value="Consultar">
-                                    </a>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="derecha">
-                        <img src="${pageContext.request.contextPath}/imagenes/brayan.png" class="logo" alt="B - DENTAL">
+                <div class="user-menu">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="index.jsp">Cerrar sesión</a>
                     </div>
                 </div>
+                <div class="menu">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span>&#9776;</span>
+                    </div>
+                    <nav class="menu1" id="menu1">
+                        <ul>
+                            <li><a href="ClienteCasos.jsp">Casos clinicos</a></li>
+                            <li><a href="PromocionCliente.jsp">Promociones</a></li>
+                            <li><a href="ClienteServicios.jsp">Servicios</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <section class="about">
+                    <div class="text-content">
+                        <div class="Titulo">
+                            <h2>¡Bienvenido!</h2>
+                        </div>
+                        <div class="eslogan">
+                            <h3>A B-DENTAL</h3>
+                        </div>
+                        <div class="parra">
+                            <p>Sonrrie con confianza, cuidamos
+                                de tu salud dental. Agenda tu cita
+                                en nuestro consultorio dental.</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="login.jsp" class="login-button">Agendar</a>
+                            <a href="login.jsp" class="login-button">Consultar</a>
+                        </div>
+                    </div>
+                    <div class="image-section">
+                        <img src="${pageContext.request.contextPath}imagenes/brayan.png" alt="Dentist with a child">
+                    </div>
+                </section>
+            </main>
         </div>
+        <script >
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuToggle = document.getElementById('menuToggle');
+                const menu1 = document.querySelector('.menu1');
+
+                menuToggle.addEventListener('click', function () {
+                    menu1.classList.toggle('show');
+                });
+                 var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
+
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
+                });
+            });
+        </script>
     </body>
 </html>
