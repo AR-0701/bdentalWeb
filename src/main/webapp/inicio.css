@@ -56,7 +56,7 @@ header {
   display: flex;
     align-items: center;
     justify-content: center; /* Centrar elementos verticalmente */
-    flex-direction: row; /* Cambiar a disposición horizontal */
+    flex-direction: row; /* Cambiar a disposiciï¿½n horizontal */
     box-shadow: none;
   background-color: white;/* Ajustar color de fondo */
   
@@ -80,7 +80,7 @@ header {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    transition: color 0.3s; /* Transición suave para el cambio de color */
+    transition: color 0.3s; /* Transiciï¿½n suave para el cambio de color */
 }
 
 .menu1 ul li a:hover {
@@ -89,7 +89,7 @@ header {
 
 @media (max-width: 768px) {
      .menu {
-        justify-content: flex-end; /* Alinear a la derecha para pantallas pequeñas */
+        justify-content: flex-end; /* Alinear a la derecha para pantallas pequeï¿½as */
     }
     .menu1 {
         display: none;
@@ -130,7 +130,7 @@ header {
         display: block;
         width: 100%;
         font-size: 0.8rem;
-     transition: color 0.3s; /* Transición suave para el cambio de color */
+     transition: color 0.3s; /* Transiciï¿½n suave para el cambio de color */
 }
 
 .menu1 ul li a:hover {
@@ -155,7 +155,7 @@ header {
 }
 
 .text-content.Titulo h2 {
-    font-size: 30px;
+    font-size: 23px;
     margin-top: 0;
 }
 .eslogan h3 {
@@ -206,13 +206,30 @@ footer {
 
 .footer-section {
     flex: 1;
-    padding: 30px;
+    padding: 10px;
     box-sizing: border-box;
     text-align: center;
 }
+
 .footer-section h3 {
-    font-size: 15px;
+    font-size: 22px;
 }
+
+ a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+ a:hover{
+    text-decoration: underline;
+}
+
+
+.footer-section p {
+    font-size: 16px;
+}
+
 .footer-section.location {
     background-color: #00a2b2;
 }
@@ -223,7 +240,7 @@ footer {
 
 .footer-section.legal {
     background-color: #b2dfdb;
-    text-align: left;
+    text-align: center;
     font-size: 12px;
 }
 
@@ -240,7 +257,7 @@ footer {
 }
 
 .m1 {
-    padding: 10px;
+    padding: 5px;
 }
 
 /*casos clinicos interfaz */

@@ -5,7 +5,7 @@
         <meta name="viewport" 
               content="width=device-width, initial-scale=1.0">
         <title>B - DENTAL</title>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="inicio.css">
     </head>
     <body>
@@ -16,7 +16,7 @@
                         <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>             
-               <div class="menu">
+                <div class="menu">
                     <div class="menu-toggle" id="menuToggle">
                         <span>&#9776;</span>
                     </div>
@@ -62,7 +62,10 @@
                     <p>bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
-                    <p>Los contenidos publicados por InboundCycle - Agencia de Inbound Marketing están elaborados y supervisados por un equipo de expertos en marketing y ventas con el objetivo de proporcionar a los usuarios información del sector veraz y actualizada. El uso de esta página web está sujeto a nuestro aviso legal, nuestra política de privacidad y nuestra política de cookies. InboundCycle © 2024.</p>
+                    <h3>Manual de usuario:</h3>
+                    <p>
+                        <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                    </p>
                 </div>
             </footer>
         </div>

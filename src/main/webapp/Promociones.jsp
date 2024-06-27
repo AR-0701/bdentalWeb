@@ -72,8 +72,10 @@
                     <p>bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
-                     <h3>Manual de usuario:</h3>
-                    <p>scb</p>
+                    <h3>Manual de usuario:</h3>
+                    <p>
+                        <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                    </p>
                 </div>
             </footer>
         </div>
