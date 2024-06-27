@@ -7,7 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.citas;
@@ -142,7 +145,63 @@ public class citasJpaController implements Serializable {
             em.close();
         }
     }
-    
-    
 
+    public boolean existeCita(int idCliente, Date fecha) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT COUNT(c) FROM citas c WHERE c.cliente.idCliente = :idCliente AND c.dia = :idDia");
+            query.setParameter("idCliente", idCliente);
+            query.setParameter("idDia", fecha);
+            Long count = (Long) query.getSingleResult();
+            return count > 0;
+        } catch (NoResultException e) {
+            return false;
+        } finally {
+            em.close();
+        }
+    }
+
+    public Date getUltimaFechaCita(int idCliente) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT MAX(c.dia) FROM citas c WHERE c.cliente.idCliente = :idCliente");
+            query.setParameter("idCliente", idCliente);
+            return (Date) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null; // Si no hay citas registradas para el cliente
+        } finally {
+            em.close();
+        }
+
+    }
+
+    public Date getFechaUltimaCita(int idCliente) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Date> query = em.createQuery(
+                    "SELECT MAX(c.dia) FROM citas c WHERE c.cliente.idCliente = :idCliente",
+                    Date.class
+            );
+            query.setParameter("idCliente", idCliente);
+            List<Date> results = query.getResultList();
+            return results.isEmpty() ? null : results.get(0);
+        } finally {
+            em.close();
+        }
+    }
+
+    public boolean existeCitaParaCliente(int idCliente) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Long> query = em.createQuery(
+                    "SELECT COUNT(c) FROM citas c WHERE  c.cliente.idCliente = :idCliente",
+                    Long.class
+            );
+            query.setParameter("idCliente", idCliente);
+            Long count = query.getSingleResult();
+            return count > 0;
+        } finally {
+            em.close();
+        }
+    }
 }

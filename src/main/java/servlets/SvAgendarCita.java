@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,11 +19,13 @@ import logica.citas;
 import logica.clientes;
 import logica.horarios;
 import logica.usuarios;
+import persistencia.citasJpaController;
 
 @WebServlet(name = "SvAgendarCita", urlPatterns = {"/SvAgendarCita"})
 public class SvAgendarCita extends HttpServlet {
 
     Controladora control = new Controladora();
+    citasJpaController citas = new citasJpaController();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
@@ -64,6 +68,20 @@ public class SvAgendarCita extends HttpServlet {
         // Obtener el objeto horario correspondiente
         horarios horarioObj = control.obtenerIDPorFecha(fecha);
 
+        // Comprobar si ya existe una cita en la fecha seleccionada
+        Date ultimaFechaCita = citas.getFechaUltimaCita(idCliente);
+        LocalDate hoy = LocalDate.now();
+
+        if (ultimaFechaCita != null) {
+            LocalDate fechaUltimaCita = ultimaFechaCita.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            if (!fechaUltimaCita.isBefore(hoy)) {
+                // Ya existe una cita para este cliente y la fecha no ha pasado
+                response.sendError(HttpServletResponse.SC_CONFLICT, "Ya existe una cita programada para esta fecha.");
+                return;
+            }
+        }
+
         // Crear la nueva cita
         citas nuevaCita = new citas();
         nuevaCita.setHorario(horario);
@@ -77,6 +95,7 @@ public class SvAgendarCita extends HttpServlet {
 
         // Redirigir a la página de confirmación o a la misma página con un mensaje de éxito
         response.sendRedirect("confirmacionCita.jsp");
+
     }
 
     @Override

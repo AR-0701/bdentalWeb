@@ -33,7 +33,7 @@
                     <ul>
                         <li><a href="PrincipaAdmin.jsp">Principal</a></li>
                         <li><a href="#">Registrar citas a Clientes</a></li>
-                        <li><a href="#">Consulta del registro de citas</a></li>
+                        <li><a href="${pageContext.request.contextPath}/mCitas">Consulta del registro de citas</a></li>
                         <li><a href="mHorarios.jsp">Modificar Horarios</a></li>
                         <li><a href="RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
                         <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
