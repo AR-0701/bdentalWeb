@@ -1,4 +1,4 @@
-html, body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,46 +10,45 @@ body {
     padding-top: 40px;
 }
 
-.container {
-    width: 80%;
+.Principal {
     max-width: 1200px;
-    margin: 2px auto;
+    margin: 20px auto;
     background-color: white;
-    padding: -4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 header {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 10px;
+    flex-wrap: wrap;
 }
 
-
 .logo2 {
-    display: flex;
-    justify-content: flex-start;
-    max-width: 100%;
+    flex: 1;
 }
 
 .logo2 img {
-    height: 60px;
-    margin-bottom: 20px;
+    height: 70px;
 }
-/*//Crerar sesiòn//*/
+
 .user-menu {
     display: flex;
     align-items: center;
+    margin-left: auto;
     position: relative;
 }
 
 .user-icon {
     height: 60px;
     cursor: pointer;
-}
+    margin-right: 20px; /* Añade un margen derecho para moverla a la izquierda */
+    position: relative; /* Asegúrate de que la posición es relativa si vas a usar 'left' */
+    left: -20px; /* Ajusta este valor para mover la imagen más a la izquierda */
 
+}
 
 .dropdown-menu {
     display: none;
@@ -73,39 +72,120 @@ header {
     display: block;
 }
 
-/*//Menu de clientes//*/
+
 .menu {
+    
+    display: flex;
+    justify-content: center;
     width: 100%;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
-    display: flex;
-    justify-content: center;
-    padding: 1px 0;
+
 }
 
-.menu nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 90px;
-    flex-wrap: wrap;
-    justify-content: center;
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-.menu nav ul li a {
+.menu1 {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+border: 0.4vh solid black;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: none;
+    background-color: white;
+}
+
+.menu1 ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu1 ul li {
+    margin: 0 10px;
+    font-size: 0.2px;
+    width: auto;
+  
+}
+
+.menu1 ul li a {
     text-decoration: none;
     color: black;
-    font-weight: bold;
+    border-right: .1vh solid black; /* Línea superior */
+    border-left: .1vh solid black; /* Línea inferior */
+    font-size: 24px;
+transition: color 0.3s;
 }
+.menu1 ul li a:hover {
+    color: #00a2b2; /* Cambia el color del texto al pasar el puntero */
+}
+
+@media (max-width: 768px) {
+     .menu {
+        justify-content: flex-end; /* Alinear a la derecha para pantallas peque�as */
+    }
+    .menu1 {
+        display: none;
+        border: none;
+        flex-direction: column;
+        width: 200px;
+        height: auto;
+        position: absolute;
+        top:auto;
+        right: 50px;
+        background-color: #80cbc4;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu1.show {
+        display: flex;
+    }
+
+    .menu1 ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    
+    }
+
+    .menu1 ul li {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        border-bottom: 1px solid #0a0a0a;
+    }
+
+    .menu1 ul li a {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        border: 0.1vh solid black;
+     transition: color 0.3s; /* Transici�n suave para el cambio de color */
+}
+
+.menu1 ul li a:hover {
+    color: #00a2b2; /* Cambia el color del texto al pasar el puntero */
+}
+}
+
 
 .about {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    justify-content: space-around; /* Ajuste para pantallas más pequeñas */
-    padding: 10px; 
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    padding: 5px 10px; /* Reduce el padding superior */
 }
+
 
 .text-content2 {
     flex: 1;

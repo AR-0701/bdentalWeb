@@ -37,7 +37,18 @@ public class svElliminarCita extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-  
+        int idCita = Integer.parseInt(request.getParameter("idCita"));
+
+        // Llamar al controlador JPA para eliminar la cita
+        try {
+            citasController.destroy(idCita);
+            // Redirigir a una página de éxito o a la lista de citas actualizada
+            response.sendRedirect("SvModificarCita"); // Cambia esto al destino deseado
+        } catch (Exception ex) {
+            // Manejo de errores - puedes redirigir a una página de error
+            response.sendRedirect("error.jsp"); // Página de error personalizada
+        }
+
     }
 
     @Override

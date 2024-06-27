@@ -204,4 +204,21 @@ public class citasJpaController implements Serializable {
             em.close();
         }
     }
+
+    public citas findUltimaCitaByCliente(int idCliente) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<citas> query = em.createQuery(
+                    "SELECT c FROM citas c WHERE c.cliente.idCliente = :idCliente ORDER BY c.dia DESC, c.horario DESC",
+                    citas.class
+            );
+            query.setParameter("idCliente", idCliente);
+            query.setMaxResults(1);  // Limitamos el resultado a una sola cita
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null; // No hay citas registradas para el cliente
+        } finally {
+            em.close();
+        }
+    }
 }

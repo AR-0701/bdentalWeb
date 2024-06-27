@@ -51,13 +51,13 @@
                                 en nuestro consultorio dental.</p>
                         </div>
                         <div class="button-container">
-                            <a href="login.jsp" class="login-button">Agendar</a>
-                            <a href="login.jsp" class="login-button">Consultar</a>
+                            <a href="${pageContext.request.contextPath}/Agendar.jsp" class="login-button">Agendar</a>
+                            <a href="${pageContext.request.contextPath}/SvModificarCita" class="login-button">Consultar</a>
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="${pageContext.request.contextPath}imagenes/brayan.png" alt="Dentist with a child">
-                    </div>
+                        <img src="${pageContext.request.contextPath}/imagenes/brayan.png" alt="Dentist with a child">
+                    </div>  
                 </section>
             </main>
         </div>

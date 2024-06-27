@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promociones</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="citas_clientes1.css">
+    <link rel="stylesheet" href="cliente.css">
 </head>
 <body>
     <div class="Principal">
@@ -47,28 +47,28 @@
                     <div class="col s12" >
                         <div class="carousel center-align" >
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/1.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/1.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/2.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/2.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/3.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/3.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/4.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/4.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/5.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/5.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/6.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/6.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/7.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/7.png" alt="">
                             </div>
                             <div class="carousel-item" >
-                                <image src ="${pageContext.request.contextPath}imagenes/8.png" alt="">
+                                <image src ="${pageContext.request.contextPath}/imagenes/8.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,10 @@
                 <p>Correo: bdentaly@gmail.com</p>
             </div>
             <div class="footer-section legal">
-                <p>Los contenidos publicados por InboundCycle - Agencia de Inbound Marketing están elaborados y supervisados por un equipo de expertos en marketing y ventas con el objetivo de proporcionar a los usuarios información del sector veraz y actualizada. El uso de esta página web está sujeto a nuestro aviso legal, nuestra política de privacidad y nuestra política de cookies. InboundCycle © 2024.</p>
+                <h3>Manual de usuario:</h3>
+                <h3>
+                    <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                </h3>
             </div>
         </footer>
     </div>
@@ -106,6 +109,6 @@
             });
             </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="script.js"></script>
+        <script src="${pageContext.request.contextPath}/script.js"></script>
 </body>
 </html>

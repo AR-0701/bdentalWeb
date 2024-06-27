@@ -150,4 +150,8 @@ public class controladoraPersistencia {
     public Date getUltimaFechaCita(int idCliente) {
         return citas.getUltimaFechaCita(idCliente);
     }
+
+    public citas obtenerUltimaCitaPorCliente(int idCliente) {
+        return citas.findUltimaCitaByCliente(idCliente);
+    }
 }

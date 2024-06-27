@@ -144,5 +144,30 @@ public class clientesJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public clientes findIdClienteByUsuario(int idUsuario) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM clientes c WHERE c.usuario.idUsuario = :idUsuario");
+            query.setParameter("idUsuario", idUsuario);
+            return (clientes) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    public int getIdClienteByIdUsuario(int idUsuario) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c.idCliente FROM clientes c WHERE c.usuario.idUsuario = :idUsuario");
+            query.setParameter("idUsuario", idUsuario);
+            return (int) query.getSingleResult();
+        } catch (NoResultException e) {
+            return -1; // O maneja el caso según tu lógica de negocio
+        } finally {
+            em.close();
+        }
+    }
 }
