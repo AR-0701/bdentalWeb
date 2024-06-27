@@ -244,6 +244,7 @@ footer {
 }
 
 /*casos clinicos interfaz */
+
 .text-content2 {
     flex: 1;
     min-width: 300px;
@@ -264,6 +265,7 @@ footer {
     margin: 5px -10px;
     width: 142%;
 }
+
 .parra2 p {
     font-size: 14px;
     color: black;
@@ -271,7 +273,57 @@ footer {
     width: 142%;
 }
 
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+    .text-content2 {
+        padding: 6px 40px;
+        margin-right: -8px;
+    }
+
+    .Titulo1 h2 {
+        font-size: 26px;
+    }
+
+    .parra1 p, .parra2 p {
+        width: 120%;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-content2 {
+        padding: 6px 30px;
+        margin-right: -5px;
+    }
+
+    .Titulo1 h2 {
+        font-size: 24px;
+    }
+
+    .parra1 p, .parra2 p {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-content2 {
+        padding: 6px 20px;
+        margin-right: 0;
+    }
+
+    .Titulo1 h2 {
+        font-size: 20px;
+    }
+
+    .parra1 p, .parra2 p {
+        font-size: 12px;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
 /*Servicos*/
+
 .image-section {
     flex: 1 1 40%;
     text-align: right;
@@ -292,7 +344,7 @@ footer {
 }
 
 .Titulo2 h2 {
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 5px;
     color: black;
     text-align: center;
@@ -303,6 +355,83 @@ footer {
     color: black;
     margin: 15px -12px;
     width: 250%;
+}
+
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+    .image-section {
+        text-align: center;
+    }
+
+    .image-section img {
+        width: 70%;
+        margin: 0;
+    }
+
+    .text-content3 {
+        padding: 20px 50px;
+        margin-right: 0;
+    }
+
+    .parra3 p {
+        width: 200%;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-section {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .image-section img {
+        width: 80%;
+        margin: 0;
+        padding: 0px 10px;
+    }
+
+    .text-content3 {
+        padding: 20px 30px;
+        margin-right: 0;
+    }
+
+    .Titulo2 h2 {
+        font-size: 18px;
+    }
+
+    .parra3 p {
+        font-size: 16px;
+        width: 150%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-section {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .image-section img {
+        width: 90%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .text-content3 {
+        padding: 15px 20px;
+        margin-right: 0;
+    }
+
+    .Titulo2 h2 {
+        font-size: 16px;
+    }
+
+    .parra3 p {
+        font-size: 14px;
+        width: 100%;
+        margin: 10px 0;
+    }
 }
 
 /*estilos de materialice*/
