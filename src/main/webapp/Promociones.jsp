@@ -1,57 +1,65 @@
 
 <!DOCTYPE html>
-
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL</title>
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0">
+        <title>Promociones</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="inicio.css">
     </head>
     <body>
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="index.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
-                    </a>
+                    <img src="imagenes/loogo.png" class="logo" alt="No carga la imagen">
                 </div>
                 <div class="menu">
-                    <nav>
+                    <div class="menu-toggle" id="menuToggle">
+                        <span>&#9776;</span>
+                    </div>
+                    <nav class="menu1" id="menu1">
                         <ul>
-                            <li><a href="index.jsp">| Agendar Citas |</a></li>
-                            <li><a href="ClienteCasos.jsp">| Casos Clinicos |</a></li>
+                            <li><a href="index.jsp">| Principal |</a></li>
+                            <li><a href="Casos_clinicos.jsp">| Casos Clínicos |</a></li>
                             <li><a href="Servicios.jsp">| Servicios |</a></li>
                         </ul>
                     </nav>
                 </div>
             </header>
-            <main>
-                <section class="container">
-                    <div class="row">
-                        <div class="col s12" >
-                            <div class="carousel center-align" >
-
-                                <div class="carousel-item" >
-                                    <image src ="imagenes/1.png" alt="">
-                                </div>
-
-                                <div class="carousel-item" >
-                                    <image src ="imagenes/2.png" alt="">
-                                </div>
-
-                                <div class="carousel-item" >
-                                    <image src ="imagenes/3.png" alt="">
-                                </div>
-
-
+            <section class="container1">
+                <div class="row">
+                    <div class="col s12" >
+                        <div class="carousel center-align" >
+                            <div class="carousel-item" >
+                                <image src ="imagenes/1.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/2.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/3.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/4.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/5.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/6.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/7.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="imagenes/8.png" alt="">
                             </div>
                         </div>
-
                     </div>
-                </section>
-            </main>
-
+                </div>
+            </section>
             <footer>
                 <div class="footer-section location">
                     <h3>Ubicación:</h3>
@@ -64,10 +72,23 @@
                     <p>bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
-                    <p>Los contenidos publicados por InboundCycle - Agencia de Inbound Marketing están elaborados y supervisados por un equipo de expertos en marketing y ventas con el objetivo de proporcionar a los usuarios información del sector veraz y actualizada. El uso de esta página web está sujeto a nuestro aviso legal, nuestra política de privacidad y nuestra política de cookies. InboundCycle © 2024.</p>
+                     <h3>Manual de usuario:</h3>
+                    <p>scb</p>
                 </div>
             </footer>
         </div>
+        <script >
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuToggle = document.getElementById('menuToggle');
+                const menu1 = document.querySelector('.menu1');
+
+                menuToggle.addEventListener('click', function () {
+                    menu1.classList.toggle('show');
+                });
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="script.js"></script>
+
     </body>
 </html>
