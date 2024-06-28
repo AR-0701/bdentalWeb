@@ -11,12 +11,13 @@
             body {
                 font-family: Arial, sans-serif;
                 background-color: #00b3b3;
-                padding-top: 40px;
+                margin: 0;
+                padding: 0;
             }
             .container {
                 width: 80%;
                 max-width: 1200px;
-                margin: 0 auto;
+                margin: 20px auto;
                 background-color: #fff;
                 padding: 20px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -24,24 +25,22 @@
             .header {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex-start;
                 padding-bottom: 10px;
-                flex-wrap: wrap;
             }
-            .header .logo {
-                flex: 1;
+
+
+            .header.logo img {
+                height: 80px;
             }
-            .header .logo img {
-                height: 70px;
-            }
-            .user-menu {
-                flex:1;
+            .header .user-menu {
+                display: flex;
                 align-items: center;
-                margin-left: 300px;
+                margin-left: auto;
                 position: relative;
             }
 
-            .user-icon {
+            .header .user-icon {
                 height: 60px;
                 cursor: pointer;
                 margin-right: 20px; /* Añade un margen derecho para moverla a la izquierda */
@@ -72,15 +71,6 @@
                 display: block;
             }
 
-            .header .logout {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                transition: color 0.3s;
-            }
-            .header .logout:hover {
-                color: #f8f9fa;
-            }
             .content {
                 display: flex;
                 padding: 20px;
@@ -90,15 +80,16 @@
                 margin-right: 20px;
             }
             .form-group {
-                margin-bottom: 12px;
+                margin-bottom: 11px;
             }
             .form-group label {
                 display: block;
                 font-weight: bold;
+                margin-top: 12px;
                 margin-bottom: 12px;
             }
             .form-group input[type="text"], .form-group input[type="email"], .form-group select {
-                width: 100%;
+                width: 50%;
                 padding: 8px;
                 font-size: 14px;
                 border: 1px solid #ddd;
@@ -156,13 +147,44 @@
             .ui-datepicker-calendar .ui-state-disabled span {
                 background-color: transparent !important; /* Asegura que el fondo sea transparente */
             }
+            .fecha-seleccionada {
+                font-weight: bold; /* Hace que el texto sea negrita */
+
+                font-size: 16px; /* Ajusta el tamaño de la fuente */
+                margin-top: 12px; /* Añade margen superior */
+                margin-bottom: 15px; /* Añade margen inferior */
+                padding: 5px; /* Añade padding */
+            } 
+            #agendarCitaForm input[type="text"] {
+                width: 50%;
+                padding: 8px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                box-sizing: border-box;
+                margin-top: 12px;
+                margin-bottom: 12px;
+            }
+            #agendarCitaForm button {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+            }
+            #agendarCitaForm button:hover {
+                background-color: #0056b3;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <img src="imagenes/loogo.png" alt="Logo">
+                    <img src="imagenes/loogo.jpg" alt="Logo">
                 </div>
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
@@ -192,7 +214,8 @@
                                 </select>
                                 <label for="idCliente">Cliente:</label>
                                 <input type="text" id="idCliente" name="idCliente" readonly>
-                                <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
+
+                                <p class="fecha-seleccionada">Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                             </div>
                             <div class="button">
                                 <input type="submit" value="Agendar Cita">
