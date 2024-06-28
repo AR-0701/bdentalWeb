@@ -10,9 +10,8 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
-                margin: 0;
-                padding: 0;
+                background-color: #00b3b3;
+                padding-top: 40px;
             }
             .container {
                 width: 80%;
@@ -24,24 +23,55 @@
             }
             .header {
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                padding: 10px;
-                background-color: #007bff;
-                color: #fff;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                flex-wrap: wrap;
             }
             .header .logo {
-                display: flex;
-                align-items: center;
+                flex: 1;
             }
             .header .logo img {
-                max-width: 50px;
-                margin-right: 10px;
+                height: 70px;
             }
-            .header .logo h1 {
-                font-size: 1.5rem;
-                margin: 0;
+            .user-menu {
+                flex:1;
+                align-items: center;
+                margin-left: 300px;
+                position: relative;
             }
+
+            .user-icon {
+                height: 60px;
+                cursor: pointer;
+                margin-right: 20px; /* Añade un margen derecho para moverla a la izquierda */
+                position: relative; /* Asegúrate de que la posición es relativa si vas a usar 'left' */
+                left: -20px; /* Ajusta este valor para mover la imagen más a la izquierda */
+
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 5px;
+                background-color: white;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 200px; /* Ajusta el ancho según sea necesario */
+            }
+
+            .dropdown-menu a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #000;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
             .header .logout {
                 text-decoration: none;
                 color: #fff;
@@ -60,12 +90,12 @@
                 margin-right: 20px;
             }
             .form-group {
-                margin-bottom: 20px;
+                margin-bottom: 12px;
             }
             .form-group label {
                 display: block;
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 12px;
             }
             .form-group input[type="text"], .form-group input[type="email"], .form-group select {
                 width: 100%;
@@ -134,12 +164,14 @@
                 <div class="logo">
                     <img src="imagenes/loogo.png" alt="Logo">
                 </div>
-                <a class="logout" href="logout.jsp">Cerrar Sesión</a>
+                <div class="logo2">
+                    <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="Iniciio de sesion">
+                    </a>
+                </div>
             </div>
             <div class="content">
                 <div class="form-container">
                     <h2>Agendar Citas</h2>
-
                     <div class="form-group">
                         <label for="nombreCompleto">Nombre completo:</label>
                         <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
@@ -294,6 +326,15 @@
                                     }
                                 });
                             });
+        </script>
+         <script >
+            document.addEventListener('DOMContentLoaded', function () {
+                 var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
+                });
+            });
         </script>
     </body>
 </html>
