@@ -61,6 +61,7 @@ public class SvAgendarCita extends HttpServlet {
         // Obtener el usuario que inició sesión
         HttpSession session = request.getSession();
         usuarios usuarioSesion = (usuarios) session.getAttribute("usuario");
+        System.out.println("el id usuario es"+(usuarios) session.getAttribute("usuario"));
 
         // Obtener el cliente especificado en el formulario
         clientes cliente = control.obtenerClientePorId(idCliente);

@@ -160,30 +160,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script>
-            function buscarCliente() {
-                var nombreCompleto = document.getElementById("nombreCompleto").value;
-                console.log(`Buscando cliente con nombre: ${nombreCompleto}`);
-                fetch(`SvBuscarCliente?nombreCompleto=${nombreCompleto}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Datos recibidos:', data);
-                            if (data.idCliente) {
-                                var inputIdCliente = document.getElementById("idCliente");
-                                inputIdCliente.value = data.idCliente;
-                            } else {
-                                alert("Cliente no encontrado");
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert("Ocurrió un error al buscar el cliente");
-                        });
-            }
 
             $(document).ready(function () {
                 var fechaSeleccionadaInput = $('#datepicker');

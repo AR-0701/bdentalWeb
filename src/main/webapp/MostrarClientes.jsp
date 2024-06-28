@@ -115,7 +115,12 @@
                 document.querySelectorAll('.agendarCitaBtn').forEach(button => {
                     button.addEventListener('click', function () {
                         var idCliente = this.getAttribute('data-id');
-                        window.location.href = `AgendarCllentesAsis.jsp?idCliente=${idCliente}`;
+                        console.log("ID Cliente seleccionado:", idCliente); // Imprimir el ID en la consola para depuración
+                        if (idCliente) {
+                            window.location.href = `AgendarCllentesAsis.jsp?idCliente=${idCliente}`;
+                        } else {
+                            console.error("ID Cliente no encontrado");
+                        }
                     });
                 });
             });
