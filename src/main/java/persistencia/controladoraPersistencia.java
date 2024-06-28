@@ -46,6 +46,8 @@ public class controladoraPersistencia {
     public List<asistentes> obtenerAsistentes() {
         return asist.findasistentesEntities();
     }
+    
+    
 
     public List<usuarios> getUsuarios() {
         return usuarios.findusuariosEntities();
@@ -153,5 +155,9 @@ public class controladoraPersistencia {
 
     public citas obtenerUltimaCitaPorCliente(int idCliente) {
         return citas.findUltimaCitaByCliente(idCliente);
+    }
+    
+        public List<clientes> obtenerClientes() {
+        return clientes.findclientesEntities();
     }
 }
