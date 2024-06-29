@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>B - DENTAL - Principal</title>
+        <title>B - DENTA-Administrador</title>
         <link rel="stylesheet" href="Admi2.css">
     </head>
     <body>
@@ -42,7 +42,7 @@
                 <section class="content">
                     <img src="${pageContext.request.contextPath}/imagenes/n-removebg-preview.png" alt="Recepción">
                     <h1 id="textBPrincipa">¡Bienvenido!</h1>
-                    <p>Juan Hernández Garcia</p>
+                    <p>Brayan Cespedes Tecomalman</p>
                     <p>"Transformando Sonrisas"</p>
                 </section>
             </main>
@@ -58,7 +58,10 @@
                     <p>bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
-                    <p>Los contenidos publicados por InboundCycle - Agencia de Inbound Marketing están elaborados y supervisados por un equipo de expertos en marketing y ventas con el objetivo de proporcionar a los usuarios información del sector veraz y actualizada. El uso de esta página web está sujeto a nuestro aviso legal, nuestra política de privacidad y nuestra política de cookies. InboundCycle © 2024.</p>
+                    <h3>Manual de usuario:</h3>
+                    <h3>
+                        <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                    </h3>
                 </div>
             </footer>
         </div>

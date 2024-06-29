@@ -122,7 +122,7 @@ header {
 }
 
 .Titulo2 h2 {
-    font-size: 35px;
+    font-size: 30px;
     margin-top: 5px;
     color: black;
     text-align: center;
@@ -160,6 +160,24 @@ footer {
     box-sizing: border-box;
     text-align: center;
 }
+.footer-section h3 {
+    font-size: 22px;
+}
+
+ a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+ a:hover{
+    text-decoration: underline;
+}
+
+
+.footer-section p {
+    font-size: 16px;
+}
 
 .footer-section.location {
     background-color: #00a2b2;
@@ -171,8 +189,7 @@ footer {
 
 .footer-section.legal {
     background-color: #b2dfdb;
-    text-align: left;
-    font-size: 12px;
+
 }
 
 .footer-section .icon {
@@ -269,13 +286,24 @@ footer {
 #textBPrincipa {
     font-family: Arial, sans-serif;
     font-size: 60px;
-    margin-left: 100px;
+    margin-left: 7%;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .content p {
-    margin-left: 100px;
+    margin-left: 15%;
     font-size: 20px;
 }
 
 /*ver asistentes*/
+#nombreCompleto {
+    width: 50%;
+    max-width: 199px;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 5px; /* Ajusta el valor según sea necesario */
+    border: 0px solid #ccc;
+    font-size: 18px;
+    margin-left: 15%;
+}
