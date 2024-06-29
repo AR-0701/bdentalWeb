@@ -161,6 +161,24 @@ footer {
     text-align: center;
 }
 
+.footer-section h3 {
+    font-size: 22px;
+}
+
+ a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+ a:hover{
+    text-decoration: underline;
+}
+
+
+.footer-section p {
+    font-size: 16px;
+}
 .footer-section.location {
     background-color: #00a2b2;
 }
@@ -171,8 +189,8 @@ footer {
 
 .footer-section.legal {
     background-color: #b2dfdb;
-    text-align: left;
-    font-size: 12px;
+text-align: center;
+
 }
 
 .footer-section .icon {
