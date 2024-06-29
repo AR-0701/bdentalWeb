@@ -15,6 +15,11 @@
     <body>
         <div class="container">
             <header>
+                <div class="logo2">
+                    <a href="PrincipaAdmin.jsp">
+                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    </a>
+                </div>
                 <!-- Encabezado de la página -->
             </header>
             <main class="main">
