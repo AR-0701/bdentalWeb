@@ -25,8 +25,9 @@
             .header {
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: space-between;
                 padding-bottom: 10px;
+                flex-wrap: wrap;
             }
 
 
@@ -74,6 +75,7 @@
             .content {
                 display: flex;
                 padding: 20px;
+                margin-top: 20px;
             }
             .form-container {
                 flex: 1;
@@ -89,7 +91,7 @@
                 margin-bottom: 12px;
             }
             .form-group input[type="text"], .form-group input[type="email"], .form-group select {
-                width: 50%;
+                width: 100%;
                 padding: 8px;
                 font-size: 14px;
                 border: 1px solid #ddd;
@@ -149,10 +151,9 @@
             }
             .fecha-seleccionada {
                 font-weight: bold; /* Hace que el texto sea negrita */
-
                 font-size: 16px; /* Ajusta el tamaño de la fuente */
                 margin-top: 12px; /* Añade margen superior */
-                margin-bottom: 15px; /* Añade margen inferior */
+                margin-bottom: 12px;
                 padding: 5px; /* Añade padding */
             } 
             #agendarCitaForm input[type="text"] {
