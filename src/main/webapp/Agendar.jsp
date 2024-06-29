@@ -185,7 +185,7 @@
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <img src="imagenes/loogo.jpg" alt="Logo">
+                    <img src="imagenes/loogo.png" alt="Logo">
                 </div>
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
