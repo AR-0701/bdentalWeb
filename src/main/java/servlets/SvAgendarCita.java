@@ -43,7 +43,7 @@ public class SvAgendarCita extends HttpServlet {
         // Obtener parámetros del formulario
         String fechaStr = request.getParameter("fechaSeleccionada");
         String horarioStr = request.getParameter("hora");
-        String idClienteStr = request.getParameter("idCliente"); // Nuevo campo para ID del cliente
+        String idClienteStr = request.getParameter("idCli"); // Nuevo campo para ID del cliente
 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;

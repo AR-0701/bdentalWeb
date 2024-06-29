@@ -143,8 +143,8 @@
                             <label for="hora">Hora:</label>
                             <select id="hora" name="hora" required>
                             </select>
-                            <label for="idCliente">Cliente:</label>
-                            <input type="text" id="idCliente" name="idCliente" readonly value="<%= request.getParameter("idCliente")%>">
+                            <label for="idCli">Cliente:</label>
+                            <input type="text" id="idCli" name="idCli" readonly value="<%= request.getParameter("idCli")%>">
                             <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                         </div>
                         <div class="button">

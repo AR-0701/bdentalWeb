@@ -10,6 +10,19 @@
         <title>Ver Clientes</title>
         <link rel="stylesheet" href="admiprue.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+            /* Estilos para la barra de búsqueda */
+            .search-container {
+                margin-bottom: 20px;
+            }
+            .search-input {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -52,6 +65,10 @@
                     </a>
                 </div>
 
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre...">
+                </div>
+
                 <div class="table-container">
                     <table>
                         <thead>
@@ -63,13 +80,13 @@
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody> 
+                        <tbody id="clientTableBody"> 
                             <%
                                 List<clientes> listaClientes = (List<clientes>) request.getSession().getAttribute("listaClientes");
                                 if (listaClientes != null) {
                                     for (clientes cliente : listaClientes) {
                             %>
-                            <tr name="data-id" id="data-id" data-id="<%= cliente.getUsuario().getIdUsuario()%>">
+                            <tr data-id="<%= cliente.getUsuario().getIdUsuario()%>">
                                 <td><%= cliente.getIdCliente()%></td>
                                 <td><%= cliente.getUsuario().getNombre()%> <%= cliente.getUsuario().getApellidoPa()%> <%= cliente.getUsuario().getApellidoMa()%></td>
                                 <td><%= cliente.getUsuario().getEmail()%></td>
@@ -106,20 +123,36 @@
                         menuVisible = false;
                     }
                 });
+
                 var userIcon = document.querySelector(".user-icon");
                 var dropdownMenu = document.getElementById("dropdownMenu");
                 userIcon.addEventListener("click", function () {
                     dropdownMenu.classList.toggle("show");
                 });
-                // Función para redirigir a la página de agendar cita con el ID del cliente
+
                 document.querySelectorAll('.agendarCitaBtn').forEach(button => {
                     button.addEventListener('click', function () {
-                        var idCliente = this.getAttribute('data-id');
-                        console.log("ID Cliente seleccionado:", idCliente); // Imprimir el ID en la consola para depuración
-                        if (idCliente) {
-                            window.location.href = `AgendarCllentesAsis.jsp?idCliente=${idCliente}`;
+                        var idCli = this.getAttribute('data-id');
+                        if (idCli) {
+                            var url = "AgendarCllentesAsis.jsp?idCli=" + idCli;
+                            window.location.href = url;
                         } else {
                             console.error("ID Cliente no encontrado");
+                        }
+                    });
+                });
+
+                // Funcionalidad de búsqueda
+                var searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', function () {
+                    var filter = searchInput.value.toLowerCase();
+                    var rows = document.querySelectorAll('#clientTableBody tr');
+                    rows.forEach(row => {
+                        var nombreCompleto = row.cells[1].innerText.toLowerCase();
+                        if (nombreCompleto.includes(filter)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
                         }
                     });
                 });
