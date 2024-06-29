@@ -37,7 +37,7 @@
                 <section class="content">
                     <img src="${pageContext.request.contextPath}/imagenes/n-removebg-preview.png" alt="Recepción">
                     <h1 id="textBPrincipa">¡Bienvenido!</h1>
-                     <input type="text" id="nombreCompleto" name="id" placeholder="Nombre del Asistente" required>   
+                    <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>    
                     <p>"Transformando Sonrisas"</p>
                 </section>
             </main>
