@@ -193,173 +193,174 @@
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="form-container">
-                        <h2>Agendar Citas</h2>
+            </div>
+            <div class="content">
+                <div class="form-container">
+                    <h2>Agendar Citas</h2>
+                    <div class="form-group">
+                        <label for="nombreCompleto">Nombre completo:</label>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
+                    </div>
+                    <!-- Agrega más campos del formulario de acuerdo a tus necesidades -->
+
+                    <form id="agendarCitaForm">
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
+                        <!-- Otros campos de formulario -->
+                        <button type="button" onclick="buscarCliente()">Buscar Cliente</button>
+                    </form>
+
+                    <form id="guardarCitaForm" action="SvAgendarCita"  method="POST">
                         <div class="form-group">
-                            <label for="nombreCompleto">Nombre completo:</label>
-                            <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
+                            <label for="hora">Hora:</label>
+                            <select id="hora" name="hora" required>
+                            </select>
+                            <label for="idCliente">Cliente:</label>
+                            <input type="text" id="idCliente" name="idCliente" readonly>
+
+                            <p class="fecha-seleccionada">Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                         </div>
-                        <!-- Agrega más campos del formulario de acuerdo a tus necesidades -->
+                        <div class="button">
+                            <input type="submit" value="Agendar Cita">
+                        </div>
+                    </form>
 
-                        <form id="agendarCitaForm">
-                            <input type="text" id="nombreCompleto" name="nombreCompleto" value="${sessionScope.nombreCompleto}" readonly>
-                            <!-- Otros campos de formulario -->
-                            <button type="button" onclick="buscarCliente()">Buscar Cliente</button>
-                        </form>
-
-                        <form id="guardarCitaForm" action="SvAgendarCita"  method="POST">
-                            <div class="form-group">
-                                <label for="hora">Hora:</label>
-                                <select id="hora" name="hora" required>
-                                </select>
-                                <label for="idCliente">Cliente:</label>
-                                <input type="text" id="idCliente" name="idCliente" readonly>
-
-                                <p class="fecha-seleccionada">Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
-                            </div>
-                            <div class="button">
-                                <input type="submit" value="Agendar Cita">
-                            </div>
-                        </form>
-
-                    </div>
-                    <div class="calendar-container">
-                        <div id="datepicker"></div>
-                    </div>
+                </div>
+                <div class="calendar-container">
+                    <div id="datepicker"></div>
                 </div>
             </div>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-            <script>
-                                function buscarCliente() {
-                                    var nombreCompleto = document.getElementById("nombreCompleto").value;
-                                    console.log(`Buscando cliente con nombre: ${nombreCompleto}`);
-                                    fetch(`SvBuscarCliente?nombreCompleto=${nombreCompleto}`)
-                                            .then(response => {
-                                                if (!response.ok) {
-                                                    throw new Error('Network response was not ok');
-                                                }
-                                                return response.json();
-                                            })
-                                            .then(data => {
-                                                console.log('Datos recibidos:', data);
-                                                if (data.idCliente) {
-                                                    var inputIdCliente = document.getElementById("idCliente");
-                                                    inputIdCliente.value = data.idCliente;
-                                                } else {
-                                                    alert("Cliente no encontrado");
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                                alert("Ocurrió un error al buscar el cliente");
-                                            });
-                                }
-
-                                $(document).ready(function () {
-                                    var fechaSeleccionadaInput = $('#datepicker');
-                                    var hoy = new Date();
-                                    var maxDate = new Date();
-                                    maxDate.setDate(hoy.getDate() + 7);
-
-                                    // Función para obtener horarios
-                                    function obtenerHorarios(fecha) {
-                                        if (!fecha) {
-                                            console.error('Fecha inválida:', fecha);
-                                            alert('Seleccione una fecha válida.');
-                                            return;
-                                        }
-
-                                        console.log('Obteniendo horarios para:', fecha);
-                                        $('#horarios-disponibles').empty();
-
-                                        $.ajax({
-                                            url: 'svCalculaHorario',
-                                            method: 'GET',
-                                            data: {fecha: fecha},
-                                            cache: false,
-                                            success: function (response) {
-                                                console.log('Datos recibidos:', response);
-
-                                                var horarios = Array.isArray(response) ? response : [];
-
-                                                var html = '<h2>Horarios Disponibles</h2>';
-                                                if (horarios.length > 0) {
-                                                    html += '<ul>';
-                                                    horarios.forEach(function (horario) {
-                                                        var horaFormateada = horario.hour + ':' + (horario.minute < 10 ? '0' : '') + horario.minute;
-                                                        html += '<li>' + horaFormateada + '</li>';
-                                                    });
-                                                    html += '</ul>';
-                                                } else {
-                                                    html += '<p>No hay horarios disponibles para esta fecha.</p>';
-                                                }
-                                                $('#horarios-disponibles').html(html);
-
-                                                var selectHora = $('#hora');
-                                                selectHora.empty();
-                                                horarios.forEach(function (horario) {
-                                                    var horaFormateada = horario.hour + ':' + (horario.minute < 10 ? '0' : '') + horario.minute;
-                                                    selectHora.append('<option value="' + horaFormateada + '">' + horaFormateada + '</option>');
-                                                });
-                                            },
-                                            error: function () {
-                                                $('#horarios-disponibles').html('<p>Error al obtener horarios disponibles.</p>');
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+                            function buscarCliente() {
+                                var nombreCompleto = document.getElementById("nombreCompleto").value;
+                                console.log(`Buscando cliente con nombre: ${nombreCompleto}`);
+                                fetch(`SvBuscarCliente?nombreCompleto=${nombreCompleto}`)
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok');
                                             }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            console.log('Datos recibidos:', data);
+                                            if (data.idCliente) {
+                                                var inputIdCliente = document.getElementById("idCliente");
+                                                inputIdCliente.value = data.idCliente;
+                                            } else {
+                                                alert("Cliente no encontrado");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            alert("Ocurrió un error al buscar el cliente");
                                         });
+                            }
+
+                            $(document).ready(function () {
+                                var fechaSeleccionadaInput = $('#datepicker');
+                                var hoy = new Date();
+                                var maxDate = new Date();
+                                maxDate.setDate(hoy.getDate() + 7);
+
+                                // Función para obtener horarios
+                                function obtenerHorarios(fecha) {
+                                    if (!fecha) {
+                                        console.error('Fecha inválida:', fecha);
+                                        alert('Seleccione una fecha válida.');
+                                        return;
                                     }
 
-                                    // Obtener fechas bloqueadas y configurar el datepicker
+                                    console.log('Obteniendo horarios para:', fecha);
+                                    $('#horarios-disponibles').empty();
+
                                     $.ajax({
-                                        url: 'pruebasCalendarios',
+                                        url: 'svCalculaHorario',
                                         method: 'GET',
+                                        data: {fecha: fecha},
+                                        cache: false,
                                         success: function (response) {
-                                            console.log("Raw response from server:", response);
+                                            console.log('Datos recibidos:', response);
 
-                                            var blockedDates;
+                                            var horarios = Array.isArray(response) ? response : [];
 
-                                            if (Array.isArray(response)) {
-                                                blockedDates = response;
+                                            var html = '<h2>Horarios Disponibles</h2>';
+                                            if (horarios.length > 0) {
+                                                html += '<ul>';
+                                                horarios.forEach(function (horario) {
+                                                    var horaFormateada = horario.hour + ':' + (horario.minute < 10 ? '0' : '') + horario.minute;
+                                                    html += '<li>' + horaFormateada + '</li>';
+                                                });
+                                                html += '</ul>';
                                             } else {
-                                                blockedDates = response.dates;
+                                                html += '<p>No hay horarios disponibles para esta fecha.</p>';
                                             }
+                                            $('#horarios-disponibles').html(html);
 
-                                            $("#datepicker").datepicker({
-                                                dateFormat: 'yy-mm-dd',
-                                                beforeShowDay: function (date) {
-                                                    var string = $.datepicker.formatDate('yy-mm-dd', date);
-                                                    if (blockedDates.indexOf(string) !== -1) {
-                                                        return [false, 'blocked-date', 'Fecha Bloqueada'];
-                                                    } else if (date < hoy || date > maxDate) {
-                                                        return [false, 'unselectable-date', 'Fecha no disponible'];
-                                                    } else {
-                                                        return [true, '', ''];
-                                                    }
-                                                },
-                                                onSelect: function (dateText) {
-                                                    $('#fechaSeleccionada').val(dateText);
-                                                    obtenerHorarios(dateText);
-                                                },
-                                                prevText: '<',
-                                                nextText: '>'
+                                            var selectHora = $('#hora');
+                                            selectHora.empty();
+                                            horarios.forEach(function (horario) {
+                                                var horaFormateada = horario.hour + ':' + (horario.minute < 10 ? '0' : '') + horario.minute;
+                                                selectHora.append('<option value="' + horaFormateada + '">' + horaFormateada + '</option>');
                                             });
                                         },
                                         error: function () {
-                                            console.error('Error al obtener fechas bloqueadas.');
-                                            alert('Error al obtener fechas bloqueadas.');
+                                            $('#horarios-disponibles').html('<p>Error al obtener horarios disponibles.</p>');
                                         }
                                     });
+                                }
+
+                                // Obtener fechas bloqueadas y configurar el datepicker
+                                $.ajax({
+                                    url: 'pruebasCalendarios',
+                                    method: 'GET',
+                                    success: function (response) {
+                                        console.log("Raw response from server:", response);
+
+                                        var blockedDates;
+
+                                        if (Array.isArray(response)) {
+                                            blockedDates = response;
+                                        } else {
+                                            blockedDates = response.dates;
+                                        }
+
+                                        $("#datepicker").datepicker({
+                                            dateFormat: 'yy-mm-dd',
+                                            beforeShowDay: function (date) {
+                                                var string = $.datepicker.formatDate('yy-mm-dd', date);
+                                                if (blockedDates.indexOf(string) !== -1) {
+                                                    return [false, 'blocked-date', 'Fecha Bloqueada'];
+                                                } else if (date < hoy || date > maxDate) {
+                                                    return [false, 'unselectable-date', 'Fecha no disponible'];
+                                                } else {
+                                                    return [true, '', ''];
+                                                }
+                                            },
+                                            onSelect: function (dateText) {
+                                                $('#fechaSeleccionada').val(dateText);
+                                                obtenerHorarios(dateText);
+                                            },
+                                            prevText: '<',
+                                            nextText: '>'
+                                        });
+                                    },
+                                    error: function () {
+                                        console.error('Error al obtener fechas bloqueadas.');
+                                        alert('Error al obtener fechas bloqueadas.');
+                                    }
                                 });
-            </script>
-            <script >
-                document.addEventListener('DOMContentLoaded', function () {
-                    var userIcon = document.querySelector(".user-icon");
-                    var dropdownMenu = document.getElementById("dropdownMenu");
-                    userIcon.addEventListener("click", function () {
-                        dropdownMenu.classList.toggle("show");
-                    });
+                            });
+        </script>
+        <script >
+            document.addEventListener('DOMContentLoaded', function () {
+                var userIcon = document.querySelector(".user-icon");
+                var dropdownMenu = document.getElementById("dropdownMenu");
+                userIcon.addEventListener("click", function () {
+                    dropdownMenu.classList.toggle("show");
                 });
-            </script>
+            });
+        </script>
     </body>
 </html>
