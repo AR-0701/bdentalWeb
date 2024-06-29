@@ -22,7 +22,6 @@
                         <a href="index.jsp">Cerrar sesión</a>
                     </div>
                 </div>
-
                 <!-- Agrega el contenedor del menú desplegable -->
                 <div class="sidebar" id="sidebar">
                     <!-- Movemos las rayitas aquí -->
@@ -41,22 +40,38 @@
                     </ul>
                 </div>
             </header>
-
-            <main>
-                <section class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-item">
-                            <img src="${pageContext.request.contextPath}/imagenes/1.png" alt="Imagen 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="${pageContext.request.contextPath}/imagenes/2.png" alt="Imagen 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="${pageContext.request.contextPath}/imagenes/3.png" alt="Imagen 3">
+            <section class="container1">
+                <div class="row">
+                    <div class="col s12" >
+                        <div class="carousel center-align" >
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/1.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/2.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/3.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/4.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/5.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/6.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/7.png" alt="">
+                            </div>
+                            <div class="carousel-item" >
+                                <image src ="${pageContext.request.contextPath}/imagenes/8.png" alt="">
+                            </div>
                         </div>
                     </div>
-                </section>
-            </main>
+                </div>
+            </section>
             <footer>
                 <div class="footer-section location">
                     <h3>Ubicación:</h3>
@@ -65,19 +80,16 @@
                 <div class="footer-section contact">
                     <h3>Contacto:</h3>
                     <p>Tel: 55-12-47-02-06</p>
-                    <h3>Correo:</h3>
-                    <p>bdentaly@gmail.com</p>
+                    <p>Correo: bdentaly@gmail.com</p>
                 </div>
                 <div class="footer-section legal">
                     <h3>Manual de usuario:</h3>
-                <h3>
-                    <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
-                </h3>
-                     </div>
+                    <h3>
+                        <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
+                    </h3>
+                </div>
             </footer>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="script.js"></script>
         <!-- Agregamos el script JavaScript -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -105,5 +117,7 @@
                 });
             });
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

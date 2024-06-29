@@ -328,32 +328,38 @@ text-align: center;
 }
 
 /* Promociones */
-.carousel-container {
-    box-shadow: none;
-    padding: 20px 0;
-}
-
 .carousel {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    min-height: 200px;
+    margin-top: -65px; /* Ajustar esta propiedad para mover el carrusel hacia arriba */
+}
+.carousel.carouse-item{
+    width: 200px;
+    height: 200px;
+   }
+ .carousel.carouse-item img{
     width: 100%;
-    gap: 20px;
-}
+    height: 100%;
+    object-fit: cover;
+    top:0;
+    left: 0;
+    border-radius: 0px;
+   }
 
-.carousel-item {
-    flex: 1;
-    text-align: center;
+.carousel .indicators {
+    height: 40px;
 }
-
-.carousel-item img {
-    max-width: 300px;
-    width: 80%;
-    height: auto;
-    box-shadow: none;
-    border-radius: 10px;
+.carousel .indicators .indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 24px 4px;
+    background-color: #00b3b3;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 50%;
 }
-
 /*Servicos*/
 
 .text-content3 {
