@@ -35,7 +35,7 @@
                 <div class="user-menu">
                     <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
                 <div class="sidebar" id="sidebar">

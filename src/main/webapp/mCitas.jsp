@@ -44,6 +44,7 @@
                                 <th>Nombre del Cliente</th>
                                 <th>Hora</th>
                                 <th>Registrado por</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <%
@@ -70,8 +71,8 @@
 
                                         } else {
                                             for (asistentes asist : listaAsistentes) {
-                                               identificadorColor= asist.getIdentificador();
-                                                
+                                                identificadorColor = asist.getIdentificador();
+
                                             }
                                         }
                             %>
@@ -84,7 +85,13 @@
                                     <div style="width: 20px; height: 20px; background-color: <%= identificadorColor%>; border-radius: 50%; margin: auto;"></div>
                                     <% } else {%>
                                     <%= nombreRegistradoPor%>
-                                    <% } %>
+                                    <% }%>
+                                </td>
+                                <td>
+                                    <form action="svElliminarCita" method="POST">
+                                        <input type="hidden" name="idCita" value="<%= cita.getIdCita()%>">
+                                        <button type="submit">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                             <%

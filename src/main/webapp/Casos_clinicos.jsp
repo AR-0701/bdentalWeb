@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Casos_clinicos
-    Created on : 9/06/2024, 11:57:15 PM
-    Author     : wendy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">

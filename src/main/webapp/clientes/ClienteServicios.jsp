@@ -20,7 +20,7 @@
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
                 <div class="menu">

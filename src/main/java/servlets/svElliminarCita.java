@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import persistencia.citasJpaController;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -39,11 +40,23 @@ public class svElliminarCita extends HttpServlet {
             throws ServletException, IOException {
         int idCita = Integer.parseInt(request.getParameter("idCita"));
 
+        HttpSession session = request.getSession();
+        String rolUsuario = (String) session.getAttribute("usuarioRol");
+
         // Llamar al controlador JPA para eliminar la cita
         try {
             citasController.destroy(idCita);
-            // Redirigir a una página de éxito o a la lista de citas actualizada
-            response.sendRedirect("SvModificarCita"); // Cambia esto al destino deseado
+            // Redirigir según el rol del usuario
+            if ("Administrador".equals(rolUsuario)) {
+                response.sendRedirect("admin/PrincipaAdmin.jsp");
+            } else if ("Asistente".equals(rolUsuario)) {
+                response.sendRedirect("asistentes/PrincipalAsistente.jsp");
+            } else if ("Cliente".equals(rolUsuario)) {
+                response.sendRedirect("SvModificarCita");
+            } else {
+                request.setAttribute("errorMessage", "No se encontró el rol del usuario.");
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
         } catch (Exception ex) {
             // Manejo de errores - puedes redirigir a una página de error
             response.sendRedirect("error.jsp"); // Página de error personalizada

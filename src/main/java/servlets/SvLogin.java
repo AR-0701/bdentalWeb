@@ -44,6 +44,7 @@ public class SvLogin extends HttpServlet {
             session.setAttribute("nombreCompleto", nombreCompleto);
             session.setAttribute("idCliente", user.getIdUsuario());
             System.out.println("id es" + user.getIdUsuario());
+            session.setAttribute("usuarioRol", user.getRol());
 
             //------------------Verificar Rol
             switch (user.getRol()) {

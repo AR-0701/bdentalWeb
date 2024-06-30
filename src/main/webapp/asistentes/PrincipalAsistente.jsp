@@ -18,7 +18,7 @@
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
                 <div class="sidebar" id="sidebar">
@@ -57,7 +57,7 @@
                     <h3>
                         <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
                     </h3>
-                     </div>
+                </div>
             </footer>
         </div>
 

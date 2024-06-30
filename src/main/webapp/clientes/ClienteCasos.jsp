@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="cliente.css">
     </head>
     <body>
- <div class="Principal">
+        <div class="Principal">
             <header>
                 <div class="logo2">
                     <a href="${pageContext.request.contextPath}/inicio_principal.jsp">
@@ -26,7 +26,7 @@
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -78,7 +78,7 @@
                     <p>
                         <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
                     </p>
-                     </div>
+                </div>
             </footer>
         </div>
         <script>

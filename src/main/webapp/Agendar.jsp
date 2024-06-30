@@ -155,7 +155,7 @@
                 margin-top: 12px; /* Añade margen superior */
                 margin-bottom: 12px;
                 padding: 5px; /* Añade padding */
-            } 
+            }
             #agendarCitaForm input[type="text"] {
                 width: 50%;
                 padding: 8px;
@@ -190,7 +190,7 @@
                 <div class="user-menu">
                     <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="index.jsp">Cerrar sesión</a>
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
             </div>
