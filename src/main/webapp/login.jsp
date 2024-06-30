@@ -5,26 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login - Principal</title>
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/login.css">
     </head>
     <body class="login-page"> 
         <div class="containe3r">
             <!-- Flecha de regreso -->
             <div class="back-arrow">
                 <a href="index.jsp">
-                    <img src="imagenes/flecha.svg" alt="Regresar">
+                    <img src="${pageContext.request.contextPath}/imagenes/flecha.svg" alt="Regresar">
                 </a>
             </div>
             <!-- Sección de Login -->
             <div class="login-wrapper">
                 <div class="image-container">
-                    <img src="imagenes/login.png" alt="Imagen Dental">
+                    <img src="${pageContext.request.contextPath}/imagenes/login.png" alt="Imagen Dental">
                 </div>
                 <div class="form-container">
                     <header>
                         <div class="logo2">
                             <a href="index.jsp">
-                                <img src="imagenes/logo.png" class="logo" alt="B - DENTAL">
+                                <img src="${pageContext.request.contextPath}/imagenes/logo.png" class="logo" alt="B - DENTAL">
                             </a>
                         </div>
                     </header>

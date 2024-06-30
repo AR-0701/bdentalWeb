@@ -52,7 +52,7 @@
                         </div>
                         <div class="button-container">
                             <a href="${pageContext.request.contextPath}/Agendar.jsp" class="login-button">Agendar</a>
-                            <a href="${pageContext.request.contextPath}/SvModificarCita" class="login-button">Consultar</a>
+                            <a href="${pageContext.request.contextPath}/SvMo    dificarCita" class="login-button">Consultar</a>
                         </div>
                     </div>
                     <div class="image-section">
