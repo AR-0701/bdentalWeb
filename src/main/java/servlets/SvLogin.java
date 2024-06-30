@@ -52,7 +52,7 @@ public class SvLogin extends HttpServlet {
                     response.sendRedirect("admin/PrincipaAdmin.jsp");
                     break;
                 case "Asistente":
-                    response.sendRedirect("PrincipalAsistente.jsp");
+                    response.sendRedirect("asistentes/PrincipalAsistente.jsp");
                     break;
                 case "Cliente":
                     response.sendRedirect("clientes/InicioClientes.jsp");

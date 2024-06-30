@@ -28,13 +28,13 @@
                         <span>&#9776;</span>
                     </div>
                     <ul>
-                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Consultar o Registrar cita</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Ver clientes/Agendar</a></li>
                         <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta del registro de citas</a></li>
                         <li><a href="${pageContext.request.contextPath}/mHorario.html">Modificar Horarios</a></li>
                         <li><a href="${pageContext.request.contextPath}/RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
                         <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
-                        <li><a href="${pageContext.request.contextPath}/AdmiServicio.jsp">Servicios</a></li>
-                        <li><a href="${pageContext.request.contextPath}/AdmiPromociones.jsp">Promociones</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/AdmiServicio.jsp">Servicios</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/AdmiPromociones.jsp">Promociones</a></li>
                         <li><a href="#">CasosClinicos</a></li>
                     </ul>
                 </div>

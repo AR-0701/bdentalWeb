@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.Controladora;
+import logica.usuarios;
 
 @WebServlet(name = "SvClientes", urlPatterns = {"/SvClientes"})
 public class SvClientes extends HttpServlet {
@@ -46,7 +48,22 @@ public class SvClientes extends HttpServlet {
         } else {
             // Crear usuario con credenciales
             control.crearUsuarioCliente(nombre, apellidoPa, apellidoMa, email, telefono, rol, password, genero, fechaNacimiento);
-            response.sendRedirect("index.jsp");
+            // Verificar la sesión y redirigir según el rol
+            HttpSession session = request.getSession(false);
+            if (session != null && session.getAttribute("usuario") != null) {
+                usuarios usuario = (usuarios) session.getAttribute("usuario");
+                String userRole = usuario.getRol();
+
+                if ("Administrador".equals(userRole)) {
+                    response.sendRedirect("admin/PrincipalAdmin.jsp");
+                } else if ("Asistente".equals(userRole)) {
+                    response.sendRedirect("asistentes/PrincipalAsistentes.jsp");
+                } else {
+                    response.sendRedirect("index.jsp"); // Default fallback
+                }
+            } else {
+                response.sendRedirect("login.jsp");
+            }
         }
     }
 

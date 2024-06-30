@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="/verificarSesion.jsp" %>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

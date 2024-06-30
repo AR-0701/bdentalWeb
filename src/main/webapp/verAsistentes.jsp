@@ -2,6 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="logica.asistentes" %>
 <%@ page import="logica.usuarios" %>
+<%@ include file="/verificarSesion.jsp" %>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

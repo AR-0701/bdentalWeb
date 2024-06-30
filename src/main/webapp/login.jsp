@@ -39,13 +39,13 @@
                     <%
                         }
                     %>
-                    <form action="SvLogin" method="POST">
+                    <form action="${pageContext.request.contextPath}/SvLogin" method="POST">
                         <input type="email" placeholder="Correo Electronico" name="email" required>
                         <input type="password" placeholder="Contraseña" name="password" required>
                         <button type="submit">Iniciar Sesión</button>
                     </form> 
 
-                    <a href = "RegistroClientes.jsp">
+                    <a href = "${pageContext.request.contextPath}/RegistroClientes.jsp">
                         <button id="registro-button" name="registro-button"  >Registrarse</button>
                     </a>
                 </div>

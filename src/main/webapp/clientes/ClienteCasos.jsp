@@ -1,10 +1,6 @@
-<%-- 
-    Document   : ClienteCasos
-    Created on : 13/06/2024, 09:49:28 PM
-    Author     : wendy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="/verificarSesion.jsp" %>
+
 <!DOCTYPE html>
 
 <html lang="es">

@@ -1,3 +1,5 @@
+<%@ include file="/verificarSesion.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -215,7 +217,7 @@
                             <select id="hora" name="hora" required>
                             </select>
                             <label for="idCliente">Cliente:</label>
-                            <input type="text" id="idCliente" name="idCliente" readonly>
+                            <input type="text" id="idCli" name="idCli" readonly>
 
                             <p class="fecha-seleccionada">Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                         </div>
@@ -246,7 +248,7 @@
                                         .then(data => {
                                             console.log('Datos recibidos:', data);
                                             if (data.idCliente) {
-                                                var inputIdCliente = document.getElementById("idCliente");
+                                                var inputIdCliente = document.getElementById("idCli");
                                                 inputIdCliente.value = data.idCliente;
                                             } else {
                                                 alert("Cliente no encontrado");

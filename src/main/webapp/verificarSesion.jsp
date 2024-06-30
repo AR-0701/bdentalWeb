@@ -16,11 +16,11 @@
 
     // Define las rutas permitidas para cada rol
     boolean accesoPermitido = false;
-    if (paginaActual.contains("InicioClientes.jsp") || paginaActual.contains("Agendar.jsp") || paginaActual.contains("ModificarCita.jsp")) {
+    if (paginaActual.contains("InicioClientes.jsp") || paginaActual.contains("Agendar.jsp") || paginaActual.contains("modificarCitas.jsp")) {
         accesoPermitido = "Cliente".equals(rol);
-    } else if (paginaActual.contains("PrincipalAsistentes.jsp") || paginaActual.contains("AgendarClientesAsis.jsp") || paginaActual.contains("MCitas.jsp") || paginaActual.contains("MostrarClientes.jsp")) {
-        accesoPermitido = "Asistente".equals(rol) || "Administrador".equals(rol);
-    } else if (paginaActual.contains("MHorarios.jsp") || paginaActual.contains("VerAsistentes.jsp") || paginaActual.contains("RegistrarAsistentes.jsp")) {
+    } else if (paginaActual.contains("PrincipalAsistente.jsp") || paginaActual.contains("AgendarClientesAsis.jsp") || paginaActual.contains("MCitas.jsp") || paginaActual.contains("MostrarClientes.jsp")) {
+        accesoPermitido = "Asistente".equals(rol);
+    } else if (paginaActual.contains("PrincipaAdmin.jsp") || paginaActual.contains("MostrarClientes.jsp") || paginaActual.contains("mCitas.jsp")|| paginaActual.contains("")|| paginaActual.contains("mHorario.jsp")|| paginaActual.contains("RegsitrarAsistentes.jsp")|| paginaActual.contains("verAsistentes.jsp")|| paginaActual.contains("AdmiServicio.jsp")|| paginaActual.contains("AdmiPromociones.jsp") ) {
         accesoPermitido = "Administrador".equals(rol);
     }
 
