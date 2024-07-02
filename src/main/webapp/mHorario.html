@@ -8,15 +8,15 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
+                background-color:  #00b3b3;
                 margin: 0;
                 padding: 0;
             }
 
             .container {
-                width: 100%;
+                width: 80%;
                 max-width: 1200px;
-                margin: 0 auto;
+                margin: 20px auto;
                 background-color: #fff;
                 padding: 20px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,20 +27,57 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 10px 0;
-                border-bottom: 1px solid #ddd;
+                border-bottom: 2px solid #00b3b3;
             }
 
-            .logo2 img {
-                max-width: 150px;
+            .logo img {
+                height: 80px;
+            }
+            .header .user-menu {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                position: relative;
+            }
+
+            .header .user-icon {
+                height: 60px;
+                cursor: pointer;
+                margin-right: 20px; /* Añade un margen derecho para moverla a la izquierda */
+                position: relative; /* Asegúrate de que la posición es relativa si vas a usar 'left' */
+                left: -20px; /* Ajusta este valor para mover la imagen más a la izquierda */
+
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 5px;
+                background-color: white;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 200px; /* Ajusta el ancho según sea necesario */
+            }
+
+            .dropdown-menu a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #000;
+            }
+
+            .dropdown-menu.show {
+                display: block;
             }
 
             .main {
-                padding: 20px 0;
+                padding: 10px 0;
             }
 
             .modify-title {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
 
             .schedule-container {
@@ -50,29 +87,30 @@
 
             .form-container {
                 flex: 1;
-                padding: 20px;
-                background-color: #f2f2f2;
+                padding: 15px;
+                background-color: #fff;
                 margin-right: 20px;
                 border-radius: 5px;
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             }
 
             .form-group {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
             }
 
             .form-group label {
                 display: block;
-                margin-bottom: 5px;
+                font-sinze:13px;
+                margin-bottom: 9px;
             }
 
             .form-group input[type="text"] {
                 width: 100%;
                 padding: 8px;
                 border: 1px solid #ddd;
-                border-radius: 3px;
+                border-radius: 4px;
                 box-sizing: border-box;
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .button-group {
@@ -83,21 +121,23 @@
                 padding: 10px 20px;
                 margin-right: 10px;
                 cursor: pointer;
-                background-color: #4CAF50;
+                font-weight: bold;
+                background-color: #00b3b3;
                 color: #fff;
                 border: none;
                 border-radius: 3px;
                 font-size: 14px;
+                margin-left: 18%;
             }
 
             .button-group button:hover {
-                background-color: #45a049;
+                background-color: #00a2b2;
             }
 
             .calendar-container {
                 flex: 1;
                 padding: 20px;
-                background-color: #f2f2f2;
+                background-color: #ffff;
                 border-radius: 5px;
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
                 display: flex;
@@ -118,43 +158,52 @@
             #fechaSeleccionada {
                 margin-top: 10px;
                 padding: 8px;
-                border: 1px solid #ddd;
+                border: 1.5px solid #ddd;
                 border-radius: 3px;
                 font-size: 14px;
-                width: 100%;
+                width: 30%;
                 box-sizing: border-box;
             }
 
-            .button-modify {
+            .bete button{
                 text-align: center;
                 margin-top: 20px;
             }
 
-            .button-modify button {
+            .bete button {
                 padding: 10px 20px;
+                margin-right: 10px;
                 cursor: pointer;
-                background-color: #007bff;
+                font-weight: bold;
+                background-color: #00b3b3;
                 color: #fff;
                 border: none;
                 border-radius: 3px;
-                font-size: 14px;
+                font-size: 14px;   
+                margin-left: 40%;
             }
 
             .button-modify button:hover {
-                background-color: #0056b3;
+                background-color: #00a2b2;
             }
 
             footer {
                 margin-top: 20px;
                 padding: 10px 0;
                 text-align: center;
-                border-top: 1px solid #ddd;
+                border-top: 2px solid  #00b3b3;
             }
             .blocked-date a {
                 background-color: #D8BFD8 !important; /* Color lila */
                 color: white !important;
             }
-
+            .listbox-container{
+                padding:12px 0px;
+            }
+            
+            
+         
+            
         </style>
     </head>
     <body>
@@ -165,11 +214,17 @@
                         <img src="imagenes/loogo.png" alt="B - DENTAL">
                     </a>
                 </div>
+                <div class="user-menu">
+                    <img src="${pageContext.request.contextPath}/imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
+                    </div>
+                </div>
             </header>
             <main class="main">
                 <div class="about">
                     <div class="text-content">
-                        <div class="modify-title"><h1>Modificar horario</h1></div>
+                        <div class="modify-title"><h1>Modificar Horario</h1></div>
                     </div>
                 </div>
                 <div class="schedule-container">
@@ -186,13 +241,7 @@
                             <button id="bloquear">Bloquear</button>
                             <button id="desbloquear">Desbloquear</button>
                         </div>
-                    </div>
-                    <div class="calendar-container">
-                        <div id="datepicker"></div>
-                    </div>
-                </div>
-
-                <form id="formulario-horarios" action="SvModificarHorario" method="POST">
+                        <form id="formulario-horarios" action="SvModificarHorario" method="POST">
                     <p>Fecha seleccionada: <input type="text" id="fechaSeleccionada" name="fechaSeleccionada" readonly></p>
                     <div class="listbox-container">
                         <label for="lista-horarios-apertura">Seleccionar horarios apertura:</label>
@@ -232,8 +281,17 @@
                             <option value="22:00">10:00 PM</option>
                         </select>
                     </div>
-                    <button type="submit" id="modificar">Modificar</button> 
+                    <div class ="bete">
+                        <button type="submit" id="modificar">Modificar</button> 
+                    </div>
                 </form>
+                    </div>
+                    <div class="calendar-container">
+                        <div id="datepicker"></div>
+                    </div>
+                </div>
+
+                
 
 
 
