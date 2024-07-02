@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/verificarSesion.jsp" %>
+<%@ page import="logica.usuarios" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,7 +16,22 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="${pageContext.request.contextPath}/PrincipaAdmin.jsp">
+                    <%                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistentes.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
@@ -32,15 +49,12 @@
                     </div>
                     <!-- Agrega el menú que se desplegará -->
                     <ul>
-                        <li><a href="${pageContext.request.contextPath}/PrincipaAdmin.jsp">Principal</a></li>
-                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Consultar o Registrar cita</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Ver clientes/Agendar</a></li>
                         <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta del registro de citas</a></li>
                         <li><a href="${pageContext.request.contextPath}/mHorario.html">Modificar Horarios</a></li>
                         <li><a href="${pageContext.request.contextPath}/RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
                         <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
-                        <li><a href="${pageContext.request.contextPath}/AdmiServicio.jsp">Servicios</a></li>
-                        <li><a href="#">CasosClinicos</a></li>
-
+                        <li><a href="${pageContext.request.contextPath}/admin/AdmiServicio.jsp">Servicios</a></li>
                     </ul>
                 </div>
             </header>

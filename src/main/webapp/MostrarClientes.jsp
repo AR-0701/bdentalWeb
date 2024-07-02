@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="logica.clientes" %>
 <%@ page import="logica.usuarios" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -28,10 +29,28 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="PrincipaAdmin.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <%
+                        usuarios usuario = (usuarios) session.getAttribute("usuario");
+                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistente.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
+
                 <div class="user-menu">
                     <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
                     <div class="dropdown-menu" id="dropdownMenu">
@@ -43,13 +62,13 @@
                         <span>&#9776;</span>
                     </div>
                     <ul>
-                        <li><a href="#">Registrar citas a Clientes</a></li>
-                        <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="mHorarios.jsp">Modificar Horarios</a></li>
-                        <li><a href="RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
-                        <li><a href="SvMostrarAsistentes">Ver Asistentes</a></li>
-                        <li><a href="AdmiServicio.jsp">Servicios</a></li>
-                        <li><a href="AdmiPromociones.jsp">Promociones</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Ver clientes/Agendar</a></li>
+                        <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta del registro de citas</a></li>
+                        <li><a href="${pageContext.request.contextPath}/mHorario.html">Modificar Horarios</a></li>
+                        <li><a href="${pageContext.request.contextPath}/RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/AdmiServicio.jsp">Servicios</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/AdmiPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
             </header>

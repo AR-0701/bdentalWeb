@@ -1,4 +1,5 @@
 
+<%@page import="logica.usuarios"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -13,7 +14,26 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <img src="imagenes/loogo.png" class="logo" alt="No carga la imagen">
+                    <%
+                        usuarios usuario = (usuarios) session.getAttribute("usuario");
+                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistente.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    </a>
                 </div>
                 <div class="menu">
                     <div class="menu-toggle" id="menuToggle">

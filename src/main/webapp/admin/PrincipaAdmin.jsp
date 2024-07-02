@@ -13,7 +13,22 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="${pageContext.request.contextPath}/PrincipaAdmin.jsp">
+                    <%                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistentes.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
@@ -35,7 +50,6 @@
                         <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/AdmiServicio.jsp">Servicios</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/AdmiPromociones.jsp">Promociones</a></li>
-                        <li><a href="#">CasosClinicos</a></li>
                     </ul>
                 </div>
             </header>

@@ -13,7 +13,22 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="PrincipaAdmin.jsp">
+                    <%                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistente.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
@@ -30,11 +45,11 @@
                         <span>&#9776;</span>
                     </div>
                     <!-- Agrega el menú que se desplegará -->
-                    <ul>
-                        <li><a href="#">Principal</a></li>
-                        <li><a href="#">Registrar citas a Clientes</a></li>
-                        <li><a href="#">Consulta del registro de citas</a></li>
-                        <li><a href="AsistentesPromociones.jsp">Promociones</a></li>
+                   <ul>             
+                       <li><a href="${pageContext.request.contextPath}/asistentes/PrincipalAsistente.jsp">Principal</a></li>
+                        <li><a href="${pageContext.request.contextPath}/MostrarClientes.jsp">Ver clientes/registrar</a></li>
+                        <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta de registro de citas</a></li>
+                        <li><a href="${pageContext.request.contextPath}/asistentes/AsistentesPromociones.jsp">Promociones</a></li>
                     </ul>
                 </div>
             </header>

@@ -1,9 +1,4 @@
-<%-- 
-    Document   : Servicios
-    Created on : 10/06/2024, 02:51:32 AM
-    Author     : wendy
---%>
-
+<%@page import="logica.usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,18 +7,35 @@
         <meta name="viewport" 
               content="width=device-width, initial-scale=1.0">
         <title>Servicios</title>
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="inicio.css">
     </head>
     <body>
         <div class="container">
             <header>
                 <div class="logo2">
-                    <a href="index.jsp">
-                        <img src="imagenes/loogo.png" class="logo" alt="B - DENTAL">
+                    <%
+                        usuarios usuario = (usuarios) session.getAttribute("usuario");
+                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                        if (session != null && session.getAttribute("usuario") != null) {
+                            String userRole = usuario.getRol();
+
+                            if ("Administrador".equals(userRole)) {
+                                principalPage = "admin/PrincipaAdmin.jsp";
+                            } else if ("Asistente".equals(userRole)) {
+                                principalPage = "asistentes/PrincipalAsistente.jsp";
+                            } else if ("Cliente".equals(userRole)) {
+                                principalPage = "clientes/InicioClientes.jsp";
+                            } else {
+                                principalPage = "index.jsp";
+                            }
+                        }
+                    %>
+                    <a href="${pageContext.request.contextPath}/<%= principalPage%>">
+                        <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
-               <div class="menu">
+                <div class="menu">
                     <div class="menu-toggle" id="menuToggle">
                         <span>&#9776;</span>
                     </div>
@@ -75,10 +87,10 @@
                     <p>
                         <a href="${pageContext.request.contextPath}/Manual/Manual de Usuario.pdf"target="_blank">Dar clic para abrir pdf</a>
                     </p>
-                    </div>
+                </div>
             </footer>
         </div>
-       <script >
+        <script >
             document.addEventListener('DOMContentLoaded', function () {
                 const menuToggle = document.getElementById('menuToggle');
                 const menu1 = document.querySelector('.menu1');

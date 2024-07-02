@@ -2,8 +2,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="logica.citas" %>
-
-
 <!DOCTYPE html>
 <html lang="es">
     <head>

@@ -1,5 +1,4 @@
-<%@ page import="javax.servlet.http.HttpSession" %>
-
+<%@ page import="javax.servlet.http.HttpSession" %>|
 <%@ page import="logica.usuarios" %>
 <%
     usuarios usuario = (usuarios) session.getAttribute("usuario");
@@ -16,11 +15,11 @@
 
     // Define las rutas permitidas para cada rol
     boolean accesoPermitido = false;
-    if (paginaActual.contains("InicioClientes.jsp") || paginaActual.contains("Agendar.jsp") || paginaActual.contains("modificarCitas.jsp")) {
+    if (paginaActual.contains("InicioClientes.jsp") || paginaActual.contains("Agendar.jsp") || paginaActual.contains("modificarCitas.jsp")|| paginaActual.contains("ClienteCasos.jsp")|| paginaActual.contains("ClienteServicios.jsp")|| paginaActual.contains("PromocionCliente.jsp")) {
         accesoPermitido = "Cliente".equals(rol);
-    } else if (paginaActual.contains("PrincipalAsistente.jsp") || paginaActual.contains("AgendarClientesAsis.jsp") || paginaActual.contains("MCitas.jsp") || paginaActual.contains("MostrarClientes.jsp")) {
+    } else if (paginaActual.contains("PrincipalAsistente.jsp") || paginaActual.contains("MostrarClientes.jsp") || paginaActual.contains("AgendarClientesAsis.jsp") || paginaActual.contains("mCitas.jsp") || paginaActual.contains("MostrarClientes.jsp") || paginaActual.contains("AsistentesPromociones.jsp")|| paginaActual.contains("AsistentesServicios.jsp")) {
         accesoPermitido = "Asistente".equals(rol);
-    } else if (paginaActual.contains("PrincipaAdmin.jsp") || paginaActual.contains("MostrarClientes.jsp") || paginaActual.contains("mCitas.jsp")|| paginaActual.contains("")|| paginaActual.contains("mHorario.jsp")|| paginaActual.contains("RegsitrarAsistentes.jsp")|| paginaActual.contains("verAsistentes.jsp")|| paginaActual.contains("AdmiServicio.jsp")|| paginaActual.contains("AdmiPromociones.jsp") ) {
+    } else if (paginaActual.contains("PrincipaAdmin.jsp") || paginaActual.contains("MostrarClientes.jsp") || paginaActual.contains("mCitas.jsp") || paginaActual.contains("") || paginaActual.contains("mHorario.jsp") || paginaActual.contains("RegsitrarAsistentes.jsp") || paginaActual.contains("verAsistentes.jsp") || paginaActual.contains("AdmiServicio.jsp") || paginaActual.contains("AdmiPromociones.jsp")) {
         accesoPermitido = "Administrador".equals(rol);
     }
 

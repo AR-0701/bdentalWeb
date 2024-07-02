@@ -55,7 +55,7 @@ public class SvClientes extends HttpServlet {
                 String userRole = usuario.getRol();
 
                 if ("Administrador".equals(userRole)) {
-                    response.sendRedirect("admin/PrincipalAdmin.jsp");
+                    response.sendRedirect("admin/PrincipaAdmin.jsp");
                 } else if ("Asistente".equals(userRole)) {
                     response.sendRedirect("asistentes/PrincipalAsistentes.jsp");
                 } else {
