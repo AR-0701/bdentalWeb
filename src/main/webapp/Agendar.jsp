@@ -290,7 +290,6 @@
                                         alert('Seleccione una fecha válida.');
                                         return;
                                     }
-
                                     console.log('Obteniendo horarios para:', fecha);
                                     $('#horarios-disponibles').empty();
 
@@ -330,7 +329,6 @@
                                     });
                                 }
 
-                                // Obtener fechas bloqueadas y configurar el datepicker
                                 $.ajax({
                                     url: 'pruebasCalendarios',
                                     method: 'GET',

@@ -154,7 +154,7 @@
                 margin-top: 12px; /* Añade margen superior */
                 margin-bottom: 12px;
                 padding: 5px; /* Añade padding */
-            } 
+            }
             #agendarCitaForm input[type="text"] {
                 width: 50%;
                 padding: 8px;
@@ -320,8 +320,8 @@
                                             event.preventDefault();
                                                     console.log('Obteniendo horarios para:', fecha);
                                                     $('#horarios-disponibles').empty();
-                                                     var modal = document.getElementById("myModal");
-                                    modal.style.display = "block";
+                                                    var modal = document.getElementById("myModal");
+                                                    modal.style.display = "block";
                                                     $.ajax({
                                                     url: 'svCalculaHorario',
                                                             method: 'GET',
@@ -354,28 +354,28 @@
                                                             }
                                                     });
                                             }
-});
-                                    // Para cerrar el modal
-                                    var span = document.getElementsByClassName("close")[0];
-                                    span.onclick = function () {
-                                    var modal = document.getElementById("myModal");
-                                            modal.style.display = "none";
-                                    }
+                                            });
+                                                    // Para cerrar el modal
+                                                    var span = document.getElementsByClassName("close")[0];
+                                                    span.onclick = function () {
+                                                    var modal = document.getElementById("myModal");
+                                                            modal.style.display = "none";
+                                                    }
 
-                            var modalButton = document.getElementById("modalButton");
-                                    modalButton.onclick = function () {
-                                    var modal = document.getElementById("myModal");
-                                            modal.style.display = "none";
-                                    }
+                                            var modalButton = document.getElementById("modalButton");
+                                                    modalButton.onclick = function () {
+                                                    var modal = document.getElementById("myModal");
+                                                            modal.style.display = "none";
+                                                    }
 
-                            window.onclick = function (event) {
-                            var modal = document.getElementById("myModal");
-                                    if (event.target == modal) {
-                            modal.style.display = "none";
-                            }
-                            }
-                            })
-                            ;
+                                            window.onclick = function (event) {
+                                            var modal = document.getElementById("myModal");
+                                                    if (event.target == modal) {
+                                            modal.style.display = "none";
+                                            }
+                                            }
+                                            })
+                                            ;
                                             // Obtener fechas bloqueadas y configurar el datepicker
                                             $.ajax({
                                             url: 'pruebasCalendarios',
@@ -414,16 +414,16 @@
                                                             alert('Error al obtener fechas bloqueadas.');
                                                     }
                                             });
-                                            });
+                                    });
         </script>
         <script >
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                    var userIcon = document.querySelector(".user-icon");
-                                            var dropdownMenu = document.getElementById("dropdownMenu");
-                                            userIcon.addEventListener("click", function () {
-                                            dropdownMenu.classList.toggle("show");
-                                            });
-                                    });
+                    document.addEventListener('DOMContentLoaded', function () {
+                    var userIcon = document.querySelector(".user-icon");
+                            var dropdownMenu = document.getElementById("dropdownMenu");
+                            userIcon.addEventListener("click", function () {
+                            dropdownMenu.classList.toggle("show");
+                            });
+                    });
         </script>
 
     </body>

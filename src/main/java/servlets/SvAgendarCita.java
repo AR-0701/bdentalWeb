@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import logica.Controladora;
 import logica.citas;
 import logica.clientes;
@@ -61,7 +62,7 @@ public class SvAgendarCita extends HttpServlet {
         // Obtener el usuario que inició sesión
         HttpSession session = request.getSession();
         usuarios usuarioSesion = (usuarios) session.getAttribute("usuario");
-        System.out.println("el id usuario es"+(usuarios) session.getAttribute("usuario"));
+        System.out.println("el id usuario es" + (usuarios) session.getAttribute("usuario"));
 
         // Obtener el cliente especificado en el formulario
         clientes cliente = control.obtenerClientePorId(idCliente);
@@ -93,9 +94,8 @@ public class SvAgendarCita extends HttpServlet {
 
         // Persistir la cita
         control.crearCita(nuevaCita);
-
         // Redirigir a la página de confirmación o a la misma página con un mensaje de éxito
-        response.sendRedirect("confirmacionCita.jsp");
+        response.sendRedirect("confirmacionCita.jsp?success=true");
 
     }
 
