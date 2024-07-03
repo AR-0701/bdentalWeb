@@ -63,20 +63,6 @@
                         <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
                     </div>
                 </div>
-                <div class="sidebar" id="sidebar">
-                    <div class="menu-toggle" id="menuToggle">
-                        <span>&#9776;</span>
-                    </div>
-                    <ul>
-                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Ver clientes/Agendar</a></li>
-                        <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta del registro de citas</a></li>
-                        <li><a href="${pageContext.request.contextPath}/mHorario.html">Modificar Horarios</a></li>
-                        <li><a href="${pageContext.request.contextPath}/RegsitrarAsistentes.jsp">Registrar Asistentes</a></li>
-                        <li><a href="${pageContext.request.contextPath}/SvMostrarAsistentes">Ver Asistentes</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/AdmiServicio.jsp">Servicios</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/AdmiPromociones.jsp">Promociones</a></li>
-                    </ul>
-                </div>
             </header>
             <main class="main">
                 <div class="about">
@@ -143,21 +129,6 @@
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                var menuToggle = document.getElementById("menuToggle");
-                var sidebar = document.getElementById("sidebar");
-                var menuVisible = false;
-                menuToggle.addEventListener("click", function () {
-                    if (!menuVisible) {
-                        sidebar.style.left = "0";
-                        menuToggle.style.left = "250px";
-                        menuVisible = true;
-                    } else {
-                        sidebar.style.left = "-250px";
-                        menuToggle.style.left = "20px";
-                        menuVisible = false;
-                    }
-                });
-
                 var userIcon = document.querySelector(".user-icon");
                 var dropdownMenu = document.getElementById("dropdownMenu");
                 userIcon.addEventListener("click", function () {
