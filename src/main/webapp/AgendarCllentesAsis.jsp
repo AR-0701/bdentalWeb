@@ -10,47 +10,68 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
+                background-color:  #00b3b3;
                 margin: 0;
                 padding: 0;
             }
             .container {
                 width: 80%;
                 max-width: 1200px;
-                margin: 0 auto;
-                background-color: #fff;
+                margin: 20px auto;
+                background-color: white;
                 padding: 20px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
             .header {
                 display: flex;
-                justify-content: space-between;
+              justify-content: space-between;
                 align-items: center;
-                padding: 10px;
-                background-color: #007bff;
-                color: #fff;
+                padding: 10px 0;
+                border-bottom: 2px solid #00b3b3;
             }
-            .header .logo {
-                display: flex;
-                align-items: center;
-            }
-            .header .logo img {
-                max-width: 50px;
-                margin-right: 10px;
-            }
-            .header .logo h1 {
-                font-size: 1.5rem;
-                margin: 0;
-            }
-            .header .logout {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                transition: color 0.3s;
-            }
-            .header .logout:hover {
-                color: #f8f9fa;
-            }
+       
+
+.logo2 img {
+    height: 80px;
+}
+.user-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    position: relative;
+}
+
+.user-icon {
+    height: 60px;
+    cursor: pointer;
+    margin-right: 20px; /* Añade un margen derecho para moverla a la izquierda */
+    position: relative; /* Asegúrate de que la posición es relativa si vas a usar 'left' */
+    left: -20px; /* Ajusta este valor para mover la imagen más a la izquierda */
+
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Ajusta el ancho según sea necesario */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
             .content {
                 display: flex;
                 padding: 20px;
@@ -64,8 +85,10 @@
             }
             .form-group label {
                 display: block;
+              font-size:15px;
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 7px;
+              margin-top: 7px;
             }
             .form-group input[type="text"], .form-group input[type="email"], .form-group select {
                 width: 100%;
@@ -81,7 +104,7 @@
             }
             .button input[type="submit"] {
                 padding: 10px 20px;
-                background-color: #007bff;
+                background-color: #00b3b3;
                 color: #fff;
                 border: none;
                 border-radius: 3px;
@@ -90,8 +113,16 @@
                 transition: background-color 0.3s;
             }
             .button input[type="submit"]:hover {
-                background-color: #0056b3;
+                background-color: #00a2b2;
             }
+.form-group p{
+   display: block;
+              font-size:15px;
+                font-weight: bold;
+                margin-bottom: 7px;
+              margin-top: 10px;
+  }
+
             .calendar-container {
                 width: 300px;
                 justify-content: center;
@@ -126,6 +157,7 @@
             .ui-datepicker-calendar .ui-state-disabled span {
                 background-color: transparent !important;
             }
+
         </style>
     </head>
     <body>
@@ -152,7 +184,12 @@
                         <img src="${pageContext.request.contextPath}/imagenes/loogo.png" class="logo" alt="B - DENTAL">
                     </a>
                 </div>
-                <a class="logout" href="logout.jsp">Cerrar Sesión</a>
+                <div class="user-menu">
+                    <img src="imagenes/cerrarsesion.png" class="user-icon" alt="Usuario">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="${pageContext.request.contextPath}/SvCerrarSesion">Cerrar sesión</a>
+                    </div>
+                  </div>
             </div>
             <div class="content">
                 <div class="form-container">
