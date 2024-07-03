@@ -199,3 +199,18 @@ table th {
 tr.selected {
     background-color: #008f8f;
 }
+.button1 button {
+    padding:10px 20px;
+    background-color: #00b3b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+    margin-top: -90px;
+    margin-bottom: 15px;
+}
+
+.button1 button:hover {
+    background-color: #008f8f;
+}

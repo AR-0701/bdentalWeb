@@ -78,7 +78,7 @@
                         <div class="Titulo modify-title"><h1>Ver Clientes</h1></div>
                     </div>
                 </div>
-                <div class="button">
+                <div class="button1">
                     <a href="RegistroClientes.jsp">
                         <button type="button">Registrar Nuevo Cliente</button>
                     </a>
