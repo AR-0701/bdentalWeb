@@ -3,6 +3,8 @@
 <%@ page import="logica.clientes" %>
 <%@ page import="logica.usuarios" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
+<%@ include file="/verificarSesion.jsp" %>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -29,8 +31,12 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <%
-                        usuarios usuario = (usuarios) session.getAttribute("usuario");
+                    <%                        
+                        session = request.getSession(false);
+                        usuario = null;
+                        if (session != null) {
+                            usuario = (usuarios) session.getAttribute("usuario");
+                        }
                         String principalPage = "login.jsp"; // Default fallback in case session or user is not found
                         if (session != null && session.getAttribute("usuario") != null) {
                             String userRole = usuario.getRol();
@@ -101,7 +107,13 @@
                         </thead>
                         <tbody id="clientTableBody"> 
                             <%
-                                List<clientes> listaClientes = (List<clientes>) request.getSession().getAttribute("listaClientes");
+                                
+                                List<clientes> listaClientes = null;
+                                System.out.println(" " + listaClientes);
+                                if (session != null) {
+                                    listaClientes = (List<clientes>) session.getAttribute("listaClientes");
+                                }
+
                                 if (listaClientes != null) {
                                     for (clientes cliente : listaClientes) {
                             %>
@@ -116,9 +128,12 @@
                             </tr>
                             <%
                                     }
+                                } else {
+                                    out.println("<tr><td colspan='5'>No hay clientes disponibles o la lista de clientes es nula.</td></tr>");
                                 }
                             %>
                         </tbody>
+
                     </table>
                 </div>
             </main>

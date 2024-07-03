@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Confirmación de Cita</title>
+        <title>Error al agendar Cita</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
                 height: 100vh;
             }
             .confirmation-message {
-                background-color: #dff0d8;
+                background-color: red;
                 color: #3c763d;
                 padding: 20px;
                 border: 1px solid #d6e9c6;
@@ -26,7 +26,7 @@
     </head>
     <body>
         <div class="confirmation-message" id="confirmationMessage">
-            ¡Cita agendada exitosamente!
+            Ya existe una cita, Revise de nuevo
         </div>
         <script>
             // Mostrar el mensaje de confirmación si el parámetro success está presente en la URL

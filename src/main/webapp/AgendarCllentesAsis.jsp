@@ -1,6 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/verificarSesion.jsp" %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -133,7 +132,8 @@
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <%                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                    <%                       
+                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
                         if (session != null && session.getAttribute("usuario") != null) {
                             String userRole = usuario.getRol();
 

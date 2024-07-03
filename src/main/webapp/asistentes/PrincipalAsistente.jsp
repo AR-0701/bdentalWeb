@@ -13,7 +13,8 @@
         <div class="container">
             <header>
                 <div class="logo2">
-                    <%                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
+                    <%                      
+                        String principalPage = "login.jsp"; // Default fallback in case session or user is not found
                         if (session != null && session.getAttribute("usuario") != null) {
                             String userRole = usuario.getRol();
 
@@ -43,7 +44,7 @@
                         <span>&#9776;</span>
                     </div>
                     <ul>
-                        <li><a href="${pageContext.request.contextPath}/MostrarClientes.jsp">Ver clientes/registrar</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SvMostrarClientes">Ver clientes/Agendar</a></li>
                         <li><a href="${pageContext.request.contextPath}/mCitas.jsp">Consulta de registro de citas</a></li>
                         <li><a href="${pageContext.request.contextPath}/asistentes/AsistentesServicios.jsp">Servicios</a></li>
                         <li><a href="${pageContext.request.contextPath}/asistentes/AsistentesPromociones.jsp">Promociones</a></li>
